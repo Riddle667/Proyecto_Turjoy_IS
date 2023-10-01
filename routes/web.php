@@ -20,3 +20,4 @@ Route::get('/', function () {
 });
 
 Route::get('login',[LoginController::class, 'create'])->name('login');
+Route::post('login/store',[LoginController::class, 'store'])->name('login.store');
