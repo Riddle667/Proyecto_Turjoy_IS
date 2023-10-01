@@ -16,7 +16,7 @@ use App\Http\Controllers\LoginController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('login',[LoginController::class, 'create'])->name('login');
