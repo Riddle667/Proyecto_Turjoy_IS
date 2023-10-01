@@ -16,8 +16,8 @@ use App\Http\Controllers\LoginController;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
-});
+    return view('welcome');
+})->name('welcome');
 
 Route::get('login',[LoginController::class, 'create'])->name('login');
 Route::post('login/store',[LoginController::class, 'store'])->name('login.store');

@@ -16,7 +16,7 @@ class LoginController extends Controller
         $messages = makeMessages();
 
         $this->validate($request , [
-            'email' => ['required', 'email', 'unique:users'],
+            'email' => ['required', 'email'],
             'password' => ['required', 'min:8']
         ],$messages);
 
@@ -25,6 +25,6 @@ class LoginController extends Controller
             return back()->with('message','Usuario no registrado o contraseña incorrecta.');
         }
 
-        return redirect()->route();
+        return redirect()->route('login');
     }
 }

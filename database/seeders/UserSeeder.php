@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Ítalo Donoso Barraza',
             'email' => 'italo.donoso@ucn.cl',
-            'password' => 'Turjoy',
+            'password' => 'Turjoy91',
         ])->roles()->attach($adminRole);
     }
 }
