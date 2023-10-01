@@ -9,7 +9,7 @@
 <section class="bg-gray-custom-50 dark:bg-gray-900">
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-   
+
       </a>
       <div class="w-full bg-gray-custom-100 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
         <img class="m-auto w-40 h-21 mr-2 " src="https://i.ibb.co/smMLzzL/Logo-Tur-Joy.png" alt="logo" >
@@ -24,7 +24,7 @@
               <br>
 
 
-              <form class="space-y-4 md:space-y-6" method = "POST" action="#" novalidate>  
+              <form class="space-y-4 md:space-y-6" method = "POST" action="{{route('login.store')}}" novalidate>
                   @csrf
                   <div>
                       <label for="email" class="block mb-2 text-sm font-medium text-gray-custom-50 dark:text-white font-mulish">Correo electrónico </label>
@@ -34,7 +34,7 @@
                         <svg class="flex-shrink-0 w-4 h-4 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
                         </svg>
-                        
+
                         <p>{{ $message }}</p>
 
                       </div>
@@ -48,11 +48,11 @@
                         <svg class="flex-shrink-0 w-4 h-4 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                           <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
                         </svg>
-                        
+
                         <p>{{ $message }}</p>
 
                       </div>
-                        
+
                       @enderror
 
                       @if(session('message'))
@@ -61,18 +61,18 @@
                   </div>
                   <div class="flex items-center justify-between">
                       <div class="flex items-start">
-                          
+
                       </div>
-                     
+
                   </div>
                   <button type="submit" class="py-4 bg-gradient-to-r from-blue-custom-50 to-blue-custom-100 font-mulish-light w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Iniciar sesión</button>
-                
+
 
                 <br>
                 <br>
                 <br>
                   <div>
-                  <a href="#" type="button" class="bg-gradient-to-r from-blue-custom-50 to-blue-custom-100 font-mulish-light px-6 py-0.5 text-s text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Atrás</a>
+                  <a href="{{route('welcome')}}" type="button" class="bg-gradient-to-r from-blue-custom-50 to-blue-custom-100 font-mulish-light px-6 py-0.5 text-s text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Atrás</a>
                   </div>
               </form>
           </div>
