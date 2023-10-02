@@ -20,7 +20,8 @@ export default {
           '150': '#EAEAEA'
         },
         'red-custom':{
-          '50': '#FF8A80'
+          '50': '#FF8A80',
+          '100': '#FF6B6B'
         }
       },
       fontFamily: {
