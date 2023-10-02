@@ -27,7 +27,32 @@
             
         </form>
     </div>
-        
+    <table class="table-auto  rounded-full -my-16 mx-60">
+        <tbody>
+        <tr>
+            <td class="border px-4 py-2">Simbología de colores y errores</td>
+        </tr>
+        <tr>
+            <td class="border px-4 py-2 bg-green-custom">-Se cargaron correctamente</td>
+        </tr>
+        <tr>
+            <td class="border px-4 py-2 bg-red-custom-50">
+                -No se pueden cargar los datos debido a: <br>
+                *Origen y destinos repetidos <br>
+                *Datos faltantes en origen, destino, cantidad o tarifa base <br>
+                *Valores no numéricos <br>
+                *Valores negativos <br>
+            </td>
+        </tr>
+        <tr>
+            <td class="border px-4 py-2 bg-yellow-custom-50">
+                -No se pudieron cargar debido a que ya existen anteriormente. <br>
+                El primer registro correcto entre origen y destino se considera válido, el resto incorrectos.
+
+            </td>
+        </tr>
+        </tbody>
+</table>    
 
 
 
