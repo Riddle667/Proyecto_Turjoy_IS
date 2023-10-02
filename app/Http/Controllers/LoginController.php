@@ -17,12 +17,12 @@ class LoginController extends Controller
 
         $this->validate($request , [
             'email' => ['required', 'email'],
-            'password' => ['required', 'min:8']
-        ],$messages);
+            'password' => ['required'],
+        ], $messages);
 
         if(!auth()->attempt($request->only('email','password'),$request->rename))
         {
-            return back()->with('message','Usuario no registrado o contraseña incorrecta.');
+            return back()->with('message','usuario no registrado o contraseña incorrecta');
         }
 
         return redirect()->route('login');
