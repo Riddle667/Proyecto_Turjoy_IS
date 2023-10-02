@@ -18,8 +18,3 @@ use App\Http\Controllers\RouteController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::middleware(['auth'])->group(function () {
-    Route::post('/addroute', [RouteController::class, 'routeCheck'])->name('route.check');
-    Route::get('/result/routes', [RouteController::class, 'indexRoutes'])->name('routesAdd.index');
-});
