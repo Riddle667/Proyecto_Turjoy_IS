@@ -15,16 +15,22 @@ class RouteController extends Controller
             session()->put('validRows');
             session()->put('invalidRows');
             session()->put('duplicatedRows');
+            session()->put('orderRows');
+            session()->put('colors');
         } else {
             session(['validRows' => []]);
             session(['invalidRows' => []]);
             session(['duplicatedRows' => []]);
+            session(['orderRows' => []]);
+            session(['colors' => []]);
         }
 
         return view('admin.route', [
             'validRows' => session('validRows'),
             'invalidRows' => session('invalidRows'),
-            'duplicatedRows' => session('duplicatedRows')
+            'duplicatedRows' => session('duplicatedRows'),
+            'orderRows' => session('orderRows'),
+            'colors' => session('colors')
         ]);
     }
 
@@ -33,7 +39,9 @@ class RouteController extends Controller
         return view('admin.route', [
             'validRows' => session('validRows'),
             'invalidRows' => session('invalidRows'),
-            'duplicatedRows' => session('duplicatedRows')
+            'duplicatedRows' => session('duplicatedRows'),
+            'orderRows' => session('orderRows'),
+            'colors' => session('colors')
         ]);
     }
 
@@ -56,6 +64,8 @@ class RouteController extends Controller
             $validRows = $import->getValidRows();
             $invalidRows = $import->getInvalidRows();
             $duplicatedRows = $import->getDuplicatedRows();
+            $orderRows = $import->getOrderRows();
+            $colors = $import->getColors();
 
             foreach ($validRows as $row) {
                 $origin = $row['origen'];
@@ -86,7 +96,8 @@ class RouteController extends Controller
                 session()->put('validRows', $validRows);
                 session()->put('invalidRows', $invalidRows);
                 session()->put('duplicatedRows', $duplicatedRows);
-
+                session()->put('orderRows', $orderRows);
+                session()->put('colors', $colors);
                 return redirect()->route('routesAdd.index');
             }
         }
