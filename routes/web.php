@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('admin.route.route');
 });
+
+
+Route::get('/dashboard',[UserController::class,'dashboardIndex'])->name('dashboard');
+Route::post('/addroute',[RouteController::class,'routeCheck'])->name('route.check');
