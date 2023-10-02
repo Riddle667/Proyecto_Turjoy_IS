@@ -9,15 +9,34 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class RouteController extends Controller
 {
-    public function indexRoutes()
+    public function indexAddRoutes()
     {
-        return view('admin.travel.index', [
+        if (session('validRows') || session('invalidRows') || session('duplicatedRows')) {
+            session()->put('validRows');
+            session()->put('invalidRows');
+            session()->put('duplicatedRows');
+        } else {
+            session(['validRows' => []]);
+            session(['invalidRows' => []]);
+            session(['duplicatedRows' => []]);
+        }
+
+        return view('admin.route', [
             'validRows' => session('validRows'),
             'invalidRows' => session('invalidRows'),
             'duplicatedRows' => session('duplicatedRows')
         ]);
     }
-    
+
+    public function indexRoutes()
+    {
+        return view('admin.route', [
+            'validRows' => session('validRows'),
+            'invalidRows' => session('invalidRows'),
+            'duplicatedRows' => session('duplicatedRows')
+        ]);
+    }
+
     public function routeCheck(Request $request)
     {
         // $messages = makeMessages();
@@ -41,7 +60,7 @@ class RouteController extends Controller
             foreach ($validRows as $row) {
                 $origin = $row['origen'];
                 $destination = $row['destino'];
-                
+
                 $route = Route::where('origin', $origin)
                     ->where('destination', $destination)
                     ->first();
@@ -51,8 +70,7 @@ class RouteController extends Controller
                         'seats' => $row['cantidad_de_asientos'],
                         'base_value' => $row['tarifa_base']
                     ]);
-                }
-                else {
+                } else {
                     Route::create([
                         'origin' => $origin,
                         'destination' => $destination,
