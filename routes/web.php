@@ -19,4 +19,6 @@ Route::get('/', function () {
 
 
 Route::get('/dashboard',[UserController::class,'dashboardIndex'])->name('dashboard');
+
+
 Route::post('/addroute',[RouteController::class,'routeCheck'])->name('route.check');
