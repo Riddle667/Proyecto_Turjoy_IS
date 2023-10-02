@@ -13,6 +13,8 @@ class RoutesImport implements ToCollection, WithHeadingRow
     protected $invalidRows = [];
     protected $duplicatedRows = [];
     protected $existingOriginsDestinations = [];
+    protected $orderRows = [];
+    protected $colors = [];
 
     /**
      * Importar una colección de filas desde el archivo Excel.
@@ -27,18 +29,24 @@ class RoutesImport implements ToCollection, WithHeadingRow
 
             if ($this->hasDuplicateOriginDestination($origin, $destination)) {
                 $this->duplicatedRows[] = $row;
+                $this->orderRows[] = $row;
+                $this->colors[] = 1;
             } else {
                 $tarifa_base = str_replace(['$', '.'], '', $row['tarifa_base']);
                 $row['tarifa_base'] = $tarifa_base;
                 if (isset($row['origin']) && isset($row['destino']) && isset($row['cantidad_de_asientos']) && isset($row['tarifa_base']) && is_numeric($row['cantidad_de_asientos']) && is_numeric($row['tarifa_base'])) {
                     //Filas validas.
                     $this->validRows[] = $row;
+                    $this->orderRows[] = $row;
+                    $this->colors[] = 0;
 
                     //Registra la combinación origen y destino.
                     $this->existingOriginsDestinations[] = $origin . '-' . $destination;
                 } else {
                     //Filas invalidas.
                     $this->invalidRows[] = $row;
+                    $this->orderRows[] = $row;
+                    $this->colors[] = 2;
                 }
             }
         }
@@ -85,5 +93,25 @@ class RoutesImport implements ToCollection, WithHeadingRow
     public function getDuplicatedRows()
     {
         return $this->duplicatedRows;
+    }
+
+    /**
+     * Obtener filas ordenadas.
+     *
+     * @param array
+     */
+    public function getOrderRows()
+    {
+        return $this->orderRows;
+    }
+
+    /**
+     * Obtener lista de colores.
+     *
+     * @param array
+     */
+    public function getColors()
+    {
+        return $this->colors;
     }
 }
