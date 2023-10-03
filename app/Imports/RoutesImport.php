@@ -19,7 +19,7 @@ class RoutesImport implements ToCollection, WithHeadingRow
     /**
      * Importar una colección de filas desde el archivo Excel.
      *
-     * @return Collection $rows
+     * @param Collection $rows
      */
     public function collection(Collection $rows)
     {
@@ -27,23 +27,25 @@ class RoutesImport implements ToCollection, WithHeadingRow
             $origin = $row['origen'];
             $destination = $row['destino'];
 
+            // Validación: Verifica si la combinación origen y destino ya existe en el archivo
             if ($this->hasDuplicateOriginDestination($origin, $destination)) {
+                // Si ya existe, marca la fila como duplicada
                 $this->duplicatedRows[] = $row;
                 $this->orderRows[] = $row;
                 $this->colors[] = 1;
             } else {
                 $tarifa_base = str_replace(['$', '.'], '', $row['tarifa_base']);
                 $row['tarifa_base'] = $tarifa_base;
-                if (isset($row['origin']) && isset($row['destino']) && isset($row['cantidad_de_asientos']) && isset($row['tarifa_base']) && is_numeric($row['cantidad_de_asientos']) && is_numeric($row['tarifa_base'])) {
-                    //Filas validas.
+                // Validación: Verifica que los campos "orige" "destino" "stock" y "mount" sean numéricos y requeridos.
+                if (isset($row['origen']) && isset($row['destino']) && isset($row['cantidad_de_asientos']) && isset($row['tarifa_base']) && is_numeric($row['cantidad_de_asientos']) && is_numeric($row['tarifa_base'])) {
+                    // Filas válidas
                     $this->validRows[] = $row;
                     $this->orderRows[] = $row;
                     $this->colors[] = 0;
-
-                    //Registra la combinación origen y destino.
+                    // Registra la combinación origen y destino
                     $this->existingOriginsDestinations[] = $origin . '-' . $destination;
                 } else {
-                    //Filas invalidas.
+                    // Filas inválidas
                     $this->invalidRows[] = $row;
                     $this->orderRows[] = $row;
                     $this->colors[] = 2;
@@ -98,7 +100,7 @@ class RoutesImport implements ToCollection, WithHeadingRow
     /**
      * Obtener filas ordenadas.
      *
-     * @param array
+     * @return array
      */
     public function getOrderRows()
     {
@@ -106,9 +108,9 @@ class RoutesImport implements ToCollection, WithHeadingRow
     }
 
     /**
-     * Obtener lista de colores.
+     * Obtener colores.
      *
-     * @param array
+     * @return array
      */
     public function getColors()
     {

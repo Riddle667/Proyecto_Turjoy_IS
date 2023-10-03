@@ -36,7 +36,7 @@ class RouteController extends Controller
 
     public function indexRoutes()
     {
-        return view('admin.route', [
+        return view('admin.route.route', [
             'validRows' => session('validRows'),
             'invalidRows' => session('invalidRows'),
             'duplicatedRows' => session('duplicatedRows'),
@@ -66,6 +66,7 @@ class RouteController extends Controller
             $duplicatedRows = $import->getDuplicatedRows();
             $orderRows = $import->getOrderRows();
             $colors = $import->getColors();
+            //dd($validRows, $invalidRows, $duplicatedRows, $orderRows, $colors);
 
             foreach ($validRows as $row) {
                 $origin = $row['origen'];
