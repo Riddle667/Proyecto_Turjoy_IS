@@ -25,7 +25,7 @@ class RouteController extends Controller
             session(['colors' => []]);
         }
 
-        return view('admin.route', [
+        return view('admin.route.route', [
             'validRows' => session('validRows'),
             'invalidRows' => session('invalidRows'),
             'duplicatedRows' => session('duplicatedRows'),
