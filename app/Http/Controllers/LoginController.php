@@ -15,16 +15,15 @@ class LoginController extends Controller
     {
         $messages = makeMessages();
 
-        $this->validate($request , [
+        $this->validate($request, [
             'email' => ['required', 'email'],
             'password' => ['required'],
         ], $messages);
 
-        if(!auth()->attempt($request->only('email','password'),$request->rename))
-        {
-            return back()->with('message','usuario no registrado o contraseña incorrecta');
+        if (!auth()->attempt($request->only('email', 'password'), $request->rename)) {
+            return back()->with('message', 'usuario no registrado o contraseña incorrecta');
         }
 
-        return redirect()->route('login');
+        return redirect()->route('routes.index');
     }
 }
