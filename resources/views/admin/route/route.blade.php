@@ -4,6 +4,7 @@
 
 @section('content')
 
+
     @if ($validRows || $invalidRows || $duplicatedRows)
         <div class="flex flex-1 flex-col gap-2">
             <div class="my-8 mx-auto">
@@ -218,9 +219,5 @@
             </tr>
         </tbody>
     </table>
-
-
-
-
 
 @endsection
