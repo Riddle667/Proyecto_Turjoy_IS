@@ -83,51 +83,21 @@
 
                             </div>
 
-                        @enderror
-
-                        @if (session('message'))
-                            <div class="flex items-center mt-2 text-xs text-red-custom-50 dark:text-red-custom-50">
-                                <p>{{ session('message') }}</p>
-                                <svg class="w-4 h-6 text-red-custom-50 dark:text-white" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm0 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm1-5.034V12a1 1 0 0 1-2 0v-1.418a1 1 0 0 1 1.038-.999 1.436 1.436 0 0 0 1.488-1.441 1.501 1.501 0 1 0-3-.116.986.986 0 0 1-1.037.961 1 1 0 0 1-.96-1.037A3.5 3.5 0 1 1 11 11.466Z" />
-                                </svg>
-                            </div>
-                        @endif
-                    </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-start">
-
                         </div>
+                        <button type="submit"
+                            class="py-4 bg-gradient-to-r from-blue-custom-50 to-blue-custom-100 font-mulish-light w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Iniciar
+                            sesión</button>
 
-                    </div>
-                    <button type="submit"
-                        class="py-4 bg-gradient-to-r from-blue-custom-50 to-blue-custom-100 font-mulish-light w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Iniciar
-                        sesión</button>
-                    <br>
-                    <br>
-                    <br>
-                    <div>
-                        <a href="{{ route('welcome') }}" type="button"
-                            class="bg-gradient-to-r from-blue-custom-50 to-blue-custom-100 font-mulish-light px-6 py-0.5 text-s text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Atrás</a>
-                    </div>
-                </form>
+                        <br>
+                        <br>
+                        <br>
+                        <div>
+                            <a href="{{ route('welcome') }}" type="button"
+                                class="bg-gradient-to-r from-blue-custom-50 to-blue-custom-100 font-mulish-light px-6 py-0.5 text-s text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Atrás</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
-<br>
-<br>
-<br>
-<div>
-    <a href="#" type="button"
-        class="bg-gradient-to-r from-blue-custom-50 to-blue-custom-100 font-mulish-light px-6 py-0.5 text-s text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Atrás</a>
-</div>
-</form>
-</div>
-</div>
-</div>
-</section>
+    </section>
 @endsection
