@@ -22,15 +22,15 @@ Route::get('/', function () {
 Route::get('login',[LoginController::class, 'create'])->name('login');
 Route::post('login/store',[LoginController::class, 'store'])->name('login.store');
 
-<<<<<<< HEAD
+
+
 
 Route::get('/dashboard',[UserController::class,'dashboardIndex'])->name('dashboard');
 
 
-Route::post('/addroute',[RouteController::class,'routeCheck'])->name('route.check');
-=======
 Route::middleware(['auth'])->group(function () {
+
     Route::post('/addroute', [RouteController::class, 'routeCheck'])->name('route.check');
     Route::get('/result/routes', [RouteController::class, 'indexRoutes'])->name('routesAdd.index');
 });
->>>>>>> origin/jairoCalcina
+
