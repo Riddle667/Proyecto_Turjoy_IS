@@ -7,7 +7,7 @@
     @if ($validRows || $invalidRows || $duplicatedRows)
         <div class="flex">
             {{-- SideBar --}}
-            <div class=" w-1/6 h-screen">
+            <div class=" w-2/12 h-screen">
                 <div class="mr-auto ">
                     <br>
                     <br>
@@ -24,7 +24,7 @@
                 <div class="bg-gray-200 max-w-screen flex flex-wrap items-center justify-between mx-auto p-3">
                     <h2 class="flex intems-center font-bold ">Menú Sistema/Cargar Rutas de Viaje</h2>
                 </div>
-                <p class="text-green-custom font-bold p-4 bg-white w-screen inline-block underline_green">Cargar Rutas de
+                <p class="text-green-custom font-bold p-4 bg-white inline-block underline_green">Cargar Rutas de
                     Viaje </p>
                 <hr class="border-black">
                 <div>
@@ -184,7 +184,7 @@
                     <div class="bg-gray-200 max-w-screen flex flex-wrap items-center justify-between mx-auto p-3">
                         <h2 class="flex intems-center font-bold ">Menú Sistema/Cargar Rutas de Viaje</h2>
                     </div>
-                    <p class="text-green-custom font-bold p-4 bg-white w-screen inline-block underline_green">Cargar Rutas
+                    <p class="text-green-custom font-bold p-4 bg-white inline-block underline_green">Cargar Rutas
                         de Viaje </p>
                     <hr class="border-black">
                     <div>
