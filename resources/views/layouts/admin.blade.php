@@ -6,13 +6,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap" rel="stylesheet">
-   
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Configuración del sistema</title>
 </head>
-<body>  
+<body>
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
-  <div class="bg-green-custom max-w-screen flex flex-wrap items-center justify-between mx-auto p-2">
+  <div class="bg-blue-custom-100 max-w-screen flex flex-wrap items-center justify-between mx-auto">
     <a href="#" class="flex items-center">
         <img src="https://i.ibb.co/smMLzzL/Logo-Tur-Joy.png" class="h-20 w-20" alt="Turjoy Logo" />
         <div class="ml-4">
@@ -29,25 +29,11 @@
       <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
       </ul>
     </div>
-    <div class="text-end text-xl font-bold text-white"><h3>¡Hola Ítalo!</h3></div>
+    <div class="text-end text-xl font-bold mr-4 text-white"><h3>¡Hola Ítalo!</h3></div>
   </div>
-  <nav class="ml-60 bg-gray-custom border-gray-200 dark:bg-gray-900"> 
-    <div class="bg-gray-200 max-w-screen flex flex-wrap items-center justify-between mx-auto p-3">
-        <h2 class= "flex intems-center font-bold  ">Menú Sistema/Cargar Rutas de Viaje</h2>
-    </div>
-  
-
 </nav>
 
-<div class="flex items-center bg-white text-gray-custom-150 font-bold text-left ml-8 text-xl">Menú del Sistema</div>
-    <div class="mb=0 ">
-        <a href="#" class="px-6 mr-4 text-lg">Cargar Rutas de Viaje</a>
-        <br>
-        <a href="#" class="px-6 mr-4 text-lg">Buscar Reservas</a>
-        <br>
-        <a href="#" class="px-6 mr-4 text-lg rounded-lg" >Reporte de Reservas</a>
-    </div>
-</div>
+
 <main>
   @yield('content')
 </main>

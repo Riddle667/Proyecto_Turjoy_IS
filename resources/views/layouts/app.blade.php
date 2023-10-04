@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <title>Document</title>
+    <title>Reservar pasajes</title>
 </head>
 <body>
 @if (!request()->is('login'))

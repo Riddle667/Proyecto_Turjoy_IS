@@ -2,7 +2,7 @@
 
 
 
-
+<title>Iniciar sesión</title>
 @section('content')
     <section class="bg-auto bg-gray-custom-50 dark:bg-gray-custom-50">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
