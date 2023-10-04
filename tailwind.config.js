@@ -22,6 +22,9 @@ export default {
         'red-custom':{
           '50': '#FF8A80',
           '100': '#FF6B6B'
+        },
+        'yellow-custom':{
+          '50': '#e4e6a8'
         }
       },
       fontFamily: {
