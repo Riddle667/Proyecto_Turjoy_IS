@@ -38,7 +38,7 @@ class RoutesImport implements ToCollection, WithHeadingRow
                     $tarifa_base = str_replace(['$', '.'], '', $row['tarifa_base']);
                     $row['tarifa_base'] = $tarifa_base;
                     // Validación: Verifica que los campos "orige" "destino" "stock" y "mount" sean numéricos y requeridos.
-                    if (isset($row['origen']) && isset($row['destino']) && isset($row['cantidad_de_asientos']) && isset($row['tarifa_base']) && is_numeric($row['cantidad_de_asientos']) && is_numeric($row['tarifa_base'])) {
+                    if (isset($row['origen']) && isset($row['destino']) && isset($row['cantidad_de_asientos']) && isset($row['tarifa_base']) && is_numeric($row['cantidad_de_asientos']) && is_numeric($row['tarifa_base']) && $row['cantidad_de_asientos'] > 0 && $row['tarifa_base'] > 0) {
                         // Filas válidas
                         $this->validRows[] = $row;
                         $this->orderRows[] = $row;
