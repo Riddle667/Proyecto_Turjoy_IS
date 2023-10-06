@@ -8,12 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap" rel="stylesheet">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <title>Reservar pasajes</title>
+    <title>Turjoy - Reservar pasajes</title>
 </head>
 <body>
 @if (!request()->is('login'))
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
-  <div class="bg-green-custom full-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+  <div class="bg-green-custom full-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
     <a href="#" class="flex items-center">
         <img src="https://i.ibb.co/smMLzzL/Logo-Tur-Joy.png" class="h-20 w-20 mr-3" alt="Turjoy Logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
@@ -26,9 +26,9 @@
     </button>
     <div class="hidden w-full md:block md:w-auto" id="navbar-default">
       <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-        <li>
-          <a href="{{ route('login') }}" class="block py-2 pl-3 pr-4 text-white bg-gradient-to-r from-blue-custom-50 to-blue-custom-100 rounded md:bg-transparent md:text-white md:p-0 dark:text-white md:dark:text-blue-500" aria-current="page">Iniciar sesión</a>
-        </li>
+        
+          
+          <a href = "{{ route('login') }}" type="button" class="shadow-md text-white font-mulish-bold bg-blue-700 hover:bg-blue-800 font-medium text-xl px-7 py-8 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Iniciar sesión</a>
 
 
       </ul>
