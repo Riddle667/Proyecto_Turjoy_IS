@@ -28,17 +28,17 @@ class RoutesImport implements ToCollection, WithHeadingRow
                 $origin = $row['origen'];
                 $destination = $row['destino'];
 
+                $tarifa_base = str_replace(['$', '.'], '', $row['tarifa_base']);
+                $row['tarifa_base'] = $tarifa_base;
                 // Validación: Verifica si la combinación origen y destino ya existe en el archivo
-                if ($this->hasDuplicateOriginDestination($origin, $destination)) {
+                if ($this->hasDuplicateOriginDestination($origin, $destination) && isset($row['cantidad_de_asientos']) && isset($row['tarifa_base']) && is_numeric($row['cantidad_de_asientos']) && is_numeric($row['tarifa_base']) && $row['cantidad_de_asientos'] > 0 && $row['tarifa_base'] > 0) {
                     // Si ya existe, marca la fila como duplicada
                     $this->duplicatedRows[] = $row;
                     $this->orderRows[] = $row;
                     $this->colors[] = 1;
                 } else {
-                    $tarifa_base = str_replace(['$', '.'], '', $row['tarifa_base']);
-                    $row['tarifa_base'] = $tarifa_base;
                     // Validación: Verifica que los campos "orige" "destino" "stock" y "mount" sean numéricos y requeridos.
-                    if (isset($row['origen']) && isset($row['destino']) && isset($row['cantidad_de_asientos']) && isset($row['tarifa_base']) && is_numeric($row['cantidad_de_asientos']) && is_numeric($row['tarifa_base']) && $row['cantidad_de_asientos'] > 0 && $row['tarifa_base'] > 0) {
+                    if (isset($row['cantidad_de_asientos']) && isset($row['tarifa_base']) && is_numeric($row['cantidad_de_asientos']) && is_numeric($row['tarifa_base']) && $row['cantidad_de_asientos'] > 0 && $row['tarifa_base'] > 0) {
                         // Filas válidas
                         $this->validRows[] = $row;
                         $this->orderRows[] = $row;
