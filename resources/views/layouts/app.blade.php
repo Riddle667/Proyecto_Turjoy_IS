@@ -13,7 +13,7 @@
 <body>
 @if (!request()->is('login'))
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
-  <div class="bg-green-custom max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+  <div class="bg-green-custom full-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="#" class="flex items-center">
         <img src="https://i.ibb.co/smMLzzL/Logo-Tur-Joy.png" class="h-20 w-20 mr-3" alt="Turjoy Logo" />
         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
