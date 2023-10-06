@@ -6,6 +6,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/hRG5ynk/Logo-Turjoy-Oficial.png">
+    
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Turjoy - Reservar pasajes</title>
@@ -39,6 +41,7 @@
 <main>
   @yield('content')
 </main>
+
 
 
 </body>
