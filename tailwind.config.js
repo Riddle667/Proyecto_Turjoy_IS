@@ -10,6 +10,7 @@ export default {
     extend: {
       colors:{
         'green-custom': '#2ECC71',
+        'green-custom-correct-rows': '#A8E6CF',
         'blue-custom': {
           '50':'#0A74DA',
           '100':'#2A49FF'
@@ -24,17 +25,17 @@ export default {
           '100': '#FF6B6B'
         },
         'yellow-custom':{
-          '50': '#e4e6a8'
+          '50': '#E4E6A8'
         }
       },
       fontFamily: {
-        
-        'mulish': 'sans-serif'
-          
-      },
-      
 
-        
+        'mulish': 'sans-serif'
+
+      },
+
+
+
     },
   },
   plugins: [
@@ -44,4 +45,4 @@ export default {
 
 
 }
-  
+

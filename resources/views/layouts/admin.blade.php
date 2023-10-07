@@ -12,7 +12,7 @@
 </head>
 <body>
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
-  <div class="bg-blue-custom-100 max-w-screen flex flex-wrap items-center justify-between mx-auto">
+  <div class="bg-blue-custom-50 max-w-screen flex flex-wrap items-center justify-between mx-auto">
     <a href="#" class="flex items-center">
         <img src="https://i.ibb.co/smMLzzL/Logo-Tur-Joy.png" class="h-20 w-20" alt="Turjoy Logo" />
         <div class="ml-4">

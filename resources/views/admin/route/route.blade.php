@@ -1,17 +1,21 @@
 @extends('layouts.admin')
 
 
-
+<title>Turjoy - Cargar Rutas de Viaje</title>
 @section('content')
 
         @if ($validRows || $invalidRows || $duplicatedRows)
         <div class="flex">
             {{-- SideBar --}}
             <div class=" w-1/6 h-screen">
-                <div class="mr-auto ">
+                <div class="mr-auto">
                     <br>
                     <br>
-                    <p class=" text-center text-xl text-gray-custom-50">Menú del sistema</p>
+                    <div class="flex flex-auto">
+                        <img src="https://thenounproject.com/api/private/icons/218334/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0" class=" w-7 ml-8 mr-2">
+                        <p class=" text-center text-xl text-gray-custom-50">Menú del sistema</p>
+
+                    </div>
                     <p class="px-9  mt-2 text-lg text-white p-2 bg-green-custom rounded-sm">Cargar Rutas de Viaje</p>
                     <a href="#" class="px-9 mr-4 text-lg py-1 inline-block ">Buscar Reservas</a>
                     <div>
@@ -21,7 +25,7 @@
             </div>
             {{-- Content --}}
             <div class=" w-10/12 h-screen ">
-                <div class="bg-gray-200 max-w-screen flex flex-wrap items-center justify-between mx-auto p-3">
+                <div class=" bg-gray-custom-150 max-w-screen flex flex-wrap items-center justify-between mx-auto p-3">
                     <h2 class= "flex intems-center font-bold ">Menú Sistema/Cargar Rutas de Viaje</h2>
                 </div>
                 <p class="text-green-custom font-bold p-4 bg-white w-screen inline-block underline_green">Cargar Rutas de Viaje </p>
@@ -36,7 +40,7 @@
                                 <input type="file" name="document" class="rounded-lg inline-block ">
                                 @error('document')
                                     <p
-                                        class="bg-red-custom-50 font-semibold  text-lg text-white px-4 py-3 rounded-lg ">
+                                        class="bg-red-custom-50 border border-black font-semibold  text-lg text-black px-4 py-3 rounded-lg ">
                                         {{ $message }}
                                     </p>
                                 @enderror
@@ -54,7 +58,7 @@
                                 <td class="border border-black px-4 py-2 font-bold rounded">Simbología de colores y errores</td>
                             </tr>
                             <tr>
-                                <td class="border px-4 py-2 border-black bg-green-custom">-Se cargaron correctamente</td>
+                                <td class="border px-4 py-2 border-black bg-green-custom-correct-rows">-Se cargaron correctamente</td>
                             </tr>
                             <tr>
                                 <td class="border px-4 py-2 border-black bg-red-custom-50">
@@ -100,7 +104,7 @@
                     <tbody>
                         @foreach ($orderRows as $orderRow)
                             @if ($colors[$loop->index] == '0')
-                                <tr class="bg-green-400 border-b border-black dark:bg-gray-900 dark:border-gray-700">
+                                <tr class=" bg-green-custom-correct-rows border-b border-black dark:bg-gray-900 dark:border-gray-700">
                                     <th scope="row"
                                         class="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-white">
                                         {{ $orderRow['origen'] ? $orderRow['origen'] : '---' }}
@@ -117,7 +121,7 @@
                                 </tr>
                             @endif
                             @if ($colors[$loop->index] == '1')
-                                <tr class="bg-yellow-400 border-b border-black dark:bg-gray-900 dark:border-gray-700">
+                                <tr class=" bg-yellow-custom-50 border-b border-black dark:bg-gray-900 dark:border-gray-700">
                                     <th scope="row"
                                         class="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-white">
                                         {{ $orderRow['origen'] ? $orderRow['origen'] : '---' }}
@@ -133,7 +137,7 @@
                                 </tr>
                             @endif
                             @if ($colors[$loop->index] == '2')
-                                <tr class="bg-red-400 border-b border-black dark:bg-gray-900 dark:border-gray-700">
+                                <tr class=" bg-red-custom-50 border-b border-black dark:bg-gray-900 dark:border-gray-700">
                                     <th scope="row"
                                         class="px-6 py-4 font-medium text-black whitespace-nowrap dark:text-white">
                                         {{ $orderRow['origen'] ? $orderRow['origen'] : '---' }}
@@ -172,7 +176,7 @@
         </div>
         {{-- Content --}}
         <div class=" w-10/12 h-screen ">
-            <div class="bg-gray-200 max-w-screen flex flex-wrap items-center justify-between mx-auto p-3">
+            <div class=" bg-gray-custom-150 max-w-screen flex flex-wrap items-center justify-between mx-auto p-3">
                 <h2 class= "flex intems-center font-bold ">Menú Sistema/Cargar Rutas de Viaje</h2>
             </div>
             <p class="text-green-custom font-bold p-4 bg-white w-screen inline-block underline_green">Cargar Rutas de Viaje </p>
@@ -187,7 +191,7 @@
                             <input type="file" name="document" class="rounded-lg inline-block ">
                             @error('document')
                                 <p
-                                    class="bg-red-custom-50 font-semibold my-2 mt-10 text-lg text-white px-4 py-3 rounded-lg text-center  ">
+                                    class="bg-red-custom-50 border border-black font-semibold my-2 mt-10 text-lg text-black px-4 py-3 rounded-lg text-center  ">
 
                                     {{ $message }}
                                 </p>
@@ -207,7 +211,7 @@
                             <td class="border border-black px-4 py-2 font-bold rounded">Simbología de colores y errores</td>
                         </tr>
                         <tr>
-                            <td class="border px-4 py-2 border-black bg-green-custom">-Se cargaron correctamente</td>
+                            <td class="border px-4 py-2 border-black bg-green-custom-correct-rows">-Se cargaron correctamente</td>
                         </tr>
                         <tr>
                             <td class="border px-4 py-2 border-black bg-red-custom-50">
