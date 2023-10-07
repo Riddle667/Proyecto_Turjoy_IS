@@ -166,7 +166,11 @@
             <div class="mr-auto ">
                 <br>
                 <br>
-                <p class=" text-center text-xl text-gray-custom-50">Menú del sistema</p>
+                <div class="flex flex-auto">
+                    <img src="https://thenounproject.com/api/private/icons/218334/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0" class=" w-7 ml-8 mr-2">
+                    <p class=" text-center text-xl text-gray-custom-50">Menú del sistema</p>
+                </div>
+
                 <p class="px-9  mt-2 text-lg text-white p-2 bg-green-custom rounded-sm">Cargar Rutas de Viaje</p>
                 <a href="#" class="px-9 mr-4 text-lg py-1 inline-block ">Buscar Reservas</a>
                 <div>
