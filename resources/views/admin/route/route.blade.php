@@ -50,6 +50,13 @@
                                 </p>
                             </div>
                         @enderror
+                        @if (session()->has('error'))
+                            <div>
+                                <p class="bg-red-custom-50 font-semibold my-2 mt-0 ml-1 text-lg text-white py-1 rounded-lg">
+                                    El formato del archivo no es el correcto
+                                </p>
+                            </div>
+                        @endif
                     </div>
                     <br>
                     <table class="table-auto rounded-xl bg-gray-custom-150">
@@ -114,7 +121,7 @@
                                                 {{ $orderRow['origen'] ? $orderRow['origen'] : '---' }}
                                             </th>
                                             <td class="px-6 py-4 text-black font-medium">
-                                                {{ $orderRow['destino'] }}
+                                                {{ $orderRow['destino'] ? $orderRow['destino'] : '---' }}
                                             </td>
                                             <td class="px-6 py-4 text-black font-medium">
                                                 {{ $orderRow['cantidad_de_asientos'] ? $orderRow['cantidad_de_asientos'] : '---' }}
@@ -132,7 +139,7 @@
                                                 {{ $orderRow['origen'] ? $orderRow['origen'] : '---' }}
                                             </th>
                                             <td class="px-6 py-4 text-black font-medium">
-                                                {{ $orderRow['destino'] }}
+                                                {{ $orderRow['destino'] ? $orderRow['destino'] : '---' }}
                                             </td>
                                             <td class="px-6 py-4 text-black font-medium">
                                                 {{ $orderRow['cantidad_de_asientos'] ? $orderRow['cantidad_de_asientos'] : '---' }}
@@ -148,7 +155,7 @@
                                                 {{ $orderRow['origen'] ? $orderRow['origen'] : '---' }}
                                             </th>
                                             <td class="px-6 py-4 text-black font-medium">
-                                                {{ $orderRow['destino'] }}
+                                                {{ $orderRow['destino'] ? $orderRow['destino'] : '---' }}
                                             </td>
                                             <td class="px-6 py-4 text-black font-medium">
                                                 {{ $orderRow['cantidad_de_asientos'] ? $orderRow['cantidad_de_asientos'] : '---' }}
@@ -211,6 +218,14 @@
                                     </p>
                                 </div>
                             @enderror
+                            @if (session()->has('error'))
+                                <div>
+                                    <p
+                                        class="bg-red-custom-50 font-semibold my-2 mt-0 ml-1 text-lg text-white py-1 rounded-lg">
+                                        El formato del archivo no es el correcto
+                                    </p>
+                                </div>
+                            @endif
                         </div>
                         <br>
                         <table class="table-auto rounded-xl bg-gray-custom-150">
