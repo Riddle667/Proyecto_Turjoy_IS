@@ -2,10 +2,11 @@
 @section('content')
 
 
-<h3 class = "text-center text-6xl">PRÓXIMAMENTE...</h3>
-
-
-
-
+<div class="bg-gray-custom-100 flex items-center justify-center h-screen">
+    <div>
+        
+        <h3 class = "text-center text-8xl font-mulish ">PRÓXIMAMENTE...</h3>
+  </div>
+</div>
 @endsection
 
