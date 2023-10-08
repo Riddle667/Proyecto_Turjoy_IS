@@ -29,7 +29,7 @@
                 <div class=" bg-gray-custom-150 max-w-screen flex flex-wrap items-center justify-between mx-auto p-3">
                     <h2 class="flex intems-center font-bold ">Menú Sistema/Cargar Rutas de Viaje</h2>
                 </div>
-                <p class="text-green-custom font-bold p-4 bg-white w-screen inline-block underline_green">Cargar Rutas de
+                <p class="text-green-custom font-bold p-4 bg-white inline-block underline_green">Cargar Rutas de
                     Viaje </p>
                 <hr class="border-black">
                 <div>
@@ -56,14 +56,14 @@
                                 </p>
                             </div>
                         @enderror
-                        @if (session()->has('error'))
+                        {{-- @if (session()->has('error'))
                             <div>
                                 <p
                                     class="bg-red-custom-50 border border-black font-semibold text-lg text-black my-2 mt-0 ml-1 py-1 rounded-lg">
                                     El formato del archivo no es el correcto
                                 </p>
                             </div>
-                        @endif
+                        @endif --}}
                     </div>
                     <br>
                     <table class="table-auto rounded-xl bg-gray-custom-150">
@@ -205,7 +205,7 @@
                     <div class=" bg-gray-custom-150 max-w-screen flex flex-wrap items-center justify-between mx-auto p-3">
                         <h2 class="flex intems-center font-bold ">Menú Sistema/Cargar Rutas de Viaje</h2>
                     </div>
-                    <p class="text-green-custom font-bold p-4 bg-white w-screen inline-block underline_green">Cargar Rutas
+                    <p class="text-green-custom font-bold p-4 bg-white inline-block underline_green">Cargar Rutas
                         de Viaje </p>
                     <hr class="border-black">
                     <div>
@@ -217,7 +217,7 @@
                                 <div class="">
                                     <input type="file" name="document" class="rounded-lg inline-block ">
                                 </div>
-                                <button class="py-2 ml-1 -mb-0 bg-green-custom  text-white font-semibold  rounded-lg"
+                                <button class="py-2 ml-1 -mb-0 bg-green-custom  text-white font-semibold rounded-lg"
                                     type="submit">
                                     ¿Estás seguro?
                                 </button>
@@ -233,14 +233,14 @@
                                     </p>
                                 </div>
                             @enderror
-                            @if (session()->has('error'))
+                            {{-- @if (session()->has('error'))
                                 <div>
                                     <p
                                         class="bg-red-custom-50 border border-black font-semibold text-lg text-black my-2 mt-0 ml-1 py-1 rounded-lg">
                                         El formato del archivo no es el correcto
                                     </p>
                                 </div>
-                            @endif
+                            @endif --}}
                         </div>
                         <br>
                         <table class="table-auto rounded-xl bg-gray-custom-150">
