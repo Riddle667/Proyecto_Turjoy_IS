@@ -46,6 +46,9 @@
     <main>
         @yield('content')
     </main>
+    <footer class="bg-gray-custom-100 text-xs font-mulish text-black text-center p-5 uppercase">
+        2023-{{ now()->year }} Turjoy | Todos los derechos reservados
+    </footer>
 </body>
 
 </html>
