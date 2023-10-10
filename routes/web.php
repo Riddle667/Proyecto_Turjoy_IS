@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RouteController;
+use App\Http\Controllers\LogoutController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +19,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+})->name('welcome');
+
+Route::get('login', [LoginController::class, 'create'])->name('login');
+Route::post('login/store', [LoginController::class, 'store'])->name('login.store');
+Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/add/route', [RouteController::class, 'indexAddRoutes'])->name('routes.index');
+    Route::post('/addroute', [RouteController::class, 'routeCheck'])->name('route.check');
+    Route::get('/result/routes', [RouteController::class, 'indexRoutes'])->name('routesAdd.index');
 });

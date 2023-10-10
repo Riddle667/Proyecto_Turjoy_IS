@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/css/app.css','resources/js/app.js'])
-    <title>Turjoy</title>
-</head>
-<body>
-    <h1 class="text-center">Inicio del trabajo</h1>
-</body>
-</html>
+@extends('layouts.app')
+@section('content')
+
+
+<div class="bg-gray-custom-100 flex items-center justify-center h-screen">
+    <div>
+        
+        <h3 class = "text-center text-8xl font-mulish ">PRÓXIMAMENTE...</h3>
+  </div>
+</div>
+@endsection
+

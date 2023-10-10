@@ -1,66 +1,81 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Instalación
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Para la Instalación del proyecto se debe de tener instalado:
 
-## About Laravel
+-   [Composer 2.6.5](https://getcomposer.org/)
+-   [Xampp 8.2.4](https://www.apachefriends.org/es/index.html)
+-   [MySQL Workbench 8.1.0](https://dev.mysql.com/downloads/mysql/)
+-   [Node.js 18.18.0](https://nodejs.org/es) (Versión LTS)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Primero clonar el repositorio con el comando:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+```bash
+    git clone https://github.com/Riddle667/Proyecto_Turjoy_IS.git
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Importante:**
+Abrir el proyecto en el Visual Studio Code, copiar el _".env.example"_ y pegarlo en el proyecto. Por último cambiarle el nombre a _".env"_.
 
-## Learning Laravel
+Una vez hecho eso, proceder a abrir la consola y ejecutar los siguientes comandos en orden:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```bash
+    composer install
+    php artisan key:generate
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Para la instalación de las librerias de node, necesarias para tailwind css, se ejecuta el siguiente comando:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+    npm install
+```
 
-## Laravel Sponsors
+Una vez hecho esto, ya podemos ejecutar el proyecto. Para ejecutar el proyecto, debemos abrir dos terminales, en una terminal se debe ejecutar este comando:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```bash
+    npm run dev
+```
 
-### Premium Partners
+Y en la otra:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```bash
+   php artisan serve
+```
 
-## Contributing
+# Bases de datos
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Para hacer las migraciones correspondientes y además utilizar los seeders primero es muy importante cambiar los siguientes parametros en el .env:
 
-## Code of Conduct
+```bash
+    DB_DATABASE=turjoy
+    DB_USERNAME=root
+    DB_PASSWORD="contraseña puesta por ustedes"
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Finalmente en la consola ejecutan:
 
-## Security Vulnerabilities
+```bash
+    php artisan migrate --seed
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Con eso, tienen la base de datos con los datos correspondientes, y además migrada.
 
-## License
+# Errores comunes
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+En esta sección se enumeraran una lista de errores a la hora de ejecutar el proyecto y sus posibles soluciones:
+
+-   Error 1: _Call to undefined function App\Http\Controllers\makeMessages()_
+    -   Solución: Para solucionar este problema, debemos ir a la carpeta "vendor/autoload.php" y añadir la siguiente linea donde corresponda:
+    ```bash
+        require_once __DIR__ . '../../app/Helpers/MyHelpers.php';
+    ```
+-   Error 2: Un error común esta relacionado con la librería Laravel Excel, si es que llega salir el siguiente mensaje: **Class 'Maatwebsite\Excel\ExcelServiceProvider' not found**.
+    -   Solución: Nos dirigiremos a la carpeta C:/xampp/php/php.ini, y buscaremos las extensiones. Debemos tener las extensiones "extension=gd" y "extension=zip" sin el punto y coma (;) al inicio de la linea. Una vez hecho esto, en la terminal se coloca:
+    ```bash
+        composer install
+    ```
+-   Error 3: Errores MySQL. En caso de tener un error del tipo MySQL, de cualquier tipo, generalmente a la hora de iniciar sesión.
+    -   Solución: Recomiendo hacer las migraciones de nuevo con este comando:
+
+```bash
+    php artisan migrate:fresh --seed
+```
