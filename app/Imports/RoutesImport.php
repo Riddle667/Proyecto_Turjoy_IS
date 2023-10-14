@@ -33,7 +33,9 @@ class RoutesImport implements ToCollection, WithHeadingRow
                 Session::flash('error');
                 return;
             }
-
+            if ($origin == null && $destination == null && $row['cantidad_de_asientos'] == null && $row['tarifa_base'] == null) {
+                continue;
+            }
             $tarifa_base = str_replace(['$', '.'], '', $row['tarifa_base']);
             $row['tarifa_base'] = $tarifa_base;
             //Validación: Verifica si el origen y el destino son el mismo

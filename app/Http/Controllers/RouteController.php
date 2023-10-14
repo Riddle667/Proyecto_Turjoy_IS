@@ -69,6 +69,10 @@ class RouteController extends Controller
             $colors = $import->getColors();
             // dd($validRows, $invalidRows, $duplicatedRows);
 
+            if (count($validRows) == 0 && count($invalidRows) == 0 && count($duplicatedRows) == 0) {
+                return redirect()->route('routes.index')->with('error-blank', 'No se encontraron filas válidas');
+            }
+
             // Agregar o actualizar las filas en la base de datos
             foreach ($validRows as $row) {
                 $origin = $row['origen'];
@@ -100,7 +104,6 @@ class RouteController extends Controller
             $invalidRows = array_filter($invalidRows, function ($invalidrow) {
                 return $invalidrow['origen'] !== null || $invalidrow['destino'] !== null || $invalidrow['cantidad_de_asientos'] !== null || $invalidrow['tarifa_base'] !== null;
             });
-
 
             session()->put('validRows', $validRows);
             session()->put('invalidRows', $invalidRows);
