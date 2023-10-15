@@ -7,32 +7,36 @@
     @if ($validRows || $invalidRows || $duplicatedRows)
         <div class="flex">
             {{-- SideBar --}}
-            <div class=" w-1/6 h-screen">
-                <div class="mr-auto">
+            <div class="h-screen container w-1/12 border mr-1">
+                <div class="grid grid-cols-1">
                     <br>
                     <br>
-                    <div class="flex flex-auto">
+                    <div class="flex items-center">
                         <img src="https://thenounproject.com/api/private/icons/218334/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0"
-                            class=" w-7 ml-8 mr-2">
-                        <p class=" text-center text-xl text-gray-custom-50">Menú del sistema</p>
-
+                            class="w-12 h-12 mb-6"> <!-- Ajusta el tamaño de la imagen según tus necesidades -->
+                        <p class="ml-4 text-base text-gray-custom-50 mb-6 inline-block">Menú del sistema</p>
                     </div>
-                    <p class="px-9  mt-2 text-lg text-white p-2 bg-green-custom rounded-sm">Cargar Rutas de Viaje</p>
-                    <a href="#" class="px-9 mr-4 text-lg py-1 inline-block ">Buscar Reservas</a>
+                    <p class="px-9 text-sm text-white p-2 bg-green-custom rounded-sm border border-black">Cargar Rutas
+                        de
+                        Viaje</p>
+                    <a href="#" class="px-9 text-sm py-1  inline-block border border-black rounded-sm">Buscar
+                        Reservas</a>
                     <div>
-                        <a href="#" class=" px-9 mr-4 text-lg py-1">Reporte de Reservas</a>
+                        <a href="#" class=" px-9 text-sm py-1 inline-block border border-black rounded-sm">Reporte de
+                            Reservas</a>
                     </div>
                 </div>
             </div>
             {{-- Content --}}
-            <div class=" w-10/12 h-screen ">
-                <div class=" bg-gray-custom-150 max-w-screen flex flex-wrap items-center justify-between mx-auto p-3">
+            <div class="w-11/12 h-screen ">
+                <div
+                    class=" grid-row-1 bg-gray-custom-150 max-w-screen flex flex-wrap items-center justify-between mx-auto p-3">
                     <h2 class="flex intems-center font-bold ">Menú Sistema/Cargar Rutas de Viaje</h2>
                 </div>
                 <p class="text-green-custom font-bold p-4 bg-white inline-block underline_green">Cargar Rutas de
                     Viaje </p>
                 <hr class="border-black">
-                <div>
+                <div class = "grid-row-1">
                     <p class="text-black font-bold text-sm m-1">Seleccione el archivo a subir</p>
                     <form class="flex flex-col ml-1 w-1/2 mx-6 mr-auto" action="{{ route('route.check') }}" method="POST"
                         enctype="multipart/form-data">
@@ -47,7 +51,7 @@
                             </button>
                         </div>
                     </form>
-                    <div class="w-2/6 flex justify-start ml-auto">
+                    <div class="flex justify-start ml-auto">
                         @error('document')
                             <div>
                                 <p
@@ -56,14 +60,20 @@
                                 </p>
                             </div>
                         @enderror
-                        {{-- @if (session()->has('error'))
+                        @if (session()->has('error-format'))
                             <div>
                                 <p
                                     class="bg-red-custom-50 border border-black font-semibold text-lg text-black my-2 mt-0 ml-1 py-1 rounded-lg">
-                                    El formato del archivo no es el correcto
+                                    {{ session('error-format') }}
                                 </p>
                             </div>
-                        @endif --}}
+                        @endif
+                        @if (session()->has('error-blank'))
+                            <div
+                                class="bg-red-custom-50 border border-black font-semibold text-lg text-black my-2 mt-0 ml-1 py-1 rounded-lg">
+                                {{ session('error-blank') }}
+                            </div>
+                        @endif
                     </div>
                     <br>
                     <table class="table-auto rounded-xl bg-gray-custom-150">
@@ -96,12 +106,16 @@
                     </table>
                     <br>
                 </div>
-                @if (count($validRows) > 0)
-                    <h3 class="text-2xl text-black font-semibold uppercase px-10  ml-64">Registro de tramos cargados en el
-                        sistema</h3>
-
-                    <div class="relative overflow-x-auto sm:rounded-lg mb-2">
-                        <table class=" w-10/12 mx-auto text-sm text-left text-gray-500 dark:text-gray-400 ml-0">
+                @if (count($validRows) > 0 && $errors->isEmpty())
+                    <div class="container">
+                        <div class="grid grid-row">
+                            <h3 class="text-2xl text-black font-semibold uppercase col-start-2">Registro de tramos
+                                cargados en el
+                                sistema</h3>
+                        </div>
+                    </div>
+                    <div class="grid grid-rows-1 relative overflow-x-auto sm:rounded-lg mb-2">
+                        <table class="mx-auto text-sm text-left text-gray-500 dark:text-gray-400 ml-0 w-full">
                             <thead
                                 class="text-xs text-gray-700 uppercase border-black bg-gray-custom-150 dark:text-gray-400">
                                 <tr>
@@ -153,7 +167,8 @@
                                                 {{ $orderRow['cantidad_de_asientos'] ? $orderRow['cantidad_de_asientos'] : '---' }}
                                             </td>
                                             <td class="px-6 py-4 text-black font-medium">
-                                                ${{ number_format($orderRow['tarifa_base'], 0, '.', '.') ?: '---' }} </td>
+                                                ${{ number_format($orderRow['tarifa_base'], 0, '.', '.') ?: '---' }}
+                                            </td>
                                         </tr>
                                     @endif
                                     @if ($colors[$loop->index] == '2')
@@ -183,25 +198,29 @@
         @else
             <div class="flex">
                 {{-- SideBar --}}
-                <div class=" w-1/6 h-screen">
-                    <div class="mr-auto ">
+                <div class="h-screen container w-1/12 border mr-1">
+                    <div class="grid grid-cols-1">
                         <br>
                         <br>
-                        <div class="flex flex-auto">
+                        <div class="flex items-center">
                             <img src="https://thenounproject.com/api/private/icons/218334/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0"
-                                class=" w-7 ml-8 mr-2">
-                            <p class=" text-center text-xl text-gray-custom-50">Menú del sistema</p>
+                                class="w-12 h-12 mb-6"> <!-- Ajusta el tamaño de la imagen según tus necesidades -->
+                            <p class="ml-4 text-base text-gray-custom-50 mb-6 inline-block">Menú del sistema</p>
                         </div>
-
-                        <p class="px-9  mt-2 text-lg text-white p-2 bg-green-custom rounded-sm">Cargar Rutas de Viaje</p>
-                        <a href="#" class="px-9 mr-4 text-lg py-1 inline-block ">Buscar Reservas</a>
+                        <p class="px-9 text-sm text-white p-2 bg-green-custom rounded-sm border border-black">Cargar Rutas
+                            de
+                            Viaje</p>
+                        <a href="#" class="px-9 text-sm py-1  inline-block border border-black rounded-sm">Buscar
+                            Reservas</a>
                         <div>
-                            <a href="#" class=" px-9 mr-4 text-lg py-1">Reporte de Reservas</a>
+                            <a href="#" class=" px-9 text-sm py-1 inline-block border border-black rounded-sm">Reporte
+                                de
+                                Reservas</a>
                         </div>
                     </div>
                 </div>
                 {{-- Content --}}
-                <div class=" w-10/12 h-screen ">
+                <div class=" w-11/12 h-screen ">
                     <div class=" bg-gray-custom-150 max-w-screen flex flex-wrap items-center justify-between mx-auto p-3">
                         <h2 class="flex intems-center font-bold ">Menú Sistema/Cargar Rutas de Viaje</h2>
                     </div>
@@ -224,7 +243,7 @@
                             </div>
                             <br>
                         </form>
-                        <div class="w-2/6 flex justify-start ml-auto">
+                        <div class="flex justify-start ml-auto">
                             @error('document')
                                 <div>
                                     <p
@@ -233,14 +252,22 @@
                                     </p>
                                 </div>
                             @enderror
-                            {{-- @if (session()->has('error'))
+                            @if (session()->has('error-format'))
                                 <div>
                                     <p
                                         class="bg-red-custom-50 border border-black font-semibold text-lg text-black my-2 mt-0 ml-1 py-1 rounded-lg">
-                                        El formato del archivo no es el correcto
+                                        {{ session('error-format') }}
                                     </p>
                                 </div>
-                            @endif --}}
+                            @endif
+                            @if (session()->has('error-blank'))
+                                <div>
+                                    <p
+                                        class="bg-red-custom-50 border border-black font-semibold text-lg text-black my-2 mt-0 ml-1 py-1 rounded-lg">
+                                        {{ session('error-blank') }}
+                                    </p>
+                                </div>
+                            @endif
                         </div>
                         <br>
                         <table class="table-auto rounded-xl bg-gray-custom-150">
