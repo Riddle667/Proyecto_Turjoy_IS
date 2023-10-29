@@ -30,3 +30,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/addroute', [RouteController::class, 'routeCheck'])->name('route.check');
     Route::get('/result/routes', [RouteController::class, 'indexRoutes'])->name('routesAdd.index');
 });
+
+Route::fallback(function () {
+    return view('error/error');
+});
