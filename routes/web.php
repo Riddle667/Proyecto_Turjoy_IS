@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RouteController;
+use App\Http\Controllers\LogoutController;
 
 
 /*
@@ -22,6 +23,7 @@ Route::get('/', function () {
 
 Route::get('login', [LoginController::class, 'create'])->name('login');
 Route::post('login/store', [LoginController::class, 'store'])->name('login.store');
+Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/add/route', [RouteController::class, 'indexAddRoutes'])->name('routes.index');

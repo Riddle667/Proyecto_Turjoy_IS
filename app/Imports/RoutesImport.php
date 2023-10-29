@@ -6,6 +6,7 @@ use App\Models\Route;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Session;
 
 class RoutesImport implements ToCollection, WithHeadingRow
 {
@@ -24,20 +25,36 @@ class RoutesImport implements ToCollection, WithHeadingRow
     public function collection(Collection $rows)
     {
         foreach ($rows as $row) {
-            $origin = $row['origen'];
-            $destination = $row['destino'];
+            // Validación: Verifica si el archivo tiene el formato correcto
+            try {
+                $origin = $row['origen'];
+                $destination = $row['destino'];
+            } catch (\Exception $e) {
+                Session::flash('error');
+                return;
+            }
 
+            $tarifa_base = str_replace(['$', '.'], '', $row['tarifa_base']);
+            $row['tarifa_base'] = $tarifa_base;
+            //Validación: Verifica si el origen y el destino son el mismo
+            if ($origin == $destination) {
+                // Si son el mismo, marca la fila como inválida
+                $this->invalidRows[] = $row;
+                $this->orderRows[] = $row;
+                $this->colors[] = 2;
+                continue;
+            }
             // Validación: Verifica si la combinación origen y destino ya existe en el archivo
-            if ($this->hasDuplicateOriginDestination($origin, $destination)) {
+            if ($this->hasDuplicateOriginDestination($origin, $destination) && isset($row['cantidad_de_asientos']) && isset($row['tarifa_base']) && is_numeric($row['cantidad_de_asientos']) && is_numeric($row['tarifa_base']) && $row['cantidad_de_asientos'] > 0 && $row['tarifa_base'] > 0) {
                 // Si ya existe, marca la fila como duplicada
                 $this->duplicatedRows[] = $row;
                 $this->orderRows[] = $row;
                 $this->colors[] = 1;
+                // Registra la combinación origen y destino
+                $this->existingOriginsDestinations[] = $origin . '-' . $destination;
             } else {
-                $tarifa_base = str_replace(['$', '.'], '', $row['tarifa_base']);
-                $row['tarifa_base'] = $tarifa_base;
-                // Validación: Verifica que los campos "orige" "destino" "stock" y "mount" sean numéricos y requeridos.
-                if (isset($row['origen']) && isset($row['destino']) && isset($row['cantidad_de_asientos']) && isset($row['tarifa_base']) && is_numeric($row['cantidad_de_asientos']) && is_numeric($row['tarifa_base'])) {
+                // Validación: Verifica que los campos "origen" "destino" "stock" y "mount" sean numéricos y requeridos.
+                if (isset($row['origen']) && isset($row['destino']) && isset($row['cantidad_de_asientos']) && isset($row['tarifa_base']) && is_numeric($row['cantidad_de_asientos']) && is_numeric($row['tarifa_base']) && $row['cantidad_de_asientos'] > 0 && $row['tarifa_base'] > 0) {
                     // Filas válidas
                     $this->validRows[] = $row;
                     $this->orderRows[] = $row;
