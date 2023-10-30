@@ -34,3 +34,4 @@ Route::middleware(['auth'])->group(function () {
 Route::fallback(function () {
     return view('error/error');
 });
+

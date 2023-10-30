@@ -15,28 +15,6 @@
 </head>
 
 <body class="flex flex-col min-h-screen w-full">
-    {{-- <nav class="bg-gray-custom-100 border-gray-200 dark:bg-gray-900">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between">
-
-            <!-- Logo on the left side -->
-            <a href="#" class="flex items-center">
-                <img src="{{ asset('images/Logo.png') }}" class="h-20 w-20 mr-3" alt="Turjoy Logo" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
-            </a>
-
-            <!-- Menu button and login inside the menu for small screens -->
-            <div class="w-full md:flex md:w-auto">
-                <ul>
-                    <li>
-                        <a href="{{ route('login') }}"
-                            class="rounded-lg shadow-md text-white font-mulish-bold bg-blue-700 hover:bg-blue-800 font-medium text-xl px-7 py-8 text-center md:mr-0 dark:bg-blue-600 dark:hover-bg-blue-700 dark:focus:ring-blue-800">Iniciar
-                            sesión</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav> --}}
-
     <nav class="bg-gray-custom-100 border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="#" class="flex items-center">
