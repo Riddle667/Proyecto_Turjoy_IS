@@ -21,7 +21,7 @@
     </div>
 
 
-    <footer class="bg-gray-200 p-4 text-center mt-auto">
+    <footer class="z-50 w-full bg-gray-200 p-4 text-center mt-auto">
         <p class="text-sm text-gray-500 dark:text-gray-400">©
             2023 TurJoy™. Todos los derechos reservados.</p>
     </footer>

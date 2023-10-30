@@ -102,7 +102,7 @@
         </div>
 
         <div class="flex items-center justify-center h-48 mb rounded bg-blue-custom-50 dark:bg-gray-800">
-            <div class="text-center text-white">
+            <div id="donde-trabajamos" class=" text-center text-white">
                 <h2 class="text-3xl font-bold mb-4">¿Quiénes somos?</h2>
                 <p class="text-lg">
                     Somos un equipo apasionado que se dedica a...
@@ -111,7 +111,7 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-4">
 
-            <div id="donde-trabajamos" class="flex items-center justify-center rounded text-gray-custom-50">
+            <div class="flex items-center justify-center rounded text-gray-custom-50">
                 <div>
                     <h2 class="text-4xl font-bold mb-4 mt-4 text-center">¿Dónde trabajamos?</h2>
                     <p class="text-xl md:text-2xl ml-8 ">
