@@ -29,11 +29,14 @@ class RoutesImport implements ToCollection, WithHeadingRow
             try {
                 $origin = $row['origen'];
                 $destination = $row['destino'];
+                $tarifa_base = $row['tarifa_base'];
+                $cantidad_de_asientos = $row['cantidad_de_asientos'];
             } catch (\Exception $e) {
-                Session::flash('error');
-                return;
+                return redirect()->route('routes.index')->with('error-format', 'Existe un error en el formato');
             }
-
+            if ($origin == null && $destination == null && $row['cantidad_de_asientos'] == null && $row['tarifa_base'] == null) {
+                continue;
+            }
             $tarifa_base = str_replace(['$', '.'], '', $row['tarifa_base']);
             $row['tarifa_base'] = $tarifa_base;
             //Validación: Verifica si el origen y el destino son el mismo
