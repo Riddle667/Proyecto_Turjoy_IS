@@ -16,7 +16,6 @@
 
 <body>
     @if (!request()->is('login'))
-
         @include('layouts.navbar')
         <div class="bg-gray-custom-100 flex items-center justify-center h-screen relative">
             <div id="default-carousel" class="relative w-full  h-screen" data-carousel="slide">
@@ -44,12 +43,14 @@
                             class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                             alt="...">
                     </div>
+
                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
                         <img src="{{ asset('images/image5.jpg') }}"
                             class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                             alt="...">
                     </div>
                 </div>
+
                 <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
                     <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
                         data-carousel-slide-to="0"></button>
@@ -62,6 +63,7 @@
                     <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5"
                         data-carousel-slide-to="4"></button>
                 </div>
+
                 <div
                     class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 group focus:outline-none">
                     <button type="button" class="" data-carousel-prev>
@@ -91,6 +93,8 @@
                     </button>
                 </div>
             </div>
+        </div>
+
         <div id="quienes-somos"
             class="flex items-center justify-center h-48 rounded bg-gray-custom-100 dark:bg-gray-800">
             <p class="text-2xl font-bold text-gray-custom-50  text-center">
