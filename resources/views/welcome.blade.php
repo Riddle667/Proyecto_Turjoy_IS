@@ -14,8 +14,8 @@
                     min="{{ date('Y-m-d', strtotime('+0 day')) }}">
             </div>
             <div>
-                <label for="origen" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Origen:</label>
-                <select name="origen" id=""
+                <label for="origins" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Origen:</label>
+                <select name="origins" id="origins"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option value="">Seleccione una opción</option>
                 </select>
@@ -28,7 +28,7 @@
                 </select>
             </div>
             <div>
-                <label for="asientos" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cantidad de
+  <label for="asientos" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cantidad de
                     asientos:</label>
                 <input type="number" name="asientos" id="" min="0" inputmode="numeric"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -55,3 +55,8 @@
         </form>
     </div>
 @endsection
+
+@section('js')
+    <script src="{{ asset('assets/js/index.js') }}"></script>
+@endsection
+

@@ -109,4 +109,28 @@ class RouteController extends Controller
             return redirect()->route('routesAdd.index');
         }
     }
+
+    public function getOrigins()
+    {
+        $origins = Route::distinct()->orderBy('origin', 'asc')->pluck('origin');
+        return response()->json([
+            'origins' => $origins,
+        ]);
+    }
+
+    public function getDestinations($origin)
+    {
+        $destinations = Route::where('origin', $origin)->orderBy('destination', 'asc')->pluck('destination');
+        return response()->json([
+            'destinations' => $destinations,
+        ]);
+    }
+
+    public function welcomeIndex()
+    {
+        $travels = Route::get()->count();
+        return view('welcome', [
+            'travelsAmount' => $travels, // travelsAmount es la variable que contiene la cantidad de viajes
+        ]);
+    }
 }

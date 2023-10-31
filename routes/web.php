@@ -17,9 +17,10 @@ use App\Http\Controllers\LogoutController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [RouteController::class, 'welcomeIndex'])->name('welcome');
+
+Route::get('/get/origins', [RouteController::class, 'getOrigins']);
+Route::get('/get/destinations/{origin}', [RouteController::class, 'getDestinations']);
 
 Route::get('login', [LoginController::class, 'create'])->name('login');
 Route::post('login/store', [LoginController::class, 'store'])->name('login.store');
