@@ -67,7 +67,10 @@ class RouteController extends Controller
             $duplicatedRows = $import->getDuplicatedRows();
             $orderRows = $import->getOrderRows();
             $colors = $import->getColors();
-            // dd($validRows, $invalidRows, $duplicatedRows);
+
+            if (count($validRows) == 0 && count($invalidRows) == 0 && count($duplicatedRows) == 0 && !session()->has('error-format')) {
+                return redirect()->route('routes.index')->with('error-blank', 'El archivo excel está vacío.');
+            }
 
             // Agregar o actualizar las filas en la base de datos
             foreach ($validRows as $row) {
@@ -95,12 +98,6 @@ class RouteController extends Controller
                     ]);
                 }
             }
-
-            //Eliminar registros (filas) vacios del  documento excel
-            $invalidRows = array_filter($invalidRows, function ($invalidrow) {
-                return $invalidrow['origen'] !== null || $invalidrow['destino'] !== null || $invalidrow['cantidad_de_asientos'] !== null || $invalidrow['tarifa_base'] !== null;
-            });
-
 
             session()->put('validRows', $validRows);
             session()->put('invalidRows', $invalidRows);
