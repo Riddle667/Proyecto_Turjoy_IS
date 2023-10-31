@@ -113,23 +113,42 @@
 
             <div class="flex items-center justify-center rounded text-gray-custom-50">
                 <div>
-                    <h2 class="text-4xl font-bold mb-4 mt-4 text-center">¿Dónde trabajamos?</h2>
+                    <h2 class="text-4xl font-bold mb-4 mt-6 text-center">¿Dónde trabajamos?</h2>
                     <p class="text-xl md:text-2xl ml-8 ">
                         Nuestra empresa se encuentra en Antofagasta, Chile. Sin embargo, trabajamos en toda la zona
                         norte del país. Y esperamos pronto expandirnos a todo el territorio nacional.
                         Nuestros viajes cubren ciudades como Antofagasta, Iquique, Calama, Copiapó, La Serena, Coquimbo,
                         entre otros.
                     </p>
-                    <img src="{{ asset('images/image6.jpg') }}" class="w-fit h-fit p-10 rounded"
-                        alt="Mapa de la ubicación">
+                    <div
+                        class="flex items-center justify-center rounded bg-gray-custom-100 shadow-md  pt-2 pb-2 mt-10 ml-10 mb-10 mr-10 ">
+                        <img src="{{ asset('images/map.png') }}" class=" p-4 m-5" alt="Mapa de la ubicación">
+                    </div>
                 </div>
             </div>
-            <div class="flex items-center justify-center rounded bg-gray-custom-100 shadow-md ">
-                <img src="{{ asset('images/map.png') }}" class="h-full max-w-full p-10 " alt="Mapa de la ubicación">
+            <div class="flex items-center justify-center rounded bg-green-custom shadow-md sm:p-6 xl:p-0 mb-9">
+                <div id="donde-trabajamos" class=" text-center text-black">
+                    <h2 class="text-4xl font-bold mb-4">Contáctanos</h2>
+                    <p class="text-xl">
+                        <span class="font-bold">Teléfono:</span> +56 9 1234 5678
+                    </p>
+                    <p class="text-xl mt-5">
+                        <span class="font-bold">Dirección:</span> Av. Angamos 0610, Antofagasta, Chile
+                    </p>
+                    <p class="text-xl mt-5">
+                        <span class="font-bold">Horario de atención:</span> Lunes a Viernes de 9:00 a 18:00
+                    </p>
+                    <p id="contactanos" class="text-xl mt-5">
+                        <span class="font-bold">Para cualquier otra duda, envíanos un <a
+                                href=mailto:italo.donoso@ucn.cl
+                                class="border-b border-black hover:text-blue-custom-50 hover:border-blue-custom-50 ">correo</a>.</span>
+                    </p>
+                </div>
             </div>
         </div>
     @endif
-    <footer class="bg-gray-200 p-4 text-center mt-auto">
+    <footer class="bg-gray-200
+                        p-4 text-center mt-auto">
         <p class="text-sm text-gray-500 dark:text-gray-400">©
             2023 TurJoy™. Todos los derechos reservados.</p>
     </footer>

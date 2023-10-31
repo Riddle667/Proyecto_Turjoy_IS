@@ -15,11 +15,13 @@
 </head>
 
 <body class="flex flex-col min-h-screen w-full">
-    <nav class="bg-gray-custom-100 border-gray-200 dark:bg-gray-900">
+    <nav class="fixed top-0 z-50 w-full bg-gray-custom-100 border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="#" class="flex items-center">
                 <img src="{{ asset('images/Logo.png') }}" class="h-20 w-20 mr-3" alt="Turjoy Logo" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"></span>
+                <span class="self-center text-2xl whitespace-nowrap dark:text-black">
+                    <span class="text-blue-500 font-bold">Tur</span><span class="dark:text-black font-bold">joy</span>
+                </span>
             </a>
             <button data-collapse-toggle="navbar-default" type="button"
                 class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -50,7 +52,8 @@
             </div>
         </div>
     </nav>
-    <div class="px-2 py-2">
+
+    <div class="px-2 py-2 m-28">
         <p class="text-center text-7xl font-bold text-gray-700">Error 404</p>
     </div>
 
