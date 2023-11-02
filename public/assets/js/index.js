@@ -64,6 +64,14 @@ const loadDestinations = (e) => {
 
             })
     }
+    else {
+        clearSelect();
+        const option = document.createElement('option');
+        option.value = "";
+        option.text = "Seleccione una opción";
+        option.selected = true;
+        selectDestination.appendChild(option);
+    }
 }
 
 const loadOrigins = (e) => {
