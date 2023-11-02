@@ -1,5 +1,7 @@
 const selectOrigin = document.getElementById('origins');
 const selectDestination = document.getElementById('destinations');
+const inputDate = document.getElementById('date');
+let availableSeats = 0;
 
 const addOriginsToSelect = (origins) => {
     origins.forEach(origin => {
@@ -36,17 +38,16 @@ const addDestinationsToSelect = (destinations) => {
 const verifySeats = (e) => {
     const destination = selectDestination.value;
     const origin = selectOrigin.value;
-    let availableSeats = 0;
-    fetch(`/get/seats/${origin}/${destination}`)
+    const date = inputDate.value;
+    if (date == "" || origin == "" || destination == "") return;
+    fetch(`/get/seats/${origin}/${destination}/${date}`)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             // Manipula los datos recibidos aquí
             const seats = data.availableSeats;
             availableSeats = seats;
         })
         .catch(error => {
-            console.log(error);
         })
 }
 
@@ -90,3 +91,4 @@ const loadOrigins = (e) => {
 document.addEventListener('DOMContentLoaded', loadOrigins);
 selectOrigin.addEventListener('change', loadDestinations);
 selectDestination.addEventListener('change', verifySeats);
+inputDate.addEventListener('change', verifySeats);
