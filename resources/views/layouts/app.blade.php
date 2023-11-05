@@ -79,12 +79,13 @@
     </div>
 
 </div>
-@endif
 <footer>
     <p>
       <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 TurJoy™. Todos los derechos reservados.</span>
     </p>
 </footer>
+@endif
+
 <main>
   @yield('content')
 </main>
