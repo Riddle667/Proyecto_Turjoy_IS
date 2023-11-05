@@ -1,5 +1,7 @@
 const selectOrigin = document.getElementById('origins');
 const selectDestination = document.getElementById('destinations');
+const inputDate = document.getElementById('date');
+let availableSeats = 0;
 
 const addOriginsToSelect = (origins) => {
     origins.forEach(origin => {
@@ -22,7 +24,7 @@ const addDestinationsToSelect = (destinations) => {
     // Crear la opción por defecto
     const option = document.createElement('option');
     option.value = "";
-    option.text = "Seleccione un destino";
+    option.text = "Seleccione una opción";
     option.selected = true;
     selectDestination.appendChild(option);
     destinations.forEach(destination => {
@@ -33,22 +35,43 @@ const addDestinationsToSelect = (destinations) => {
     });
 }
 
+const verifySeats = (e) => {
+    const destination = selectDestination.value;
+    const origin = selectOrigin.value;
+    const date = inputDate.value;
+    if (date == "" || origin == "" || destination == "") return;
+    fetch(`/get/seats/${origin}/${destination}/${date}`)
+        .then(response => response.json())
+        .then(data => {
+            // Manipula los datos recibidos aquí
+            const seats = data.availableSeats;
+            availableSeats = seats;
+        })
+        .catch(error => {
+        })
+}
+
 const loadDestinations = (e) => {
     const currentValue = selectOrigin.value;
     if (currentValue) {
         fetch(`/get/destinations/${currentValue}`)
             .then(response => response.json())
             .then(data => {
-                console.log("Inside the function")
-                console.log(data);
                 // Manipula los datos recibidos aquí
                 const destinations = data.destinations;
-                console.log(destinations);
                 addDestinationsToSelect(destinations);
             })
             .catch(error => {
 
             })
+    }
+    else {
+        clearSelect();
+        const option = document.createElement('option');
+        option.value = "";
+        option.text = "Seleccione una opción";
+        option.selected = true;
+        selectDestination.appendChild(option);
     }
 }
 
@@ -56,11 +79,8 @@ const loadOrigins = (e) => {
     fetch('/get/origins')
         .then(response => response.json())
         .then(data => {
-            console.log("Inside the function")
-            console.log(data);
             // Manipula los datos recibidos aquí
             const origins = data.origins;
-            console.log(origins);
             addOriginsToSelect(origins);
         })
         .catch(error => {
@@ -70,3 +90,5 @@ const loadOrigins = (e) => {
 
 document.addEventListener('DOMContentLoaded', loadOrigins);
 selectOrigin.addEventListener('change', loadDestinations);
+selectDestination.addEventListener('change', verifySeats);
+inputDate.addEventListener('change', verifySeats);
