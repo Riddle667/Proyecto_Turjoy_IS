@@ -3,11 +3,58 @@ const selectDestination = document.getElementById("destinations");
 const inputDate = document.getElementById("date");
 const seatsLabel = document.getElementById("seats");
 const seatsInput = document.getElementById("seatsInput");
+const reservationButton = document.getElementById("reservationButton");
 let availableSeats = 0;
 
 const toggleFields = (enable) => {
     selectOrigin.disabled = !enable;
     selectDestination.disabled = !enable;
+};
+
+const adviseButton = () => {
+    if (
+        selectOrigin.value == "" ||
+        selectDestination.value == "" ||
+        inputDate.value == "" ||
+        seatsInput.value == ""
+    ) {
+        Swal.fire("¡Error!", "Seleccione todos los campos", "warning");
+    } else if (seatsInput.value > availableSeats) {
+        Swal.fire("¡Error!", "No hay suficientes asientos", "warning");
+    } else if (seatsInput.value <= 0) {
+        Swal.fire("¡Error!", "Seleccione una cantidad válida", "warning");
+    } else {
+        Swal.fire({
+            title: "¿Estás seguro?",
+            text:
+                "El total de la reserva entre " +
+                selectOrigin.value +
+                " y " +
+                selectDestination.value +
+                " para el día " +
+                inputDate.value +
+                " es de $" +
+                seatsInput.value * 1000 +
+                ".",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sí, reservar",
+            cancelButtonText: "Cancelar",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Aquí puedes agregar la lógica para procesar la reserva
+                // Por ejemplo, enviar una solicitud al servidor.
+                // Si la reserva es exitosa, puedes mostrar un mensaje de éxito.
+                Swal.fire(
+                    "¡Reserva exitosa!",
+                    "Tus pasajes han sido reservados.",
+                    "success"
+                );
+            }
+        });
+    }
 };
 
 const toggleSeats = (enable) => {
@@ -22,7 +69,10 @@ const toggleSeats = (enable) => {
 const verifyFields = () => {
     const date = inputDate.value;
     console.log(date);
-    toggleSeats(false);
+    if (selectOrigin.value == "" || selectDestination.value == "")
+        toggleSeats(false);
+    else toggleSeats(true);
+
     if (date) {
         toggleFields(true);
     } else {
@@ -66,8 +116,9 @@ const verifySeats = (e) => {
     const destination = selectDestination.value;
     const origin = selectOrigin.value;
     const date = inputDate.value;
-    if (selectDestination.value == "") toggleSeats(false);
-    else toggleSeats(true);
+    if (selectDestination.value == "") {
+        toggleSeats(false);
+    } else toggleSeats(true);
     if (date == "" || origin == "" || destination == "") return;
     fetch(`/get/seats/${origin}/${destination}/${date}`)
         .then((response) => response.json())
@@ -116,7 +167,8 @@ const loadOrigins = (e) => {
 
 document.addEventListener("DOMContentLoaded", loadOrigins);
 document.addEventListener("DOMContentLoaded", verifyFields);
+inputDate.addEventListener("change", verifySeats);
 inputDate.addEventListener("change", verifyFields);
 selectOrigin.addEventListener("change", loadDestinations);
 selectDestination.addEventListener("change", verifySeats);
-inputDate.addEventListener("change", verifySeats);
+reservationButton.addEventListener("click", adviseButton);

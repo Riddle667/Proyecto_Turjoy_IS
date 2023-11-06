@@ -37,7 +37,7 @@
 
             <div class="grid grid-cols-2 gap-4 mb-4">
                 <div class="flex items-center justify-center rounded  h-4 mt-2 md:h-6 lg:h-8">
-                    <button type="submit" style="white-space: nowrap;"
+                    <button type="button" id="reservationButton" style="white-space: nowrap;"
                         class="px-1 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         <a href="#">Reservar Pasajes</a>
                     </button>
@@ -46,13 +46,7 @@
                 <div class="flex items-center justify-center rounded  h-4 mt-2 md:h-6 lg:h-8">
                     <img src="{{ asset('images/banner.png') }}" alt="bus" class=" ml-5  w-2/4">
                 </div>
-                {{-- <div class="flex items-center justify-start">
-                <button type="submit" style="white-space: nowrap;"
-                    class="px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    <a href="#">Reservar Pasajes</a>
-                </button>
-                <img src="{{ asset('images/banner.png') }}" alt="bus" class=" p-30  w-1/12 ml-24">
-            </div> --}}
+
         </form>
     </div>
 @endsection
