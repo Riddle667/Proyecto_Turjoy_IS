@@ -31,7 +31,8 @@ export default {
         },
         fontFamily: {
 
-          'mulish': 'sans-serif'
+          'mulish': 'sans-serif',
+          'montserrat': 'sans-serif', 
 
         },
 
