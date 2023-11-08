@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\Ticket;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
+
 function makeMessages()
 {
 
@@ -14,4 +18,30 @@ function makeMessages()
     ];
 
     return $messages;
+}
+
+function validDate($date)
+{
+    $fechaActual = date("d-m-Y");
+    $fechaVerificar = Carbon::parse($date);
+
+    if ($fechaVerificar->lessThan($fechaActual)) {
+        return true;
+    }
+
+    return false;
+}
+
+function generateReservationNumbers()
+{
+    do {
+        $letters = Str::random(4); // Genera 4 letras aleatorias
+        $numbers = mt_rand(10, 99); // Genera 2 números aleatorios
+
+        $code = $letters.$numbers;
+
+        $response = Ticket::where('code', $code)->first();
+    } while ($response);
+
+    return $code;
 }
