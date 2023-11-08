@@ -8,7 +8,7 @@
         <img src="/images/descarga.gif" alt="" class=" h-screen w-screen relative">
     </div>
     <section class="bg-auto bg-gray-custom-100 dark:bg-gray-custom-50 ">
-        <div class="flex flex-col items-center justify-center  py-5  absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-96 ">
+        <div class="flex flex-col items-center justify-center  py-5 w-[800px] h-[750px]  absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-96 ">
 
             <div
                 class="border border-gray-300 shadow-lg p-4 w-full bg-gray-custom-100 rounded-lg  dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 mr-5 ml-5">
