@@ -32,10 +32,10 @@ function validDate($date)
     return false;
 }
 
-function generateReservationNumbers()
+function generateReservationNumber()
 {
     do {
-        $letters = Str::random(4); // Genera 4 letras aleatorias
+        $letters = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(4/strlen($x)) )),1,4);; // Genera 4 letras aleatorias
         $numbers = mt_rand(10, 99); // Genera 2 números aleatorios
 
         $code = $letters.$numbers;
