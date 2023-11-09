@@ -4,6 +4,7 @@ const inputDate = document.getElementById("date");
 const seatsLabel = document.getElementById("seats");
 const seatsInput = document.getElementById("seatsInput");
 const reservationButton = document.getElementById("reservationButton");
+const formReservation = document.getElementById("formReservation");
 let availableSeats = 0;
 
 const toggleFields = (enable) => {
@@ -24,6 +25,8 @@ const adviseButton = () => {
     } else if (seatsInput.value <= 0) {
         Swal.fire("¡Error!", "Seleccione una cantidad válida", "warning");
     } else {
+        const date = new Date(inputDate.value);
+        const dateFormatted = date.toLocaleDateString("es-ES", inputDate.value);
         Swal.fire({
             title: "¿Estás seguro?",
             text:
@@ -32,7 +35,7 @@ const adviseButton = () => {
                 " y " +
                 selectDestination.value +
                 " para el día " +
-                inputDate.value +
+                dateFormatted +
                 " es de $" +
                 seatsInput.value * 1000 +
                 ".",
@@ -164,6 +167,11 @@ const loadOrigins = (e) => {
         })
         .catch((error) => {});
 };
+
+formReservation.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevent the default form submission
+    adviseButton(); // Trigger the adviseButton function
+});
 
 document.addEventListener("DOMContentLoaded", loadOrigins);
 document.addEventListener("DOMContentLoaded", verifyFields);
