@@ -49,11 +49,6 @@ export default {
                 // => @media (min-width: 1536px) { ... }
             },
         },
-<<<<<<< HEAD
-    },
-    plugins: [require("flowbite/plugin")],
-};
-=======
         fontFamily: {
 
           'mulish': 'sans-serif'
@@ -63,13 +58,8 @@ export default {
 
 
     },
-  },
   plugins: [
     require('flowbite/plugin')
-],
-
-
-
+    ],
 }
 
->>>>>>> origin/ignacioValenzuela
