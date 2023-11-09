@@ -14,5 +14,6 @@ class Ticket extends Model
         'reservation_date',
         'seats',
         'total',
+        'route_id',
     ];
 }

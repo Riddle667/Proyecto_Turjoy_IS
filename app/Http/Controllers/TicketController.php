@@ -19,15 +19,15 @@ class TicketController extends Controller
     public function store(Request $request)
     {
         // Generar el numero de reserva
-        $code = generateReservationNumbers();
+        $code = generateReservationNumber();
         // Modificar request
         $request->request->add(['code' => $code]);
 
         // Validar
         $makeMessages = makeMessages();
         $this->validate($request, [
-            'seat' => ['required'],
-            'total' => ['required'],
+            'seats' => ['required'],
+            'baseValue' => ['required'],
             'date' => ['date', 'required'],
         ], $makeMessages);
 
@@ -39,15 +39,12 @@ class TicketController extends Controller
 
         // Crear la reserva
         $ticket = Ticket::create([
+        'route_id' => $request->routeId,
         'code' => $request->code,
-        'seat' => $request->seat,
-        'date' => $request->date,
-        'total' => $request->total,
-        'travel_id' => $request->routeId,
-        ]);
-
-        return redirect()->route('generate.pdf', [
-            'id' => $ticket->id,
+        'reservation_date' => $request->date,
+        'seats' => $request->seats,
+        'total' => $request->baseValue * $request->seats,
+        'user_id' => "NULL",
         ]);
     }
 }
