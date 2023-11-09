@@ -4,6 +4,8 @@ const inputDate = document.getElementById("date");
 const seatsLabel = document.getElementById("seats");
 const seatsInput = document.getElementById("seatsInput");
 const reservationButton = document.getElementById("reservationButton");
+const baseValueInput = document.getElementById("baseValue");
+const routeIdInput = document.getElementById("routeId");
 let availableSeats = 0;
 
 const toggleFields = (enable) => {
@@ -11,7 +13,8 @@ const toggleFields = (enable) => {
     selectDestination.disabled = !enable;
 };
 
-const adviseButton = () => {
+const adviseButton = (e) => {
+    e.preventDefault();
     if (
         selectOrigin.value == "" ||
         selectDestination.value == "" ||
@@ -24,6 +27,7 @@ const adviseButton = () => {
     } else if (seatsInput.value <= 0) {
         Swal.fire("¡Error!", "Seleccione una cantidad válida", "warning");
     } else {
+        const form = document.getElementById("form");
         Swal.fire({
             title: "¿Estás seguro?",
             text:
@@ -34,7 +38,7 @@ const adviseButton = () => {
                 " para el día " +
                 inputDate.value +
                 " es de $" +
-                seatsInput.value * 1000 +
+                seatsInput.value * baseValueInput.value +
                 ".",
             icon: "warning",
             showCancelButton: true,
@@ -47,6 +51,7 @@ const adviseButton = () => {
                 // Aquí puedes agregar la lógica para procesar la reserva
                 // Por ejemplo, enviar una solicitud al servidor.
                 // Si la reserva es exitosa, puedes mostrar un mensaje de éxito.
+                form.submit();
                 Swal.fire(
                     "¡Reserva exitosa!",
                     "Tus pasajes han sido reservados.",
@@ -128,6 +133,8 @@ const verifySeats = (e) => {
             availableSeats = seats;
             seatsLabel.textContent = seats + " asientos disponibles";
             seatsInput.setAttribute("max", seats);
+            baseValueInput.value = data.baseValue;
+            routeIdInput.value = data.routeId;
         })
         .catch((error) => {});
 };
