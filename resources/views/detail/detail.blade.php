@@ -15,7 +15,7 @@
                         <p class="text-white font-bold ">Código de la reserva</p>
                     </div>
                     <div class="w-1/2  ">
-                        <p class="text-black font-semibold  mt-2 ml-4">Inserte despliegue de DB</p>
+                        <p class="text-black font-semibold  mt-2 ml-4">{{ $tickets->code }}</p>
                     </div>
                 </div>
             </li>
@@ -25,7 +25,7 @@
                         <p class="text-white font-bold ">Ciudad origen</p>
                     </div>
                     <div class="w-1/2 bg-gray-custom-150 ">
-                        <p class="text-black font-semibold  mt-2 ml-4">Inserte despliegue de DB</p>
+                        <p class="text-black font-semibold  mt-2 ml-4">{{ $tickets->travelDates->origin }}</p>
                     </div>
                 </div>
             </li>
@@ -34,7 +34,7 @@
                     <p class="text-white font-bold ">Ciudad destino</p>
                 </div>
                 <div class="w-1/2  ">
-                    <p class="text-black font-semibold  mt-2 ml-4">Inserte despliegue de DB</p>
+                    <p class="text-black font-semibold  mt-2 ml-4">{{ $tickets->travelDates->destination }}</p>
                 </div>
             </div>
             <li>
@@ -43,7 +43,7 @@
                         <p class="text-white font-bold ">Día de la reserva</p>
                     </div>
                     <div class="w-1/2 bg-gray-custom-150 ">
-                        <p class="text-black font-semibold  mt-2 ml-4">Inserte despliegue de DB</p>
+                        <p class="text-black font-semibold  mt-2 ml-4">{{ date('d/m/Y', strtotime($tickets->reservation_date)) }}</p>
                     </div>
                 </div>
             </li>
@@ -53,7 +53,7 @@
                         <p class="text-white font-bold ">Cantidad de asientos</p>
                     </div>
                     <div class="w-1/2  ">
-                        <p class="text-black font-semibold  mt-2 ml-4">Inserte despliegue de DB</p>
+                        <p class="text-black font-semibold  mt-2 ml-4">{{ $tickets->seats }}</p>
                     </div>
                 </div>
             </li>
@@ -63,17 +63,17 @@
                         <p class="text-white font-bold ">Fecha de la compra</p>
                     </div>
                     <div class="w-1/2 bg-gray-custom-150 ">
-                        <p class="text-black font-semibold  mt-2 ml-4">Inserte despliegue de DB</p>
+                        <p class="text-black font-semibold  mt-2 ml-4">{{  date('d/m/Y h:i:s', strtotime($vouchers->created_at)) }}</p>
                     </div>
                 </div>
             </li>
             <li>
                 <div class="flex">
                     <div class="bg-green-custom p-2 w-1/2">
-                        <p class="text-white font-bold ">Total</p>
+                        <p class="text-white font-bold ">Total de la compra</p>
                     </div>
                     <div class="w-1/2  ">
-                        <p class="text-black font-semibold  mt-2 ml-4">Inserte despliegue de DB</p>
+                        <p class="text-black font-semibold  mt-2 ml-4">{{ $tickets->total }}</p>
                     </div>
                 </div>
             </li>

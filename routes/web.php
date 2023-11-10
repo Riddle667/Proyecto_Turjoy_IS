@@ -24,6 +24,8 @@ Route::get('/search/{code}',[TicketController::class, 'show'])->name('search.tic
 
 Route::get('/get/origins', [RouteController::class, 'getOrigins']);
 Route::get('/get/destinations/{origin}', [RouteController::class, 'getDestinations']);
+Route::get('/get/seats/{origin}/{destination}/{date}', [RouteController::class, 'getAvailableSeats']);
+Route::post('/addticket', [TicketController::class, 'store'])->name('ticket.add');
 
 Route::get('login', [LoginController::class, 'create'])->name('login');
 Route::post('login/store', [LoginController::class, 'store'])->name('login.store');
