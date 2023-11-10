@@ -5,6 +5,8 @@ const seatsLabel = document.getElementById("seats");
 const seatsInput = document.getElementById("seatsInput");
 const reservationButton = document.getElementById("reservationButton");
 const formReservation = document.getElementById("formReservation");
+let baseValue = 0;
+let routeId = 0;
 let availableSeats = 0;
 
 const toggleFields = (enable) => {
@@ -37,7 +39,7 @@ const adviseButton = () => {
                 " para el día " +
                 dateFormatted +
                 " es de $" +
-                seatsInput.value * 1000 +
+                seatsInput.value * baseValue +
                 ".",
             icon: "warning",
             showCancelButton: true,
@@ -131,6 +133,8 @@ const verifySeats = (e) => {
             availableSeats = seats;
             seatsLabel.textContent = seats + " asientos disponibles";
             seatsInput.setAttribute("max", seats);
+            baseValue = data.baseValue;
+            routeId = data.routeId;
         })
         .catch((error) => {});
 };

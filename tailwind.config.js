@@ -49,6 +49,16 @@ export default {
                 // => @media (min-width: 1536px) { ... }
             },
         },
+        fontFamily: {
+
+          'mulish': 'sans-serif'
+
+        },
+
+
+
     },
-    plugins: [require("flowbite/plugin")],
-};
+  plugins: [
+    require('flowbite/plugin')
+    ],
+}
