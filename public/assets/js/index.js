@@ -4,8 +4,9 @@ const inputDate = document.getElementById("date");
 const seatsLabel = document.getElementById("seats");
 const seatsInput = document.getElementById("seatsInput");
 const reservationButton = document.getElementById("reservationButton");
-const baseValueInput = document.getElementById("baseValue");
-const routeIdInput = document.getElementById("routeId");
+const formReservation = document.getElementById("formReservation");
+let baseValue = 0;
+let routeId = 0;
 let availableSeats = 0;
 
 const toggleFields = (enable) => {
@@ -13,8 +14,7 @@ const toggleFields = (enable) => {
     selectDestination.disabled = !enable;
 };
 
-const adviseButton = (e) => {
-    e.preventDefault();
+const adviseButton = () => {
     if (
         selectOrigin.value == "" ||
         selectDestination.value == "" ||
@@ -27,7 +27,8 @@ const adviseButton = (e) => {
     } else if (seatsInput.value <= 0) {
         Swal.fire("¡Error!", "Seleccione una cantidad válida", "warning");
     } else {
-        const form = document.getElementById("form");
+        const date = new Date(inputDate.value);
+        const dateFormatted = date.toLocaleDateString("es-ES", inputDate.value);
         Swal.fire({
             title: "¿Estás seguro?",
             text:
@@ -36,9 +37,9 @@ const adviseButton = (e) => {
                 " y " +
                 selectDestination.value +
                 " para el día " +
-                inputDate.value +
+                dateFormatted +
                 " es de $" +
-                seatsInput.value * baseValueInput.value +
+                seatsInput.value * baseValue +
                 ".",
             icon: "warning",
             showCancelButton: true,
@@ -51,7 +52,6 @@ const adviseButton = (e) => {
                 // Aquí puedes agregar la lógica para procesar la reserva
                 // Por ejemplo, enviar una solicitud al servidor.
                 // Si la reserva es exitosa, puedes mostrar un mensaje de éxito.
-                form.submit();
                 Swal.fire(
                     "¡Reserva exitosa!",
                     "Tus pasajes han sido reservados.",
@@ -133,8 +133,8 @@ const verifySeats = (e) => {
             availableSeats = seats;
             seatsLabel.textContent = seats + " asientos disponibles";
             seatsInput.setAttribute("max", seats);
-            baseValueInput.value = data.baseValue;
-            routeIdInput.value = data.routeId;
+            baseValue = data.baseValue;
+            routeId = data.routeId;
         })
         .catch((error) => {});
 };
@@ -171,6 +171,11 @@ const loadOrigins = (e) => {
         })
         .catch((error) => {});
 };
+
+formReservation.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevent the default form submission
+    adviseButton(); // Trigger the adviseButton function
+});
 
 document.addEventListener("DOMContentLoaded", loadOrigins);
 document.addEventListener("DOMContentLoaded", verifyFields);
