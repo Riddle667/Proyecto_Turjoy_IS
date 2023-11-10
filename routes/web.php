@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\TicketController;
 
 
 /*
@@ -18,6 +19,8 @@ use App\Http\Controllers\LogoutController;
 */
 
 Route::get('/', [RouteController::class, 'welcomeIndex'])->name('welcome');
+Route::get('/search',[TicketController::class, 'search'])->name('search');
+Route::get('/search/{code}',[TicketController::class, 'show'])->name('search.ticket');
 
 Route::get('/get/origins', [RouteController::class, 'getOrigins']);
 Route::get('/get/destinations/{origin}', [RouteController::class, 'getDestinations']);
