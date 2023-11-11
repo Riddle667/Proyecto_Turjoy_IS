@@ -67,7 +67,10 @@ class RouteController extends Controller
             $duplicatedRows = $import->getDuplicatedRows();
             $orderRows = $import->getOrderRows();
             $colors = $import->getColors();
-            // dd($validRows, $invalidRows, $duplicatedRows);
+
+            if (count($validRows) == 0 && count($invalidRows) == 0 && count($duplicatedRows) == 0 && !session()->has('error-format')) {
+                return redirect()->route('routes.index')->with('error-blank', 'El archivo excel está vacío.');
+            }
 
             // Agregar o actualizar las filas en la base de datos
             foreach ($validRows as $row) {
@@ -96,12 +99,6 @@ class RouteController extends Controller
                 }
             }
 
-            //Eliminar registros (filas) vacios del  documento excel
-            $invalidRows = array_filter($invalidRows, function ($invalidrow) {
-                return $invalidrow['origen'] !== null || $invalidrow['destino'] !== null || $invalidrow['cantidad_de_asientos'] !== null || $invalidrow['tarifa_base'] !== null;
-            });
-
-
             session()->put('validRows', $validRows);
             session()->put('invalidRows', $invalidRows);
             session()->put('duplicatedRows', $duplicatedRows);
@@ -111,5 +108,42 @@ class RouteController extends Controller
 
             return redirect()->route('routesAdd.index');
         }
+    }
+
+    public function getOrigins()
+    {
+        $origins = Route::distinct()->orderBy('origin', 'asc')->pluck('origin');
+        return response()->json([
+            'origins' => $origins,
+        ]);
+    }
+
+    public function getDestinations($origin)
+    {
+        $destinations = Route::where('origin', $origin)->orderBy('destination', 'asc')->pluck('destination');
+        return response()->json([
+            'destinations' => $destinations,
+        ]);
+    }
+
+    public function getAvailableSeats($origin, $destination, $date)
+    {
+        $route = Route::where('origin', $origin)->where('destination', $destination)->first();
+        $seats = Route::where('id', $route->id)->pluck('seats')->first();
+        $occupiedSeats = TicketController::getOccupiedSeats($route->id, $date);
+        $availableSeats = $seats - $occupiedSeats;
+        return response()->json([
+            'availableSeats' => $availableSeats,
+            'routeId' => $route->id,
+            'baseValue' => $route->base_value,
+        ]);
+    }
+
+    public function welcomeIndex()
+    {
+        $travels = Route::get()->count();
+        return view('welcome', [
+            'travelsAmount' => $travels, // travelsAmount es la variable que contiene la cantidad de viajes
+        ]);
     }
 }

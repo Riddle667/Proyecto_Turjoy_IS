@@ -11,5 +11,7 @@ class Voucher extends Model
 
     protected $fillable = [
         'uri',
+        'ticket_id',
+        'purchased_date',
     ];
 }

@@ -82,7 +82,7 @@
 
     <div class="flex items-center justify-start">
         <button type="submit" style="white-space: nowrap;" class="px-5 py-3 text-base font-medium text-center text-white bg-green-custom rounded-lg hover:bg-green-500 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" >
-            <a href="#" >Imprimir</a>
+            <a href="{{ route('pdf.download', ['id' => $vouchers->id]) }}" >Imprimir</a>
         </button>
         <img src="{{ asset('images/banner.png') }}" alt="bus" class=" p-30  w-1/2 ml-36">
     </div>
