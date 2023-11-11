@@ -6,6 +6,20 @@ use Illuminate\Http\Request;
 
 class VoucherController extends Controller
 {
+
+    public function downloadPDF($id){
+
+        $pdf = Voucher::findOrFail($id);
+
+        $path = torage_path('app\public\\'.$pdf->uri);
+
+        $filename = $pdf->pdf_name;
+
+        $mimeType = Storage::mimeType($path);
+
+        return response()->download($path, $filename, ['Content-Type' => $mimeType]);
+    }
+
     public function generatePDF($id_ticket)
     {
 
