@@ -22,7 +22,7 @@
 
 
     <img src="images/image8.jpg" class="background-image bg-cover bg-center">
-    <form action="#" class="my-12" method="GET" novalidate>
+    <form class="my-12" method="GET" action="{{ route('search.ticket') }}" novalidate>
         <div class="flex flex-col items-center justify-start h-screen">
 
 
@@ -38,7 +38,7 @@
                             d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                     </svg>
                 </div>
-                <input type="search" id="default-search"
+                <input type="text" name="search" id="search"
                     class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Ingresa código de la reserva a buscar" required>
                 <button type="submit"

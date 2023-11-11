@@ -10,20 +10,30 @@ class TicketController extends Controller
 {
     public function search()
     {
-        return view('layouts.tickets');
+        $ticket = null;
+        return view('layouts.tickets',[
+            'message' => null,
+            'ticket' => $ticket,
+        ]);
     }
 
-    public function show($code)
+    public function show(Request $request)
     {
-        $ticket = Ticket::find($code);
 
-        if(!$ticket){
-            return redirect()->route('search.ticket')->with('error','La ruta ingresada no existe');
+        $code = $request->search;
+        $ticket = Ticket::where('code', "=", $code)->first();
+
+        if (!$ticket) {
+            return view('layouts.tickets', [
+                'message' => 'el correo electrónico no existe',
+                'ticket' => $ticket,
+            ]);
         }
-
-        return redirect()->route('search.ticket',[
-            'ticket' => $ticket
+        return view('layouts.tickets', [
+            'message' => null,
+            'ticket' => $ticket,
         ]);
+
     }
 
     public static function getOccupiedSeats($routeId, $date)
