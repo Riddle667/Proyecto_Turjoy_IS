@@ -57,6 +57,8 @@ const adviseButton = () => {
                     "Tus pasajes han sido reservados.",
                     "success"
                 );
+
+                formReservation.submit();
             }
         });
     }
@@ -175,6 +177,10 @@ const loadOrigins = (e) => {
 formReservation.addEventListener("submit", (e) => {
     e.preventDefault(); // Prevent the default form submission
     adviseButton(); // Trigger the adviseButton function
+});
+
+reservationButton.addEventListener("click", function () {
+    adviseButton(); // Muestra la confirmación SweetAlert
 });
 
 document.addEventListener("DOMContentLoaded", loadOrigins);
