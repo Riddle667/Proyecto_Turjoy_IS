@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\VoucherController;
 
 
 /*
@@ -41,3 +42,5 @@ Route::fallback(function () {
     return view('error/error');
 });
 
+Route::get('/travel-reservation/{id}', [VoucherController::class, 'generatePDF'])->name('generate.pdf');
+Route::get('download-pdf/{id}', [VoucherController::class, 'downloadPDF'])->name('pdf.download');

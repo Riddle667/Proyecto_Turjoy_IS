@@ -46,7 +46,12 @@
                 </div>
                 <div class="flex items-center justify-center rounded  h-4 mt-2 md:h-6 lg:h-8">
 
-                </div>
+            </div>
+
+            {{-- Precio reserva --}}
+                <input id="baseValue" name="baseValue" value="" hidden>
+            {{-- Id Ruta --}}
+                <input id="routeId" name="routeId" value="" hidden>
 
         </form>
     </div>

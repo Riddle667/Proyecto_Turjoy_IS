@@ -16,4 +16,9 @@ class Ticket extends Model
         'total',
         'route_id',
     ];
+
+    public function travelDates()
+    {
+        return $this->belongsTo(Route::class, 'route_id');
+    }
 }

@@ -1,6 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Voucher;
+use App\Models\Ticket;
+use Dompdf\Dompdf;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 use Illuminate\Http\Request;
 
@@ -11,7 +16,7 @@ class VoucherController extends Controller
 
         $pdf = Voucher::findOrFail($id);
 
-        $path = torage_path('app\public\\'.$pdf->uri);
+        $path = storage_path('app\public\\'.$pdf->uri);
 
         $filename = $pdf->pdf_name;
 
@@ -48,12 +53,12 @@ class VoucherController extends Controller
          $voucher = Voucher::create([
             'uri' => $path,
             'ticket_id' => $id_ticket,
-            'date' => date('Y-m-d'),
+            'purchased_date' => date('Y-m-d'),
          ]);
 
          return view('detail.detail',[
-            'ticket' => $ticket,
-            'voucher' => $voucher,
+            'tickets' => $ticket,
+            'vouchers' => $voucher,
          ]);
     }
 }

@@ -38,8 +38,7 @@ class TicketController extends Controller
 
     public static function getOccupiedSeats($routeId, $date)
     {
-        $occupiedSeats = 0;
-        Ticket::where('route_id', $routeId)->where('reservation_date', $date)->sum('seats', $occupiedSeats);
+        $occupiedSeats = Ticket::where('route_id', $routeId)->where('reservation_date', $date)->sum('seats');
 
         return $occupiedSeats;
     }
@@ -73,7 +72,10 @@ class TicketController extends Controller
             'total' => $request->baseValue * $request->seats,
             'user_id' => "NULL",
         ]);
+        
+        return redirect()->route('generate.pdf', [
+            'id' => $ticket->id,
+        ]);
 
-        return view('detail.detail');
     }
 }

@@ -64,7 +64,7 @@
         </h3>
     </div>
     <div>
-        <h2>Datos del concierto</h2>
+        <h2>Datos de la reserva</h2>
         <p>Codigo de reserva:
             <span>{{ $ticket->code}}</span>
         </p>
@@ -75,10 +75,10 @@
             <span>{{ $ticket->travelDates->destination }}</span>
         </p>
         <p>Dia de la reserva:
-            <span>{{ $ticket->date }}</span>
+            <span>{{ $ticket->reservation_date }}</span>
         </p>
         <p>Cantidad de asientos:
-            <span>{{ $ticket->seat}}</span>
+            <span>{{ $ticket->seats}}</span>
         </p>
         <p>Fecha de la compra:
             <span>{{ $date }}</span>
@@ -86,7 +86,7 @@
     </div>
     <hr>
     <div class="total">
-        <p class="total-pay">Total pagado: {{ $ticket->total }}</p>
+        <p class="total-pay">Total pagado: ${{ $ticket->total }}</p>
     </div>
 </body>
 
