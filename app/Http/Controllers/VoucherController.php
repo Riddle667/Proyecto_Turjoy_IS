@@ -37,6 +37,9 @@ class VoucherController extends Controller
             'date' => date('Y-m-d'),
          ]);
 
-         return view();
+         return view('detail.detail',[
+            'ticket' => $ticket,
+            'voucher' => $voucher,
+         ]);
     }
 }
