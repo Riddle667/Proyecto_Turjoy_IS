@@ -48,8 +48,6 @@ class TicketController extends Controller
     {
         // Generar el numero de reserva
         $code = generateReservationNumber();
-        // Modificar request
-        $request->request->add(['code' => $code]);
 
         // Validar
         $makeMessages = makeMessages();
@@ -59,20 +57,23 @@ class TicketController extends Controller
             'date' => ['date', 'required'],
         ], $makeMessages);
 
+
         //  Verificamos si la fecha ingresada es mayor a la fecha actual.
         $invalidDate = validDate($request->date);
         if ($invalidDate) {
-            return back()->with('message', 'La fecha debe ser igual o mayor a '.date('d-m-Y'));
+            return back()->with('message', 'La fecha debe ser igual o mayor a ' . date('d-m-Y'));
         }
 
         // Crear la reserva
         $ticket = Ticket::create([
-        'route_id' => $request->routeId,
-        'code' => $request->code,
-        'reservation_date' => $request->date,
-        'seats' => $request->seats,
-        'total' => $request->baseValue * $request->seats,
-        'user_id' => "NULL",
+            'route_id' => $request->routeId,
+            'code' => $code,
+            'reservation_date' => $request->date,
+            'seats' => $request->seats,
+            'total' => $request->baseValue * $request->seats,
+            'user_id' => "NULL",
         ]);
+
+        return view('detail.detail');
     }
 }
