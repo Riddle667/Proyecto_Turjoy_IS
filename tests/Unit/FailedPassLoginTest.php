@@ -17,7 +17,7 @@ class FailedPassLoginTest extends TestCase
     {
         $response = $this->post('login/store', [
             'email' => 'italo.donoso@ucn.cl',
-            'password' => 'Turjoy911231',
+            'password' => 'Contrasena123',
         ]);
 
         $response->assertStatus(401);

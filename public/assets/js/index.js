@@ -21,14 +21,20 @@ const adviseButton = () => {
         inputDate.value == "" ||
         seatsInput.value == ""
     ) {
-        Swal.fire("¡Error!", "Seleccione todos los campos", "warning");
+        Swal.fire("¡Error!", "Todos los campos son obligatorios", "warning");
     } else if (seatsInput.value > availableSeats) {
-        Swal.fire("¡Error!", "No hay suficientes asientos", "warning");
+        Swal.fire(
+            "¡Error!",
+            "No hay servicios disponibles para la ruta seleccionada",
+            "warning"
+        );
     } else if (seatsInput.value <= 0) {
         Swal.fire("¡Error!", "Seleccione una cantidad válida", "warning");
     } else {
-        const date = new Date(inputDate.value);
-        const dateFormatted = date.toLocaleDateString("es-ES", inputDate.value);
+        const options = { timeZone: "America/Santiago" };
+        const date = new Date(inputDate.value.replace(/-/g, "/"));
+        const dateFormatted = date.toLocaleDateString("es-ES", options);
+        console.log(dateFormatted);
         Swal.fire({
             title: "¿Estás seguro?",
             text:
@@ -40,18 +46,17 @@ const adviseButton = () => {
                 dateFormatted +
                 " es de $" +
                 seatsInput.value * baseValue.value +
-                ".",
+                " (" +
+                seatsInput.value +
+                " asientos) ¿Desea continuar?",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Sí, reservar",
-            cancelButtonText: "Cancelar",
+            confirmButtonColor: "#2ECC71",
+            cancelButtonColor: "#FF6B6B",
+            confirmButtonText: "Confirmar",
+            cancelButtonText: "Volver",
         }).then((result) => {
             if (result.isConfirmed) {
-                // Aquí puedes agregar la lógica para procesar la reserva
-                // Por ejemplo, enviar una solicitud al servidor.
-                // Si la reserva es exitosa, puedes mostrar un mensaje de éxito.
                 Swal.fire(
                     "¡Reserva exitosa!",
                     "Tus pasajes han sido reservados.",
@@ -67,7 +72,7 @@ const adviseButton = () => {
 const toggleSeats = (enable) => {
     seatsInput.disabled = !enable;
     if (seatsInput.enable) {
-        seatsInput.removeAttribute("placeholder"); // Eliminar el placeholder personalizado
+        seatsInput.removeAttribute("placeholder");
     } else {
         seatsInput.setAttribute("placeholder", "Seleccione una opción");
     }
@@ -148,7 +153,6 @@ const loadDestinations = (e) => {
         fetch(`/get/destinations/${currentValue}`)
             .then((response) => response.json())
             .then((data) => {
-                // Manipula los datos recibidos aquí
                 const destinations = data.destinations;
                 addDestinationsToSelect(destinations);
             })
@@ -167,7 +171,6 @@ const loadOrigins = (e) => {
     fetch("/get/origins")
         .then((response) => response.json())
         .then((data) => {
-            // Manipula los datos recibidos aquí
             const origins = data.origins;
             addOriginsToSelect(origins);
         })
@@ -175,8 +178,8 @@ const loadOrigins = (e) => {
 };
 
 formReservation.addEventListener("submit", (e) => {
-    e.preventDefault(); // Prevent the default form submission
-    adviseButton(); // Trigger the adviseButton function
+    e.preventDefault();
+    adviseButton();
 });
 
 reservationButton.addEventListener("click", function () {
