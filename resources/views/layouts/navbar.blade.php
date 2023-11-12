@@ -24,18 +24,9 @@
                         class="block p-4 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 xl:text-xl md:test-base font-mulish-bol font-medium  px-1 py-1 pl-1 text-center md:mr-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Inicio</a>
                 </li>
                 <li class="flex items-center">
-                    <a href="#quienes-somos"
-                        class="block p-4 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  xl:text-xl md:test-base font-mulish-bol font-medium  px-1 py-1 pl-1 text-center md:mr-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">¿Quiénes
-                        somos?</a>
-                </li>
-                <li class="flex items-center">
-                    <a href="#donde-trabajamos"
-                        class="block p-4 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 xl:text-xl md:test-base font-mulish-bol font-medium  px-1 py-1 pl-1 text-center md:mr-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">¿Dónde
-                        trabajamos?</a>
-                </li>
-                <li class="flex items-center">
-                    <a href="#contactanos"
-                        class="block p-4 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 xl:text-xl md:test-base font-mulish-bol font-medium  px-1 py-1 pl-1 text-center md:mr-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contáctanos</a>
+                    <a href="#"
+                        class="block p-4 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  xl:text-xl md:test-base font-mulish-bol font-medium  px-1 py-1 pl-1 text-center md:mr-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Buscar
+                        reservas</a>
                 </li>
                 <li>
                     <div

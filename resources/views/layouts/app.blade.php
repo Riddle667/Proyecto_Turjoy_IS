@@ -106,8 +106,11 @@
         <div class="flex items-center justify-center h-48 mb rounded bg-blue-custom-50 dark:bg-gray-800">
             <div id="donde-trabajamos" class=" text-center text-white">
                 <h2 class="text-3xl font-bold mb-4">¿Quiénes somos?</h2>
-                <p class="text-lg">
-                    Somos un equipo apasionado que se dedica a...
+                <p class="xs:text-lg mr-2 ml-2 sm:text-xl">
+                    Somos una empresa con años de experiencia y nos enorgullece decir que somos líderes del país en las
+                    reservas de pasajes en autobús. Nuestra
+                    misión es hacer que tus viajes sean fáciles y sin complicaciones. ¡Reserva con nosotros, no te
+                    arrepentiras!
                 </p>
             </div>
         </div>
@@ -131,9 +134,7 @@
             <div class="flex items-center justify-center rounded bg-green-custom shadow-md sm:p-6 xl:p-0 mb-9">
                 <div id="donde-trabajamos" class=" text-center text-black">
                     <h2 class="text-4xl font-bold mb-4">Contáctanos</h2>
-                    <p class="text-xl">
-                        <span class="font-bold">Teléfono:</span> +56 9 1234 5678
-                    </p>
+
                     <p class="text-xl mt-5">
                         <span class="font-bold">Dirección:</span> Av. Angamos 0610, Antofagasta, Chile
                     </p>
