@@ -30,7 +30,7 @@
                 </li>
                 <li>
                     <div
-                        class=  "rounded-lg xl:p-2 sm:p-1 md:p-1 bg-blue-700 hover:bg-blue-800 dark:bg-blue-600 dark:hover-bg-blue-700 dark:focus:ring-blue-800">
+                        class=  "rounded-lg xl:p-2 sm:p-1 md:p-1 bg-blue-custom-50 hover:bg-blue-800 dark:bg-blue-600 dark:hover-bg-blue-700 dark:focus:ring-blue-800">
                         <a href="{{ route('login') }}"
                             class="shadow-md text-white font-mulish-bol md:text-base font-medium block text-lg px-1 py-1 pl-1 pr-4 text-center md:p-0 md:mr-0 ">Iniciar
                             sesión</a>

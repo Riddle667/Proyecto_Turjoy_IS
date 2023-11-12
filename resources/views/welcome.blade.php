@@ -38,15 +38,12 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 </div>
 
-                <div class="grid grid-cols-2 gap-4 mb-4">
+                <div class="grid gap-4 mb-4">
                     <div class="flex items-center justify-center rounded  h-4 mt-2 md:h-6 lg:h-8">
                         <button type="button" id="reservationButton" style="white-space: nowrap;"
-                            class="px-1 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            class="px-1 py-3 text-base font-medium text-center text-white bg-blue-custom-50 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <a href="#">Reservar Pasajes</a>
                         </button>
-
-                    </div>
-                    <div class="flex items-center justify-center rounded  h-4 mt-2 md:h-6 lg:h-8">
 
                     </div>
 

@@ -20,8 +20,8 @@ use App\Http\Controllers\VoucherController;
 */
 
 Route::get('/', [RouteController::class, 'welcomeIndex'])->name('welcome');
-Route::get('/ticket',[TicketController::class, 'search'])->name('search');
-Route::get('/ticket-search',[TicketController::class, 'show'])->name('search.ticket');
+Route::get('/ticket', [TicketController::class, 'search'])->name('search');
+Route::get('/ticket-search', [TicketController::class, 'show'])->name('search.ticket');
 
 Route::get('/get/origins', [RouteController::class, 'getOrigins']);
 Route::get('/get/destinations/{origin}', [RouteController::class, 'getDestinations']);
@@ -31,6 +31,8 @@ Route::post('/addticket', [TicketController::class, 'store'])->name('ticket.add'
 Route::get('login', [LoginController::class, 'create'])->name('login');
 Route::post('login/store', [LoginController::class, 'store'])->name('login.store');
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
+Route::get('/travel-reservation/{id}', [VoucherController::class, 'generatePDF'])->name('generate.pdf');
+Route::get('download-pdf/{id}', [VoucherController::class, 'downloadPDF'])->name('pdf.download');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/add/route', [RouteController::class, 'indexAddRoutes'])->name('routes.index');
@@ -41,6 +43,3 @@ Route::middleware(['auth'])->group(function () {
 Route::fallback(function () {
     return view('error/error');
 });
-
-Route::get('/travel-reservation/{id}', [VoucherController::class, 'generatePDF'])->name('generate.pdf');
-Route::get('download-pdf/{id}', [VoucherController::class, 'downloadPDF'])->name('pdf.download');

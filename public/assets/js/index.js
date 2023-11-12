@@ -21,15 +21,29 @@ const adviseButton = () => {
         inputDate.value == "" ||
         seatsInput.value == ""
     ) {
-        Swal.fire("¡Error!", "Todos los campos son obligatorios", "warning");
+        Swal.fire({
+            title: "¡Error!",
+            text: "Todos los campos son obligatorios",
+            icon: "warning",
+            confirmButtonColor: "#FF6B6B",
+            confirmButtonText: "Ok",
+        });
     } else if (seatsInput.value > availableSeats) {
-        Swal.fire(
-            "¡Error!",
-            "No hay servicios disponibles para la ruta seleccionada",
-            "warning"
-        );
+        Swal.fire({
+            title: "¡Error!",
+            text: "No hay servicios disponibles para la ruta seleccionada",
+            icon: "warning",
+            confirmButtonColor: "#FF6B6B",
+            confirmButtonText: "Ok",
+        });
     } else if (seatsInput.value <= 0) {
-        Swal.fire("¡Error!", "Seleccione una cantidad válida", "warning");
+        Swal.fire({
+            title: "¡Error!",
+            text: "Seleccione una cantidad válida",
+            icon: "warning",
+            confirmButtonColor: "#FF6B6B",
+            confirmButtonText: "Ok",
+        });
     } else {
         const options = { timeZone: "America/Santiago" };
         const date = new Date(inputDate.value.replace(/-/g, "/"));
@@ -80,7 +94,6 @@ const toggleSeats = (enable) => {
 
 const verifyFields = () => {
     const date = inputDate.value;
-    console.log(date);
     if (selectOrigin.value == "" || selectDestination.value == "")
         toggleSeats(false);
     else toggleSeats(true);
