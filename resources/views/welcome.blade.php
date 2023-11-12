@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@if ($travelsAmount > 0)
+@if ($travelsAmount > 0 && !auth()->check())
     @section('content')
         <div
             class=" lg:max-w-xl max-h-screen p-10 space-y-8 sm:p-8 xl:pr-12 xl:pl-12 bg-gray-custom-150   rounded-lg shadow-xl dark:bg-gray-800 z-20 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-56 border border-black">
@@ -53,6 +53,15 @@
                     <input id="routeId" name="routeId" value="" hidden>
 
             </form>
+        </div>
+    @endsection
+@elseif ($travelsAmount == 0)
+    @section('content')
+        <div
+            class=" lg:max-w-xl max-h-screen p-10 space-y-8 sm:p-8 xl:pr-12 xl:pl-12 bg-red-custom-100  rounded-lg shadow-xl  z-20 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-48  border border-black">
+            <h2 class="sm:text-lg xl:text-2xl font-bold text-white  text-center ">
+                Por el momento no es posible realizar reservas, intente más tarde.
+            </h2>
         </div>
     @endsection
 @endif

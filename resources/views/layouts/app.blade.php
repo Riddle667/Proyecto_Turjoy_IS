@@ -151,10 +151,7 @@
         </div>
     @endif
     <main>
-        @if (auth()->user() || request()->is('login'))
-            @yield('content')
-        @endif
-
+        @yield('content')
         @yield('js')
     </main>
 
