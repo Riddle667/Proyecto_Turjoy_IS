@@ -15,7 +15,15 @@ const toggleFields = (enable) => {
 };
 
 const adviseButton = () => {
-    if (
+    if (seatsInput.value <= 0 || seatsInput.value == "") {
+        Swal.fire({
+            title: "¡Error!",
+            text: "Debe seleccionar la cantidad de asientos antes de realizar la reserva",
+            icon: "warning",
+            confirmButtonColor: "#FF6B6B",
+            confirmButtonText: "Ok",
+        });
+    } else if (
         selectOrigin.value == "" ||
         selectDestination.value == "" ||
         inputDate.value == "" ||
@@ -32,14 +40,6 @@ const adviseButton = () => {
         Swal.fire({
             title: "¡Error!",
             text: "No hay servicios disponibles para la ruta seleccionada",
-            icon: "warning",
-            confirmButtonColor: "#FF6B6B",
-            confirmButtonText: "Ok",
-        });
-    } else if (seatsInput.value <= 0) {
-        Swal.fire({
-            title: "¡Error!",
-            text: "Seleccione una cantidad válida",
             icon: "warning",
             confirmButtonColor: "#FF6B6B",
             confirmButtonText: "Ok",
@@ -193,10 +193,6 @@ const loadOrigins = (e) => {
 formReservation.addEventListener("submit", (e) => {
     e.preventDefault();
     adviseButton();
-});
-
-reservationButton.addEventListener("click", function () {
-    adviseButton(); // Muestra la confirmación SweetAlert
 });
 
 document.addEventListener("DOMContentLoaded", loadOrigins);
