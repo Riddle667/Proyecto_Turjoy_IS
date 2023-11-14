@@ -25,7 +25,7 @@
                         class="block p-4 pr-4 text-gray-custom-50 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 xl:text-xl md:test-base font-mulish-bol font-medium  px-1 py-1 pl-1 text-center md:mr-0 md:hover:text-blue-custom-50 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Inicio</a>
                 </li>
                 <li class="flex items-center">
-                    <a href="#"
+                    <a href="{{ route('search') }}"
                         class="block p-4 pr-4 text-gray-custom-50 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  xl:text-xl md:test-base font-mulish-bol font-medium  px-1 py-1 pl-1 text-center md:mr-0 md:hover:text-blue-custom-50 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Buscar
                         reservas</a>
                 </li>

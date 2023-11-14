@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Ticket;
 use App\Models\Route;
+use App\Models\Voucher;
 
 class TicketController extends Controller
 {
@@ -16,22 +17,24 @@ class TicketController extends Controller
             'ticket' => $ticket,
         ]);
     }
-
+ 
     public function show(Request $request)
     {
-
+ 
         $code = $request->search;
         $ticket = Ticket::where('code', "=", $code)->first();
 
         if (!$ticket) {
             return view('layouts.tickets', [
-                'message' => 'el correo electrónico no existe',
+                'message' => ' Debe proporcionar un código de reserva',
                 'ticket' => $ticket,
             ]);
         }
+        $voucher = Voucher::where('ticket_id', $ticket->id)->first();
         return view('layouts.tickets', [
             'message' => null,
             'ticket' => $ticket,
+            'voucher' => $voucher,
         ]);
 
     }

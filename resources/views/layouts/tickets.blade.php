@@ -1,11 +1,24 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="180x180" href="{{ asset('images/favicon.png') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>Turjoy - Buscar pasajes</title>
+</head>
+<body>
+    @include('layouts.navbar')
 
     <style>
         .background-image {
-            /* background-image: url("images/image5.jpg"); */
-            /* height: 100%; */
+
             object-fit: cover;
             filter: brightness(0.6);
             position: absolute;
@@ -13,6 +26,7 @@
             bottom: 0;
             right: 0;
             left: 0;
+            z-index: -1
 
 
 
@@ -21,9 +35,11 @@
 
 
 
-    <img src="images/image8.jpg" class="background-image bg-cover bg-center">
-    <form class="my-12" method="GET" action="{{ route('search.ticket') }}" novalidate>
-        <div class="flex flex-col items-center justify-start h-screen">
+
+<form class="" method="GET" action="{{ route('search.ticket') }}" novalidate>
+    
+        <img src="images/image8.jpg" class="background-image bg-cover bg-center">
+        <div class="flex flex-col items-center justify-start h-screen pt-28">
 
 
 
@@ -42,7 +58,124 @@
                     class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Ingresa código de la reserva a buscar" required>
                 <button type="submit"
-                    class="rounded-lg text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                    class="rounded-lg text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
             </div>
+            @if ($ticket == null)
+                @if ($message)
+                    <div class="rounded-md flex items-center mt-2 text-xl text-red-custom-50 dark:text-red-custom-50">
+                        <p class="ml-1">{{ $message }}</p>
+                            <svg class="mr-1 w-4 h-6 text-red-custom-50 ml-2 dark:text-white" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm0 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm1-5.034V12a1 1 0 0 1-2 0v-1.418a1 1 0 0 1 1.038-.999 1.436 1.436 0 0 0 1.488-1.441 1.501 1.501 0 1 0-3-.116.986.986 0 0 1-1.037.961 1 1 0 0 1-.96-1.037A3.5 3.5 0 1 1 11 11.466Z" />
+                                    </svg>
+                                </div>
+                @endif  
         </div>
     </form>
+
+      
+
+    @else
+        <div class="mt-32 w-full lg:max-w-xl p-6  space-y-8 sm:p-8 bg-white    rounded-lg shadow-xl dark:bg-gray-800 z-20 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-56 border border-black">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white text-center ">
+            Detalles de la reserva
+        </h2>
+
+
+        <div>
+            <ul>
+                <li>
+                    <div class="flex">
+                        <div class="bg-green-custom p-2 w-1/2">
+                            <p class="text-white font-bold ">Código de la reserva</p>
+                        </div>
+                        <div class="w-1/2  ">
+                            <p class="text-black font-semibold  mt-2 ml-4">{{ $ticket->code }}</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="flex">
+                        <div class="bg-green-custom p-2 w-1/2">
+                            <p class="text-white font-bold ">Ciudad origen</p>
+                        </div>
+                        <div class="w-1/2 bg-gray-custom-150 ">
+                            <p class="text-black font-semibold  mt-2 ml-4">{{ $ticket->travelDates->origin }}</p>
+                        </div>
+                    </div>
+                </li>
+                <div class="flex">
+                    <div class="bg-green-custom p-2 w-1/2">
+                        <p class="text-white font-bold ">Ciudad destino</p>
+                    </div>
+                    <div class="w-1/2  ">
+                        <p class="text-black font-semibold  mt-2 ml-4">{{ $ticket->travelDates->destination }}</p>
+                    </div>
+                </div>
+                <li>
+                    <div class="flex">
+                        <div class="bg-green-custom p-2 w-1/2">
+                            <p class="text-white font-bold ">Día de la reserva</p>
+                        </div>
+                        <div class="w-1/2 bg-gray-custom-150 ">
+                            <p class="text-black font-semibold  mt-2 ml-4">{{ date('d/m/Y', strtotime($ticket->reservation_date)) }}</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="flex">
+                        <div class="bg-green-custom p-2 w-1/2">
+                            <p class="text-white font-bold ">Cantidad de asientos</p>
+                        </div>
+                        <div class="w-1/2  ">
+                            <p class="text-black font-semibold  mt-2 ml-4">{{ $ticket->seats }}</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="flex">
+                        <div class="bg-green-custom p-2 w-1/2">
+                            <p class="text-white font-bold ">Fecha de la compra</p>
+                        </div>
+                        <div class="w-1/2 bg-gray-custom-150 ">
+                            <p class="text-black font-semibold  mt-2 ml-4">{{  date('d/m/Y h:i:s', strtotime($voucher->created_at)) }}</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="flex">
+                        <div class="bg-green-custom p-2 w-1/2">
+                            <p class="text-white font-bold ">Total de la compra</p>
+                        </div>
+                        <div class="w-1/2  ">
+                            <p class="text-black font-semibold  mt-2 ml-4">${{ number_format($ticket->total, 0, ',', '.') }}</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="flex items-center justify-center">
+            <button type="submit" style="white-space: nowrap;"
+                class="px-5 py-3 text-base font-medium text-center text-white bg-green-custom rounded-lg hover:bg-green-500 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                <a href="{{ route('pdf.download', ['id' => $voucher->ticket_id]) }}">Imprimir</a>
+            </button>
+        </div>
+
+    </div>
+    <footer class="bg-gray-200
+        p-4 text-center mt-auto">
+            <p class="text-sm text-gray-500 dark:text-gray-400">©
+                2023 TurJoy™. Todos los derechos reservados.</p>
+        </footer>
+    @endif
+
+        <footer class="bg-gray-200
+        p-4 text-center mt-auto">
+            <p class="text-sm text-gray-500 dark:text-gray-400">©
+                2023 TurJoy™. Todos los derechos reservados.</p>
+        </footer>
+
+    </body>
+
