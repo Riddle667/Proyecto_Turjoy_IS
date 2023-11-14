@@ -110,7 +110,7 @@
                     Somos una empresa con años de experiencia y nos enorgullece decir que somos líderes del país en las
                     reservas de pasajes en autobús. Nuestra
                     misión es hacer que tus viajes sean fáciles y sin complicaciones. ¡Reserva con nosotros, no te
-                    arrepentiras!
+                    arrepentirás!
                 </p>
             </div>
         </div>
@@ -131,19 +131,23 @@
                     </div>
                 </div>
             </div>
-            <div class="flex items-center justify-center rounded bg-green-custom shadow-md sm:p-6 xl:p-0 mb-9">
+            <div class="flex items-center justify-center rounded bg-green-custom shadow-md p-5 sm:p-6 xl:p-0 mb-9">
                 <div id="donde-trabajamos" class=" text-center text-black">
                     <h2 class="text-4xl font-bold mb-4">Contáctanos</h2>
 
                     <p class="text-xl mt-5">
-                        <span class="font-bold">Dirección:</span> Av. Angamos 0610, Antofagasta, Chile
+                        <span class="font-bold">Dirección:</span> Sinaloa S/N. Sector Alto
                     </p>
-                    <p class="text-xl mt-5">
-                        <span class="font-bold">Horario de atención:</span> Lunes a Viernes de 9:00 a 18:00
+                    <p class="text-xl mt-5 mb-3">
+                        <span class="font-bold">Horario de atención:</span>
+                    <ul class="list-disc mx-16 text-xl">
+                        <li> Lunes a Viernes de 9:00 a 18:00 </li>
+                        <li> Sábado entre 10:00 a 14:00</li>
+                    </ul>
                     </p>
                     <p id="contactanos" class="text-xl mt-5">
                         <span class="font-bold">Para cualquier otra duda, envíanos un <a
-                                href=mailto:italo.donoso@ucn.cl
+                                href=mailto:contacto@turjoy.com
                                 class="border-b border-black hover:text-blue-custom-50 hover:border-blue-custom-50 ">correo</a>.</span>
                     </p>
                 </div>
