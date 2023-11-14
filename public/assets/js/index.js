@@ -15,23 +15,22 @@ const toggleFields = (enable) => {
 };
 
 const adviseButton = () => {
-    if (seatsInput.value <= 0 || seatsInput.value == "") {
-        Swal.fire({
-            title: "¡Error!",
-            text: "Debe seleccionar la cantidad de asientos antes de realizar la reserva",
-            icon: "warning",
-            confirmButtonColor: "#FF6B6B",
-            confirmButtonText: "Ok",
-        });
-    } else if (
+    if (
         selectOrigin.value == "" ||
         selectDestination.value == "" ||
-        inputDate.value == "" ||
-        seatsInput.value == ""
+        inputDate.value == ""
     ) {
         Swal.fire({
             title: "¡Error!",
             text: "Todos los campos son obligatorios",
+            icon: "warning",
+            confirmButtonColor: "#FF6B6B",
+            confirmButtonText: "Ok",
+        });
+    } else if (seatsInput.value <= 0 || seatsInput.value == "") {
+        Swal.fire({
+            title: "¡Error!",
+            text: "Debe seleccionar la cantidad de asientos antes de realizar la reserva",
             icon: "warning",
             confirmButtonColor: "#FF6B6B",
             confirmButtonText: "Ok",
@@ -77,7 +76,9 @@ const adviseButton = () => {
                     "success"
                 );
 
-                formReservation.submit();
+                setTimeout(() => {
+                    formReservation.submit();
+                }, 1000);
             }
         });
     }

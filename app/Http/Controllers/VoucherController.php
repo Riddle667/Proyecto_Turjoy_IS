@@ -31,6 +31,14 @@ class VoucherController extends Controller
     {
         try {
             $ticket = Ticket::findOrFail($id_ticket);
+            $voucher = Voucher::where('ticket_id', $id_ticket)->first();
+
+            if ($voucher) {
+                return view('detail.detail', [
+                    'tickets' => $ticket,
+                    'vouchers' => $voucher,
+                ]);
+            }
         } catch (\Exception $e) {
             return view('error/error');
         }

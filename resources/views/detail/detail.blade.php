@@ -75,7 +75,8 @@
                             <p class="text-white font-bold ">Total de la compra</p>
                         </div>
                         <div class="w-1/2  ">
-                            <p class="text-black font-semibold  mt-2 ml-4">{{ $tickets->total }}</p>
+                            <p class="text-black font-semibold  mt-2 ml-4">
+                                ${{ number_format($tickets->total, 0, ',', '.') }}</p>
                         </div>
                     </div>
                 </li>

@@ -13,6 +13,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Turjoy - Buscar pasajes</title>
 </head>
+
 <body>
     @include('layouts.navbar')
 
@@ -27,19 +28,16 @@
             right: 0;
             left: 0;
             z-index: -1
-
-
-
         }
     </style>
 
 
 
 
-<form class="" method="GET" action="{{ route('search.ticket') }}" novalidate>
-    
+    <form class="" method="GET" action="{{ route('search.ticket') }}" novalidate>
+
         <img src="images/image8.jpg" class="background-image bg-cover bg-center">
-        <div class="flex flex-col items-center justify-start h-screen pt-28">
+        <div class="flex flex-col items-center justify-start h-screen pt-24">
 
 
 
@@ -62,22 +60,21 @@
             </div>
             @if ($ticket == null)
                 @if ($message)
-                    <div class="rounded-md flex items-center mt-2 text-xl text-red-custom-50 dark:text-red-custom-50">
+                    <div
+                        class="rounded-md flex items-center mt-2 text-xl bg-red-custom-50 text-white dark:text-red-custom-50 p-1">
                         <p class="ml-1">{{ $message }}</p>
-                            <svg class="mr-1 w-4 h-6 text-red-custom-50 ml-2 dark:text-white" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm0 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm1-5.034V12a1 1 0 0 1-2 0v-1.418a1 1 0 0 1 1.038-.999 1.436 1.436 0 0 0 1.488-1.441 1.501 1.501 0 1 0-3-.116.986.986 0 0 1-1.037.961 1 1 0 0 1-.96-1.037A3.5 3.5 0 1 1 11 11.466Z" />
-                                    </svg>
-                                </div>
-                @endif  
+                        <svg class="mr-1 w-4 h-6 text-white ml-2 dark:text-white" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm0 16a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm1-5.034V12a1 1 0 0 1-2 0v-1.418a1 1 0 0 1 1.038-.999 1.436 1.436 0 0 0 1.488-1.441 1.501 1.501 0 1 0-3-.116.986.986 0 0 1-1.037.961 1 1 0 0 1-.96-1.037A3.5 3.5 0 1 1 11 11.466Z" />
+                        </svg>
+                    </div>
+                @endif
         </div>
     </form>
-
-      
-
-    @else
-        <div class="mt-32 w-full lg:max-w-xl p-6  space-y-8 sm:p-8 bg-white    rounded-lg shadow-xl dark:bg-gray-800 z-20 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-56 border border-black">
+@else
+    <div
+        class="mt-2 w-full lg:max-w-xl p-6  space-y-8 sm:p-8 bg-white    rounded-lg shadow-xl dark:bg-gray-800 z-20  border border-black">
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white text-center ">
             Detalles de la reserva
         </h2>
@@ -119,7 +116,8 @@
                             <p class="text-white font-bold ">Día de la reserva</p>
                         </div>
                         <div class="w-1/2 bg-gray-custom-150 ">
-                            <p class="text-black font-semibold  mt-2 ml-4">{{ date('d/m/Y', strtotime($ticket->reservation_date)) }}</p>
+                            <p class="text-black font-semibold  mt-2 ml-4">
+                                {{ date('d/m/Y', strtotime($ticket->reservation_date)) }}</p>
                         </div>
                     </div>
                 </li>
@@ -139,7 +137,8 @@
                             <p class="text-white font-bold ">Fecha de la compra</p>
                         </div>
                         <div class="w-1/2 bg-gray-custom-150 ">
-                            <p class="text-black font-semibold  mt-2 ml-4">{{  date('d/m/Y h:i:s', strtotime($voucher->created_at)) }}</p>
+                            <p class="text-black font-semibold  mt-2 ml-4">
+                                {{ date('d/m/Y h:i:s', strtotime($voucher->created_at)) }}</p>
                         </div>
                     </div>
                 </li>
@@ -149,7 +148,8 @@
                             <p class="text-white font-bold ">Total de la compra</p>
                         </div>
                         <div class="w-1/2  ">
-                            <p class="text-black font-semibold  mt-2 ml-4">${{ number_format($ticket->total, 0, ',', '.') }}</p>
+                            <p class="text-black font-semibold  mt-2 ml-4">
+                                ${{ number_format($ticket->total, 0, ',', '.') }}</p>
                         </div>
                     </div>
                 </li>
@@ -164,18 +164,13 @@
         </div>
 
     </div>
-    <footer class="bg-gray-200
-        p-4 text-center mt-auto">
-            <p class="text-sm text-gray-500 dark:text-gray-400">©
-                2023 TurJoy™. Todos los derechos reservados.</p>
-        </footer>
+
     @endif
 
-        <footer class="bg-gray-200
-        p-4 text-center mt-auto">
-            <p class="text-sm text-gray-500 dark:text-gray-400">©
-                2023 TurJoy™. Todos los derechos reservados.</p>
-        </footer>
+    <footer class="bg-gray-200
+        p-4 text-center mt-auto w-full">
+        <p class="text-sm text-gray-500 dark:text-gray-400">©
+            2023 TurJoy™. Todos los derechos reservados.</p>
+    </footer>
 
-    </body>
-
+</body>

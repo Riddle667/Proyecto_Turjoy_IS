@@ -12,21 +12,27 @@ class TicketController extends Controller
     public function search()
     {
         $ticket = null;
-        return view('layouts.tickets',[
+        return view('layouts.tickets', [
             'message' => null,
             'ticket' => $ticket,
         ]);
     }
- 
+
     public function show(Request $request)
     {
- 
+
         $code = $request->search;
+        if (!$code) {
+            return view('layouts.tickets', [
+                'message' => ' Debe proporcionar un código de reserva',
+                'ticket' => null,
+            ]);
+        }
         $ticket = Ticket::where('code', "=", $code)->first();
 
         if (!$ticket) {
             return view('layouts.tickets', [
-                'message' => ' Debe proporcionar un código de reserva',
+                'message' => ' La reserva ' . $code . ' no existe en el sistema',
                 'ticket' => $ticket,
             ]);
         }
@@ -36,7 +42,6 @@ class TicketController extends Controller
             'ticket' => $ticket,
             'voucher' => $voucher,
         ]);
-
     }
 
     public static function getOccupiedSeats($routeId, $date)
@@ -75,10 +80,9 @@ class TicketController extends Controller
             'total' => $request->baseValue * $request->seats,
             'user_id' => "NULL",
         ]);
-        
+
         return redirect()->route('generate.pdf', [
             'id' => $ticket->id,
         ]);
-
     }
 }
