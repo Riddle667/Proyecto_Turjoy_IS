@@ -42,8 +42,8 @@
 
 
             <div class="relative w-2/4 mt-8">
-                <div class="flex items-center justify-center text-white text-4xl text-montserrat mb-5"><em>Tu siguiente
-                        aventura empieza aquí.</em></div>
+                <div class="flex items-center justify-center text-white text-4xl text-montserrat mb-5"><em>Ingresa el 
+                      código de la reserva a buscar</em></div>
 
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <svg class="mt-14 w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
