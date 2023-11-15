@@ -31,7 +31,7 @@ Route::post('/addticket', [TicketController::class, 'store'])->name('ticket.add'
 Route::get('login', [LoginController::class, 'create'])->name('login');
 Route::post('login/store', [LoginController::class, 'store'])->name('login.store');
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
-Route::get('/travel-reservation/{id}', [VoucherController::class, 'generatePDF'])->name('generate.pdf');
+Route::get('/travel-reservation/{code}', [VoucherController::class, 'generatePDF'])->name('generate.pdf');
 Route::get('download-pdf/{id}', [VoucherController::class, 'downloadPDF'])->name('pdf.download');
 
 Route::middleware(['auth'])->group(function () {

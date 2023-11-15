@@ -82,7 +82,7 @@ class TicketController extends Controller
         ]);
 
         return redirect()->route('generate.pdf', [
-            'id' => $ticket->id,
+            'code' => $ticket->code,
         ]);
     }
 }
