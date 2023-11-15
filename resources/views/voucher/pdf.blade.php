@@ -60,7 +60,7 @@
     <div>
         <h3>Viajes Turjoy</h3>
         <h3>Fecha:
-            <span>{{ $date }}</span>
+            <span>{{ date('d/m/Y', strtotime($date)) }}</span>
         </h3>
     </div>
     <div>
@@ -75,13 +75,13 @@
             <span>{{ $ticket->travelDates->destination }}</span>
         </p>
         <p>Dia de la reserva:
-            <span>{{ $ticket->reservation_date }}</span>
+            <span>{{ date('d/m/Y', strtotime($ticket->reservation_date)) }}</span>
         </p>
         <p>Cantidad de asientos:
             <span>{{ $ticket->seats }}</span>
         </p>
         <p>Fecha de la compra:
-            <span>{{ $date }}</span>
+            <span>{{ date('d/m/Y', strtotime($date)) }}</span>
         </p>
     </div>
     <hr>
