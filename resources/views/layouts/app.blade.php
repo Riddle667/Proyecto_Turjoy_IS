@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="180x180" href="{{ asset('images/favicon.png') }}">
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Turjoy - Reservar pasajes</title>
@@ -51,7 +51,7 @@
                     </div>
                 </div>
 
-                <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+                <div class="absolute z-30 hidden space-x-3 -translate-x-1/2 bottom-5 left-1/2 md:flex">
                     <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
                         data-carousel-slide-to="0"></button>
                     <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
@@ -106,8 +106,11 @@
         <div class="flex items-center justify-center h-48 mb rounded bg-blue-custom-50 dark:bg-gray-800">
             <div id="donde-trabajamos" class=" text-center text-white">
                 <h2 class="text-3xl font-bold mb-4">¿Quiénes somos?</h2>
-                <p class="text-lg">
-                    Somos un equipo apasionado que se dedica a...
+                <p class="xs:text-lg mr-2 ml-2 sm:text-xl">
+                    Somos una empresa con años de experiencia y nos enorgullece decir que somos líderes del país en las
+                    reservas de pasajes en autobús. Nuestra
+                    misión es hacer que tus viajes sean fáciles y sin complicaciones. ¡Reserva con nosotros, no te
+                    arrepentirás!
                 </p>
             </div>
         </div>
@@ -128,36 +131,39 @@
                     </div>
                 </div>
             </div>
-            <div class="flex items-center justify-center rounded bg-green-custom shadow-md sm:p-6 xl:p-0 mb-9">
+            <div class="flex items-center justify-center rounded bg-green-custom shadow-md p-5 sm:p-6 xl:p-0 mb-9">
                 <div id="donde-trabajamos" class=" text-center text-black">
                     <h2 class="text-4xl font-bold mb-4">Contáctanos</h2>
-                    <p class="text-xl">
-                        <span class="font-bold">Teléfono:</span> +56 9 1234 5678
-                    </p>
+
                     <p class="text-xl mt-5">
-                        <span class="font-bold">Dirección:</span> Av. Angamos 0610, Antofagasta, Chile
+                        <span class="font-bold">Dirección:</span> Sinaloa S/N. Sector Alto
                     </p>
-                    <p class="text-xl mt-5">
-                        <span class="font-bold">Horario de atención:</span> Lunes a Viernes de 9:00 a 18:00
+                    <p class="text-xl mt-5 mb-3">
+                        <span class="font-bold">Horario de atención:</span>
+                    <ul class="list-disc mx-16 text-xl">
+                        <li> Lunes a Viernes de 9:00 a 18:00 </li>
+                        <li> Sábado entre 10:00 a 14:00</li>
+                    </ul>
                     </p>
                     <p id="contactanos" class="text-xl mt-5">
                         <span class="font-bold">Para cualquier otra duda, envíanos un <a
-                                href=mailto:italo.donoso@ucn.cl
+                                href=mailto:contacto@turjoy.com
                                 class="border-b border-black hover:text-blue-custom-50 hover:border-blue-custom-50 ">correo</a>.</span>
                     </p>
                 </div>
             </div>
         </div>
     @endif
-    <footer class="bg-gray-200
-                        p-4 text-center mt-auto">
-        <p class="text-sm text-gray-500 dark:text-gray-400">©
-            2023 TurJoy™. Todos los derechos reservados.</p>
-    </footer>
     <main>
         @yield('content')
         @yield('js')
     </main>
+
+    <footer class="bg-gray-200
+    p-4 text-center mt-auto">
+        <p class="text-sm text-gray-500 dark:text-gray-400">©
+            2023 TurJoy™. Todos los derechos reservados.</p>
+    </footer>
 </body>
 
 </html>

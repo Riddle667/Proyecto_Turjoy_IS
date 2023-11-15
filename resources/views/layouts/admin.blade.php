@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" sizes="180x180" href="{{ asset('images/favicon.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Configuración del sistema</title>
+
 </head>
 
 <body class="flex flex-col max-h-screen">
@@ -29,5 +30,3 @@
 </body>
 
 </html>
-
-

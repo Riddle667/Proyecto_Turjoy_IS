@@ -126,6 +126,19 @@ class RouteController extends Controller
         ]);
     }
 
+    public function getAvailableSeats($origin, $destination, $date)
+    {
+        $route = Route::where('origin', $origin)->where('destination', $destination)->first();
+        $seats = Route::where('id', $route->id)->pluck('seats')->first();
+        $occupiedSeats = TicketController::getOccupiedSeats($route->id, $date);
+        $availableSeats = $seats - $occupiedSeats;
+        return response()->json([
+            'availableSeats' => $availableSeats,
+            'routeId' => $route->id,
+            'baseValue' => $route->base_value,
+        ]);
+    }
+
     public function welcomeIndex()
     {
         $travels = Route::get()->count();
