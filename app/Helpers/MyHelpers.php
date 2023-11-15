@@ -22,10 +22,10 @@ function makeMessages()
 
 function validDate($date)
 {
-    $fechaActual = date("d-m-Y");
-    $fechaVerificar = Carbon::parse($date);
+    $actualDate = date("d-m-Y");
+    $verifyDate = Carbon::parse($date);
 
-    if ($fechaVerificar->lessThan($fechaActual)) {
+    if ($verifyDate->lessThan($actualDate)) {
         return true;
     }
 
