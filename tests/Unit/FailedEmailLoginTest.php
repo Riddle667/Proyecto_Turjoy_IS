@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
 
-class FailedPassLoginTest extends TestCase
+class FailedEmailLoginTest extends TestCase
 {
     use DatabaseTransactions;
     use WithoutMiddleware;
@@ -16,8 +16,8 @@ class FailedPassLoginTest extends TestCase
     public function testFailedLogin()
     {
         $response = $this->post('login/store', [
-            'email' => 'italo.donoso@ucn.cl',
-            'password' => 'Contrasena123',
+            'email' => 'italo@ucn.cl',
+            'password' => 'Turjoy91',
         ]);
 
         $response->assertStatus(401);

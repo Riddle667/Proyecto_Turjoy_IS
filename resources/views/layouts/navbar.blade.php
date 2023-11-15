@@ -3,7 +3,8 @@
         <a href="#" class="flex items-center">
             <img src="{{ asset('images/Logo.png') }}" class="h-20 w-20 mr-3" alt="Turjoy Logo" />
             <span class="self-center text-2xl whitespace-nowrap dark:text-black">
-                <span class="text-blue-500 font-bold">Tur</span><span class="dark:text-black font-bold">joy</span>
+                <span class="text-blue-custom-50 font-bold">Tur</span><span
+                    class="text-gray-custom-50 font-bold">joy</span>
             </span>
         </a>
         <button data-collapse-toggle="navbar-default" type="button"
@@ -21,29 +22,30 @@
                 class="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-3 xl:space-x-5 md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                 <li class="flex items-center">
                     <a href="{{ route('welcome') }}"
-                        class="block p-4 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 xl:text-xl md:test-base font-mulish-bol font-medium  px-1 py-1 pl-1 text-center md:mr-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Inicio</a>
+                        class="block p-4 pr-4 text-gray-custom-50 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 xl:text-xl md:test-base font-mulish-bol font-medium  px-1 py-1 pl-1 text-center md:mr-0 md:hover:text-blue-custom-50 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Inicio</a>
                 </li>
                 <li class="flex items-center">
-                    <a href="#quienes-somos"
-                        class="block p-4 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  xl:text-xl md:test-base font-mulish-bol font-medium  px-1 py-1 pl-1 text-center md:mr-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">¿Quiénes
-                        somos?</a>
-                </li>
-                <li class="flex items-center">
-                    <a href="#donde-trabajamos"
-                        class="block p-4 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 xl:text-xl md:test-base font-mulish-bol font-medium  px-1 py-1 pl-1 text-center md:mr-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">¿Dónde
-                        trabajamos?</a>
-                </li>
-                <li class="flex items-center">
-                    <a href="#contactanos"
-                        class="block p-4 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 xl:text-xl md:test-base font-mulish-bol font-medium  px-1 py-1 pl-1 text-center md:mr-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contáctanos</a>
+                    <a href="{{ route('search') }}"
+                        class="block p-4 pr-4 text-gray-custom-50 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  xl:text-xl md:test-base font-mulish-bol font-medium  px-1 py-1 pl-1 text-center md:mr-0 md:hover:text-blue-custom-50 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Buscar
+                        reservas</a>
                 </li>
                 <li>
-                    <div
-                        class=  "rounded-lg xl:p-2 sm:p-1 md:p-1 bg-blue-700 hover:bg-blue-800 dark:bg-blue-600 dark:hover-bg-blue-700 dark:focus:ring-blue-800">
-                        <a href="{{ route('login') }}"
-                            class="shadow-md text-white font-mulish-bol md:text-base font-medium block text-lg px-1 py-1 pl-1 pr-4 text-center md:p-0 md:mr-0 ">Iniciar
-                            sesión</a>
-                    </div>
+                    @if (auth()->check())
+                        <div
+                            class=  "rounded-lg xl:p-2 sm:p-1 md:p-1 bg-blue-custom-50 hover:bg-blue-800 dark:bg-blue-600 dark:hover-bg-blue-700 dark:focus:ring-blue-800">
+                            <a href="{{ route('routes.index') }}"
+                                class="shadow-md text-white font-mulish-bol md:text-base font-medium block text-lg px-1 py-1 pl-1 pr-4 text-center md:p-0 md:mr-0 ">Iniciar
+                                sesión</a>
+                        </div>
+                    @else
+                        <div
+                            class=  "rounded-lg xl:p-2 sm:p-1 md:p-1 bg-blue-custom-50 hover:bg-blue-800 dark:bg-blue-600 dark:hover-bg-blue-700 dark:focus:ring-blue-800">
+                            <a href="{{ route('login') }}"
+                                class="shadow-md text-white font-mulish-bol md:text-base font-medium block text-lg px-1 py-1 pl-1 pr-4 text-center md:p-0 md:mr-0 ">Iniciar
+                                sesión</a>
+                        </div>
+                    @endif
+
                 </li>
             </ul>
         </div>

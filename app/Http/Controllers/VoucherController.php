@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Voucher;
 use App\Models\Ticket;
 use Dompdf\Dompdf;
@@ -12,11 +13,12 @@ use Illuminate\Http\Request;
 class VoucherController extends Controller
 {
 
-    public function downloadPDF($id){
+    public function downloadPDF($id)
+    {
 
         $pdf = Voucher::findOrFail($id);
 
-        $path = storage_path('app\public\\'.$pdf->uri);
+        $path = storage_path('app\public\\' . $pdf->uri);
 
         $filename = $pdf->pdf_name;
 
@@ -25,40 +27,53 @@ class VoucherController extends Controller
         return response()->download($path, $filename, ['Content-Type' => $mimeType]);
     }
 
-    public function generatePDF($id_ticket)
+    public function generatePDF($code)
     {
+        try {
+            $ticket = Ticket::where('code', $code)->first();
+            $voucher = Voucher::where('ticket_id', $ticket->id)->first();
 
-         $ticket = Ticket::findOrFail($id_ticket);
-         $domPDF = new Dompdf();
+            if ($voucher) {
+                return view('detail.detail', [
+                    'tickets' => $ticket,
+                    'vouchers' => $voucher,
+                ]);
+            }
+        } catch (\Exception $e) {
+            return view('error/error');
+        }
 
-         $data = [
+
+        $domPDF = new Dompdf();
+
+        $data = [
             'ticket' => $ticket,
-            'date'=> date('d-m-Y'),
-         ];
+            'date' => date('d-m-Y'),
+        ];
 
-         $view_html = view('voucher.pdf', $data)->render();
+        $view_html = view('voucher.pdf', $data)->render();
 
-         $domPDF->loadHtml($view_html);
+        $domPDF->loadHtml($view_html);
 
-         $domPDF->setPaper('A4','portrait');
+        $domPDF->setPaper('A4', 'portrait');
 
-         $domPDF->render();
+        $domPDF->render();
 
 
-         $filename = 'user_'.Str::random(10).'.pdf';
+        $filename = 'user_' . Str::random(10) . '.pdf';
 
-         $path = 'pdfs\\'.$filename;
-         Storage::disk('public')->put($path,$domPDF->output());
+        $path = 'pdfs\\' . $filename;
+        Storage::disk('public')->put($path, $domPDF->output());
 
-         $voucher = Voucher::create([
+        $voucher = Voucher::create([
             'uri' => $path,
-            'ticket_id' => $id_ticket,
+            'ticket_id' => $ticket->id,
             'purchased_date' => date('Y-m-d'),
-         ]);
+        ]);
 
-         return view('detail.detail',[
+        return view('detail.detail', [
             'tickets' => $ticket,
             'vouchers' => $voucher,
-         ]);
+        ]);
     }
 }
