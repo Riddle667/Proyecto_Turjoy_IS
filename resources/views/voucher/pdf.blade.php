@@ -17,7 +17,7 @@
         }
 
         h2 {
-            color: #a00318;
+            color: #2A49FF;
         }
 
         h3 {
@@ -47,7 +47,7 @@
         }
 
         .method-pay {
-            color: #a9a9a9;
+            color: #EAEAEA;
             font-weight: bold;
             margin-top: 5px;
             text-align: center;
@@ -66,7 +66,7 @@
     <div>
         <h2>Datos de la reserva</h2>
         <p>Codigo de reserva:
-            <span>{{ $ticket->code}}</span>
+            <span>{{ $ticket->code }}</span>
         </p>
         <p>Ciudad de origen:
             <span>{{ $ticket->travelDates->origin }}</span>
@@ -78,7 +78,7 @@
             <span>{{ $ticket->reservation_date }}</span>
         </p>
         <p>Cantidad de asientos:
-            <span>{{ $ticket->seats}}</span>
+            <span>{{ $ticket->seats }}</span>
         </p>
         <p>Fecha de la compra:
             <span>{{ $date }}</span>
@@ -86,7 +86,7 @@
     </div>
     <hr>
     <div class="total">
-        <p class="total-pay">Total pagado: ${{ $ticket->total }}</p>
+        <p class="total-pay">Total pagado: ${{ number_format($ticket->total, 0, ',', '.') }}</p>
     </div>
 </body>
 

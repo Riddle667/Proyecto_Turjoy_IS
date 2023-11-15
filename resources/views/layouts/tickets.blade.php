@@ -15,7 +15,12 @@
 </head>
 
 <body>
-    @include('layouts.navbar')
+    @if (auth()->check())
+        @include('layouts.navbarAdmin');
+        @include('layouts.sidebar');
+    @else
+        @include('layouts.navbar')
+    @endif
 
     <style>
         .background-image {
@@ -42,8 +47,8 @@
 
 
             <div class="relative w-2/4 mt-8">
-                <div class="flex items-center justify-center text-white text-4xl text-montserrat mb-5"><em>Ingresa el 
-                      código de la reserva a buscar</em></div>
+                <div class="flex items-center justify-center text-white text-4xl text-montserrat mb-5"><em>Ingresa el
+                        código de la reserva a buscar</em></div>
 
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <svg class="mt-14 w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -74,7 +79,7 @@
     </form>
 @else
     <div
-        class="mt-2 w-full lg:max-w-xl p-6  space-y-8 sm:p-8 bg-white    rounded-lg shadow-xl dark:bg-gray-800 z-20  border border-black">
+        class="mt-2 w-full lg:max-w-xl p-6  space-y-5 sm:p-8 bg-white    rounded-lg shadow-xl dark:bg-gray-800 z-20  border border-black">
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white text-center ">
             Detalles de la reserva
         </h2>

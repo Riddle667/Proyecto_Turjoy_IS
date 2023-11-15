@@ -47,6 +47,10 @@ const adviseButton = () => {
         const options = { timeZone: "America/Santiago" };
         const date = new Date(inputDate.value.replace(/-/g, "/"));
         const dateFormatted = date.toLocaleDateString("es-ES", options);
+        const formattedNumber = new Intl.NumberFormat("es-ES").format(
+            seatsInput.value * baseValue.value
+        );
+
         console.log(dateFormatted);
         Swal.fire({
             title: "¿Estás seguro?",
@@ -58,7 +62,7 @@ const adviseButton = () => {
                 " para el día " +
                 dateFormatted +
                 " es de $" +
-                seatsInput.value * baseValue.value +
+                formattedNumber +
                 " (" +
                 seatsInput.value +
                 " asientos) ¿Desea continuar?",
