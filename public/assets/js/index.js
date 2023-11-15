@@ -27,7 +27,11 @@ const adviseButton = () => {
             confirmButtonColor: "#FF6B6B",
             confirmButtonText: "Ok",
         });
-    } else if (seatsInput.value <= 0 || seatsInput.value == "") {
+    } else if (
+        seatsInput.value <= 0 ||
+        seatsInput.value == "" ||
+        seatsInput.value % 1 != 0
+    ) {
         Swal.fire({
             title: "¡Error!",
             text: "Debe seleccionar la cantidad de asientos antes de realizar la reserva",
