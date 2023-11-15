@@ -61,7 +61,7 @@
                     class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Ingresa código de la reserva a buscar" required>
                 <button type="submit"
-                    class="rounded-lg text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
+                    class="rounded-lg text-white absolute right-2.5 bottom-2.5 bg-blue-custom-50 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
             </div>
             @if ($ticket == null)
                 @if ($message)
@@ -172,10 +172,10 @@
 
     @endif
 
-    <footer class="bg-gray-200
-        p-4 text-center mt-auto w-full">
-        <p class="text-sm text-gray-500 dark:text-gray-400">©
-            2023 TurJoy™. Todos los derechos reservados.</p>
-    </footer>
-
 </body>
+
+<footer class="bg-gray-200
+p-4 text-center mt-auto w-full">
+    <p class="text-sm text-gray-500 dark:text-gray-400">©
+        2023 TurJoy™. Todos los derechos reservados.</p>
+</footer>
