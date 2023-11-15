@@ -4,19 +4,19 @@
 
 <title>Turjoy - Iniciar sesión</title>
 @section('content')
-    <div class=" h-screen w-screen">
+    <div class="">
         <img src="/images/descarga.gif" alt="" class=" h-screen w-screen relative">
     </div>
     <section class="bg-auto bg-gray-custom-100 dark:bg-gray-custom-50 ">
         <div
-            class="flex flex-col items-center justify-center  py-5  absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-96 ">
+            class="flex flex-col items-center justify-center  pt-4  absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-96 ">
 
             <div
-                class="border border-gray-300 shadow-lg p-4 w-full bg-gray-custom-100 rounded-lg  dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 mr-5 ml-5">
-                <img class="m-auto w-40 h-21 mr-2 " src="https://i.ibb.co/smMLzzL/Logo-Tur-Joy.png" alt="logo">
+                class="border border-gray-300 shadow-lg p-3 m-4 w-full bg-gray-custom-100 rounded-lg  dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 mr-5 ml-5">
+                <img class="m-auto w-28 h-28 mr-2 " src="https://i.ibb.co/smMLzzL/Logo-Tur-Joy.png" alt="logo">
 
 
-                <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <div class="p-6 space-y-4 md:space-y-6 sm:p-10">
                     <h1
                         class="text-3xl font-bold font-mulish leading-tight tracking-tight text-gray-custom-50 md:text-4 dark:text-white ">
                         Bienvenido a Turjoy
@@ -87,15 +87,11 @@
                             </div>
                         </div>
                         <button type="submit"
-                            class="shadow-md py-4 bg-gradient-to-r from-blue-custom-50 to-blue-custom-100 font-mulish-light w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Iniciar
+                            class="shadow-md py-4 bg-gradient-to-r from-blue-custom-50 to-blue-custom-100 font-mulish-light w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Iniciar
                             sesión</button>
-
-                        <br>
-                        <br>
-                        <br>
                         <div>
                             <a href="{{ route('welcome') }}" type="button"
-                                class="shadow-md bg-gradient-to-r from-blue-custom-50 to-blue-custom-100 font-mulish-light px-6 py-0.5 text-s text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Atrás</a>
+                                class="shadow-md py-4 bg-gradient-to-r from-red-custom-50 to-red-custom-100 font-mulish-light w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Atrás</a>
                         </div>
                     </form>
                 </div>
