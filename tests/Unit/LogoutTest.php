@@ -11,7 +11,6 @@ use Tests\TestCase;
 class LogoutTest extends TestCase
 {
     use DatabaseTransactions;
-    use WithoutMiddleware;
 
 
     public function testLogout()
@@ -22,9 +21,6 @@ class LogoutTest extends TestCase
         ]);
 
         $this->get('logout');
-        $this->assertTrue(Auth::check());
-
-
-
+        $this->assertFalse(Auth::check());
     }
 }

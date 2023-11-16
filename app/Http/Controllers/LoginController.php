@@ -14,7 +14,6 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         $messages = makeMessages();
-
         $this->validate($request, [
             'email' => ['required', 'email'],
             'password' => ['required'],

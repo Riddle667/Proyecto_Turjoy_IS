@@ -41,7 +41,7 @@
 
     <form class="" method="GET" action="{{ route('search.ticket') }}" novalidate>
 
-        <img src="images/image8.jpg" class="background-image bg-cover bg-center">
+        <img src="images/image8.jpg" class="background-image bg-cover bg-center h-screen w-screen">
         <div class="flex flex-col items-center justify-start h-screen pt-24">
 
 
@@ -62,6 +62,7 @@
                     placeholder="Ingresa código de la reserva a buscar" required>
                 <button type="submit"
                     class="rounded-lg text-white absolute right-2.5 bottom-2.5 bg-blue-custom-50 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
+
             </div>
             @if ($ticket == null)
                 @if ($message)
@@ -172,10 +173,10 @@
 
     @endif
 
-</body>
 
-<footer class="bg-gray-200
-p-4 text-center mt-auto w-full">
-    <p class="text-sm text-gray-500 dark:text-gray-400">©
-        2023 TurJoy™. Todos los derechos reservados.</p>
-</footer>
+    <footer class="z-50 w-full bg-gray-200 p-4 text-center mt-auto">
+        <p class="text-sm text-gray-500 dark:text-gray-400">©
+            2023 TurJoy™. Todos los derechos reservados.</p>
+    </footer>
+
+</body>

@@ -43,6 +43,3 @@ Route::middleware(['auth'])->group(function () {
 Route::fallback(function () {
     return view('error/error');
 });
-
-Route::get('/travel-reservation/{id}', [VoucherController::class, 'generatePDF'])->name('generate.pdf');
-Route::get('download-pdf/{id}', [VoucherController::class, 'downloadPDF'])->name('pdf.download');

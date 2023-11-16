@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
 
