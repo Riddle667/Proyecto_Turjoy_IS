@@ -27,13 +27,23 @@ class VoucherController extends Controller
         return response()->download($path, $filename, ['Content-Type' => $mimeType]);
     }
 
-    public function generatePDF($id_ticket)
+    public function generatePDF($code)
     {
         try {
-            $ticket = Ticket::findOrFail($id_ticket);
+            $ticket = Ticket::where('code', $code)->first();
+            $voucher = Voucher::where('ticket_id', $ticket->id)->first();
+
+            if ($voucher) {
+                return view('detail.detail', [
+                    'tickets' => $ticket,
+                    'vouchers' => $voucher,
+                ]);
+            }
         } catch (\Exception $e) {
             return view('error/error');
         }
+
+
         $domPDF = new Dompdf();
 
         $data = [
@@ -57,7 +67,7 @@ class VoucherController extends Controller
 
         $voucher = Voucher::create([
             'uri' => $path,
-            'ticket_id' => $id_ticket,
+            'ticket_id' => $ticket->id,
             'purchased_date' => date('Y-m-d'),
         ]);
 

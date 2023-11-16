@@ -22,10 +22,10 @@ function makeMessages()
 
 function validDate($date)
 {
-    $fechaActual = date("d-m-Y");
-    $fechaVerificar = Carbon::parse($date);
+    $actualDate = date("d-m-Y");
+    $verifyDate = Carbon::parse($date);
 
-    if ($fechaVerificar->lessThan($fechaActual)) {
+    if ($verifyDate->lessThan($actualDate)) {
         return true;
     }
 
@@ -35,10 +35,11 @@ function validDate($date)
 function generateReservationNumber()
 {
     do {
-        $letters = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(4/strlen($x)) )),1,4);; // Genera 4 letras aleatorias
+        $letters = Str::random(4); // Genera 2 letras aleatorias
+        $letters = strtoupper($letters); // Convierte las letras a mayúsculas
         $numbers = mt_rand(10, 99); // Genera 2 números aleatorios
 
-        $code = $letters.$numbers;
+        $code = $letters . $numbers;
 
         $response = Ticket::where('code', $code)->first();
     } while ($response);

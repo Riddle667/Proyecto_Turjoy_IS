@@ -18,12 +18,23 @@ const adviseButton = () => {
     if (
         selectOrigin.value == "" ||
         selectDestination.value == "" ||
-        inputDate.value == "" ||
-        seatsInput.value == ""
+        inputDate.value == ""
     ) {
         Swal.fire({
             title: "¡Error!",
             text: "Todos los campos son obligatorios",
+            icon: "warning",
+            confirmButtonColor: "#FF6B6B",
+            confirmButtonText: "Ok",
+        });
+    } else if (
+        seatsInput.value <= 0 ||
+        seatsInput.value == "" ||
+        seatsInput.value % 1 != 0
+    ) {
+        Swal.fire({
+            title: "¡Error!",
+            text: "Debe seleccionar la cantidad de asientos antes de realizar la reserva",
             icon: "warning",
             confirmButtonColor: "#FF6B6B",
             confirmButtonText: "Ok",
@@ -36,18 +47,14 @@ const adviseButton = () => {
             confirmButtonColor: "#FF6B6B",
             confirmButtonText: "Ok",
         });
-    } else if (seatsInput.value <= 0) {
-        Swal.fire({
-            title: "¡Error!",
-            text: "Seleccione una cantidad válida",
-            icon: "warning",
-            confirmButtonColor: "#FF6B6B",
-            confirmButtonText: "Ok",
-        });
     } else {
         const options = { timeZone: "America/Santiago" };
         const date = new Date(inputDate.value.replace(/-/g, "/"));
         const dateFormatted = date.toLocaleDateString("es-ES", options);
+        const formattedNumber = new Intl.NumberFormat("es-ES").format(
+            seatsInput.value * baseValue.value
+        );
+
         console.log(dateFormatted);
         Swal.fire({
             title: "¿Estás seguro?",
@@ -59,7 +66,7 @@ const adviseButton = () => {
                 " para el día " +
                 dateFormatted +
                 " es de $" +
-                seatsInput.value * baseValue.value +
+                formattedNumber +
                 " (" +
                 seatsInput.value +
                 " asientos) ¿Desea continuar?",
@@ -77,7 +84,9 @@ const adviseButton = () => {
                     "success"
                 );
 
-                formReservation.submit();
+                setTimeout(() => {
+                    formReservation.submit();
+                }, 1000);
             }
         });
     }
@@ -193,10 +202,6 @@ const loadOrigins = (e) => {
 formReservation.addEventListener("submit", (e) => {
     e.preventDefault();
     adviseButton();
-});
-
-reservationButton.addEventListener("click", function () {
-    adviseButton(); // Muestra la confirmación SweetAlert
 });
 
 document.addEventListener("DOMContentLoaded", loadOrigins);
