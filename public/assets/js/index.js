@@ -30,7 +30,8 @@ const adviseButton = () => {
     } else if (
         seatsInput.value <= 0 ||
         seatsInput.value == "" ||
-        seatsInput.value % 1 != 0
+        seatsInput.value % 1 != 0 ||
+        /^0[0-9]+$/.test(seatsInput.value)
     ) {
         Swal.fire({
             title: "¡Error!",
