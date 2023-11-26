@@ -85,4 +85,8 @@ class TicketController extends Controller
             'code' => $ticket->code,
         ]);
     }
+
+    public function showReport(){
+        return view('report');
+    }
 }

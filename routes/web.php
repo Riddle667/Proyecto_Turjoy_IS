@@ -38,6 +38,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/add/route', [RouteController::class, 'indexAddRoutes'])->name('routes.index');
     Route::post('/addroute', [RouteController::class, 'routeCheck'])->name('route.check');
     Route::get('/result/routes', [RouteController::class, 'indexRoutes'])->name('routesAdd.index');
+    Route::get('/report', [TicketController::class, 'showReport'])->name('report.index');
+
 });
 
 Route::fallback(function () {
