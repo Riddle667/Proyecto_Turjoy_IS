@@ -14,14 +14,13 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         $messages = makeMessages();
-
         $this->validate($request, [
             'email' => ['required', 'email'],
             'password' => ['required'],
         ], $messages);
 
         if (!auth()->attempt($request->only('email', 'password'), $request->rename)) {
-            return back()->with('message', 'Usuario no registrado o contraseña incorrecta');
+            return back()->with('message', 'Usuario no registrado o contraseña incorrecta')->setStatusCode(401);
         }
 
         return redirect()->route('routes.index');
