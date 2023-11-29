@@ -56,12 +56,16 @@ class TicketController extends Controller
         // Generar el numero de reserva
         $code = generateReservationNumber();
 
+        $request->merge(['payMethod' => 'Efectivo']);
+
+
         // Validar
         $makeMessages = makeMessages();
         $this->validate($request, [
             'seats' => ['required'],
             'baseValue' => ['required'],
             'date' => ['date', 'required'],
+            'payMethod' => ['required'],
         ], $makeMessages);
 
 
@@ -69,6 +73,10 @@ class TicketController extends Controller
         $invalidDate = validDate($request->date);
         if ($invalidDate) {
             return back()->with('message', 'La fecha debe ser igual o mayor a ' . date('d-m-Y'));
+        }
+        $validPay = validPayMethod($request->payMethod);
+        if (!$validPay) {
+            return back()->with('message', 'El método de pago es invalido.');
         }
 
         // Crear la reserva
@@ -78,6 +86,7 @@ class TicketController extends Controller
             'reservation_date' => $request->date,
             'seats' => $request->seats,
             'total' => $request->baseValue * $request->seats,
+            'pay_method' => $request->payMethod,
             'user_id' => "NULL",
         ]);
 
