@@ -159,6 +159,16 @@
                         </div>
                     </div>
                 </li>
+                <li>
+                    <div class="flex">
+                        <div class="bg-green-custom p-2 w-1/2">
+                            <p class="text-white font-bold ">Método de pago seleccionado</p>
+                        </div>
+                        <div class="w-1/2  ">
+                            <p class="text-black font-semibold  mt-2 ml-4">{{ $ticket->pay_method }}</p>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
 

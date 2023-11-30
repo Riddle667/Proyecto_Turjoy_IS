@@ -56,8 +56,6 @@ class TicketController extends Controller
         // Generar el numero de reserva
         $code = generateReservationNumber();
 
-        $request->merge(['payMethod' => 'Efectivo']);
-
 
         // Validar
         $makeMessages = makeMessages();
@@ -68,7 +66,7 @@ class TicketController extends Controller
             'payMethod' => ['required'],
         ], $makeMessages);
 
-
+        // dd($request);
         //  Verificamos si la fecha ingresada es mayor a la fecha actual.
         $invalidDate = validDate($request->date);
         if ($invalidDate) {
