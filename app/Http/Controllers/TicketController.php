@@ -87,6 +87,33 @@ class TicketController extends Controller
     }
 
     public function showReport(){
-        return view('report');
+
+        $tickets = Ticket::all();
+
+        return view('report', [
+            'tickets' => $tickets,
+        ]);
+    }
+
+    public function searchByDate(Request $request){
+
+        $messages = makeMessages();
+        $this->validate($request, [
+            'initDate' => ['required', 'date'],
+            'endDate' => ['required', 'date', 'after_or_equal:initDate'],
+        ], $messages);
+
+        $initDate = $request->initDate;
+        $endDate = $request->endDate;
+
+        $tickets = Ticket::whereBetween('reservation_date', [$initDate, $endDate])->orderBy('reservation_date', 'asc')->get();
+
+        if ($tickets->count() == 0){
+            return back()->with('message', 'no se encontraron reservas dentro del rango seleccionado');
+        }
+
+        return view('report', [
+            'tickets' => $tickets,
+        ]);
     }
 }
