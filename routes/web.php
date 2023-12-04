@@ -39,7 +39,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/addroute', [RouteController::class, 'routeCheck'])->name('route.check');
     Route::get('/result/routes', [RouteController::class, 'indexRoutes'])->name('routesAdd.index');
     Route::get('/report', [TicketController::class, 'showReport'])->name('report.index');
-
+    Route::post('/search-tickets', [TicketController::class, 'searchByDate'])->name('searchByDate');
 });
 
 Route::fallback(function () {
