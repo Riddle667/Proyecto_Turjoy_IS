@@ -38,32 +38,47 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 </div>
                 <div>
-                    <label for="payMethod" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Método de pago:</label>
-                    <select name="payMethod" id="payMethod" class="js-example-basic-single w-100 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <label for="payMethod" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Método de
+                        pago:</label>
+                    <select name="payMethod" id="payMethod"
+                        class="js-example-basic-single w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option value="">Seleccione una opción</option>
                         <option value="Transferencia" data-image="{{ asset('images/bank.png') }}">Transferencia</option>
-                        <option value="Tarjeta de Débito" data-image="{{ asset('images/debitCard.png') }}">Tarjeta de débito</option>
-                        <option value="Tarjeta de Crédito" data-image="{{ asset('images/creditCard.png') }}">Tarjeta de crédito</option>
+                        <option value="Tarjeta de Débito" data-image="{{ asset('images/debitCard.png') }}">Tarjeta de débito
+                        </option>
+                        <option value="Tarjeta de Crédito" data-image="{{ asset('images/creditCard.png') }}">Tarjeta de
+                            crédito</option>
                         <option value="Efectivo" data-image="{{ asset('images/cash.png') }}">Efectivo</option>
                     </select>
                 </div>
 
                 @push('scripts')
-                <script>
-                $(document).ready(function() {
-                    function formatState (state) {
-                        if (!state.id) { return state.text; }
-                        var $state = $(
-                            '<span><img src="' + state.element.dataset.image + '" class="img-flag" style="width: 20px; height: 20px;" /> ' + state.text + '</span>'
-                        );
-                        return $state;
-                    };
+                    <script>
+                        $(document).ready(function() {
+                            function formatState(state) {
+                                if (!state.id) {
+                                    return state.text;
+                                }
+                                var $state = $(
+                                    '<span><img src="' + state.element.dataset.image +
+                                    '" class="img-flag" style="width: 20px; height: 20px;" /> ' + state.text + '</span>'
+                                );
+                                return $state;
+                            };
 
-                    $(".js-example-basic-single").select2({
-                        templateResult: formatState
-                    });
-                });
-                </script>
+                            $(".js-example-basic-single").select2({
+                                templateResult: formatState
+                            });
+
+                            $(window).resize(function() {
+                                $('.js-example-basic-single').select2('destroy');
+
+                                $(".js-example-basic-single").select2({
+                                    templateResult: formatState
+                                });
+                            });
+                        });
+                    </script>
                 @endpush
                 <div class="grid gap-4 mb-4">
                     <div class="flex items-center justify-center rounded  h-4 mt-2 md:h-6 lg:h-8">

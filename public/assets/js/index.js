@@ -7,6 +7,7 @@ const reservationButton = document.getElementById("reservationButton");
 const formReservation = document.getElementById("formReservation");
 const baseValue = document.getElementById("baseValue");
 const routeId = document.getElementById("routeId");
+const payMethod = document.getElementById("payMethod");
 let availableSeats = 0;
 
 const toggleFields = (enable) => {
@@ -18,7 +19,8 @@ const adviseButton = () => {
     if (
         selectOrigin.value == "" ||
         selectDestination.value == "" ||
-        inputDate.value == ""
+        inputDate.value == "" ||
+        payMethod.value == ""
     ) {
         Swal.fire({
             title: "¡Error!",
@@ -57,6 +59,7 @@ const adviseButton = () => {
         );
 
         console.log(dateFormatted);
+        console.log(payMethod.value);
         Swal.fire({
             title: "¿Estás seguro?",
             text:
@@ -102,11 +105,24 @@ const toggleSeats = (enable) => {
     }
 };
 
+const togglePayMethod = (enable) => {
+    payMethod.disabled = !enable;
+    if (payMethod.enable) {
+        payMethod.removeAttribute("placeholder");
+    } else {
+        payMethod.setAttribute("placeholder", "Seleccione una opción");
+    }
+};
+
 const verifyFields = () => {
     const date = inputDate.value;
-    if (selectOrigin.value == "" || selectDestination.value == "")
+    if (selectOrigin.value == "" || selectDestination.value == "") {
         toggleSeats(false);
-    else toggleSeats(true);
+        togglePayMethod(false);
+    } else {
+        toggleSeats(true);
+        togglePayMethod(true);
+    }
 
     if (date) {
         toggleFields(true);
@@ -153,7 +169,11 @@ const verifySeats = (e) => {
     const date = inputDate.value;
     if (selectDestination.value == "") {
         toggleSeats(false);
-    } else toggleSeats(true);
+        togglePayMethod(false);
+    } else {
+        toggleSeats(true);
+        togglePayMethod(true);
+    }
     if (date == "" || origin == "" || destination == "") return;
     fetch(`/get/seats/${origin}/${destination}/${date}`)
         .then((response) => response.json())
