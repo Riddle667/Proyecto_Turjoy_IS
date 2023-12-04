@@ -14,7 +14,7 @@ function makeMessages()
         'document.required' => 'Debe seleccionar un archivo para cargar',
         'document.max' => 'El tamaño máximo del archivo a cargar no puede superar los 5 megabytes',
         'document.mimes' => 'El archivo seleccionado no es Excel con extensión .xlsx',
-
+        'endDate' => 'la fecha de inicio a consultar no puede ser mayor que la fecha de término de la consulta',
     ];
 
     return $messages;
