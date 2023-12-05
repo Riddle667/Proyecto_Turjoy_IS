@@ -41,10 +41,10 @@
                             Codigo
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Fecha
+                            Fecha de la reserva
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            día
+                            Día de la reserva
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Ciudad de origen
@@ -69,25 +69,22 @@
                                     {{ $ticket->code }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{ $ticket->date }}
+                                    {{ date('d/m/Y', strtotime($ticket->reservation_date)) }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $ticket->day }}
+                                    {{ date('d/m/Y h:i:s', strtotime($ticket->created_at)) }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $ticket->origin }}
+                                    {{ $ticket->travelDates->origin }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $ticket->destination }}
+                                    {{ $ticket->travelDates->destination}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $ticket->cantSeat }}
+                                    {{ $ticket->seats }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $ticket->totalValue }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                    {{ $ticket->total }}
                                 </td>
                             </tr>
                         @endforeach
