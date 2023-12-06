@@ -1,102 +1,183 @@
-@extends('layouts.admin')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="180x180" href="{{ asset('images/favicon.png') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <body style=" background-image: url('images/image8.jpg'); background-size: cover; background-attachment: fixed;">
-        <form class="" method="GET" action="{{ route('search.ticket') }}" novalidate>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>Turjoy - Reporte pasajes</title>
+</head>
+<style>
+        .background-image {
 
-            <div class="flex flex-col items-center justify-start h-screen pt-24">
+            object-fit: cover;
+            filter: brightness(0.6);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
 
+    <body class="flex flex-col max-h-screen">
 
+        <div class="flex flex-col items-center justify-start h-screen pt-24">                
 
-                <div class="relative w-2/4 mt-8">
-                    <div class="flex items-center justify-center text-white text-4xl text-montserrat mb-5"><em>Ingresa el
-                            código de la reserva a buscar</em></div>
-
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg class="mt-14 w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
-                    </div>
-                    <input type="text" name="search" id="search"
-                        class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Ingresa el código" required>
-                    <button type="submit"
-                        class="rounded-lg text-white absolute right-2.5 bottom-2.5 bg-blue-custom-50 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
-
+             <!-- <img src="images/image8.jpg" class="background-image bg-cover bg-center h-screen w-screen">  -->
+            @if (auth()->check())
+                @include('layouts.navbarAdmin')
+                @include('layouts.sidebar')
+            @else
+                @include('layouts.navbar')
+            @endif
+                @if ($tickets->count() > 0)
+              
+                
+                    <div class="relative w-2/4 mt-8">
+                    <div class="flex justify-center gap-4">
+                <a href="{{ route('report.index') }}"
+                    class="bg-yellow-300 transition-all my-auto py-4 px-4 text-white rounded-lg">
+                    <svg class="w-5 h-5 hover:animate-spin text-gray-800 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 1v5h-5M2 19v-5h5m10-4a8 8 0 0 1-14.947 3.97M1 10a8 8 0 0 1 14.947-3.97" />
+                    </svg>
+                </a>
+                    <form action="{{ route('searchByDate') }}" method="GET">
+                        @csrf
+                        <div class="flex justify-center gap-4 my-4">
+                            <div class="relative max-w-sm">
+                                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                    </svg>
+                                </div>
+                                <input onkeydown="return false" datepicker type="date" name="initDate" value="{{ old('initDate') }}"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Select date">
+                            </div>
+        
+                            <div class="relative max-w-sm">
+                                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                    </svg>
+                                </div>
+                                <input onkeydown="return false" datepicker type="date" name="endDate" value="{{ old('finishDate') }}"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Select date">
+                            </div>
+        
+                            <button type="submit"
+                                class="bg-green-500 hover:bg-green-700 transition-all py-2 px-4 text-white rounded-lg">
+                                Buscar
+                            </button>
+                        </div>
+                    </form>
                 </div>
-
-
-
-        </form>
-
-        @if ($tickets->count() > 0)
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            Codigo
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Fecha de la reserva
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Día de la reserva
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Ciudad de origen
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Ciudad de destino
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Cantidad de asientos
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Valor total
-                        </th>
-                    </tr>
-                </thead>
-                    <tbody>
-                        @foreach ($tickets as $ticket)
-
-                        <tr
-                                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $ticket->code }}
-                                </th>
-                                <td class="px-6 py-4">
-                                    {{ date('d/m/Y', strtotime($ticket->reservation_date)) }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ date('d/m/Y h:i:s', strtotime($ticket->created_at)) }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $ticket->travelDates->origin }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $ticket->travelDates->destination}}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $ticket->seats }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $ticket->total }}
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
             </div>
+            <div class="max-w-sm mx-auto">
+                    @error('initDate')
+                        <p class="bg-red-400 font-semibold text-lg text-red-800 p-2 my-2 rounded-lg">{{ $message }}</p>
+                    @enderror
+        
+                    @if (session('message'))
+                        <p class="bg-red-500 text-white my-2 rounded-xl text-sm text-center p-2">
+                            {{ session('message') }}</p>
+                    @endif
+                    @error('endDate')
+                        <p class="bg-red-400 font-semibold text-lg text-red-800 p-2 my-2 rounded-lg">{{ $message }}</p>
+                    @enderror
+                </div>
+                
+                
+                
+                
+                
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Codigo
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Fecha de la reserva
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Día de la reserva
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Ciudad de origen
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Ciudad de destino
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Cantidad de asientos
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Valor total
+                                </th>
+                            </tr>
+                        </thead>
+                            <tbody>
+                                @foreach ($tickets as $ticket)
+        
+                                <tr
+                                        class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            {{ $ticket->code }}
+                                        </th>
+                                        <td class="px-6 py-4 text-center">
+                                            {{ date('d/m/Y', strtotime($ticket->reservation_date)) }}
+                                        </td>
+                                        <td class="px-6 py-4 text-center">
+                                            {{ date('d/m/Y', strtotime($ticket->created_at)) }}
+                                        </td>
+                                        <td class="px-6 py-4 text-center">
+                                            {{ $ticket->travelDates->origin }}
+                                        </td>
+                                        <td class="px-6 py-4 text-center">
+                                            {{ $ticket->travelDates->destination}}
+                                        </td>
+                                        <td class="px-6 py-4 text-center">
+                                            {{ $ticket->seats }}
+                                        </td>
+                                        <td class="px-6 py-4 text-center">
+                                            {{ $ticket->total }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+
         @else
-            <h3 class="font-bold text-cyan-700 text-2xl text-center">no hay reservas en sistema</h3>
+        <div class="mt-10">
+
+            <h3 class="font-bold text-black text-2xl text-center">no hay reservas en sistema</h3>
+        </div>
         @endif
-
-
-
-
+            
+         
+        <footer class="z-50 w-full bg-gray-custom-100 p-4 text-center mt-auto">
+            <p class="text-sm text-gray-custom-50 dark:text-gray-400">©
+                2023 TurJoy™. Todos los derechos reservados.</p>
+        </footer>
+            
     </body>
-@endsection
+
+
