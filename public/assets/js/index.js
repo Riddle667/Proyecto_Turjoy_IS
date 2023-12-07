@@ -225,10 +225,64 @@ formReservation.addEventListener("submit", (e) => {
     adviseButton();
 });
 
+const checkFieldsAndToggleReservationButton = () => {
+    console.log(seatsInput.value);
+    if (
+        selectOrigin.value === "" ||
+        selectDestination.value === "" ||
+        inputDate.value === "" ||
+        payMethod.value === "" ||
+        seatsInput.value === ""
+    ) {
+        console.log("Campos vacios");
+        console.log(selectOrigin.value);
+        console.log(selectDestination.value);
+        console.log(inputDate.value);
+        console.log(payMethod.value);
+        console.log(seatsInput.value);
+        reservationButton.disabled = true;
+        reservationButton.classList.add("opacity-25");
+        reservationButton.classList.remove("opacity-100");
+        reservationButton.classList.remove("hover:bg-blue-800");
+    } else {
+        console.log("Campos completos");
+        console.log(selectOrigin.value);
+        console.log(selectDestination.value);
+        console.log(inputDate.value);
+        console.log(payMethod.value);
+        console.log(seatsInput.value);
+
+        reservationButton.disabled = false;
+        reservationButton.classList.add("opacity-100");
+        reservationButton.classList.remove("opacity-25");
+        reservationButton.classList.add("hover:bg-blue-800");
+    }
+};
+
+const handlePayMethodChange = () => {
+    checkFieldsAndToggleReservationButton();
+};
+
+const observer = new MutationObserver(handlePayMethodChange);
+
+observer.observe(payMethod, { attributes: true, attributeFilter: ["value"] });
+
 document.addEventListener("DOMContentLoaded", loadOrigins);
 document.addEventListener("DOMContentLoaded", verifyFields);
+document.addEventListener(
+    "DOMContentLoaded",
+    checkFieldsAndToggleReservationButton
+);
 inputDate.addEventListener("change", verifySeats);
 inputDate.addEventListener("change", verifyFields);
 selectOrigin.addEventListener("change", loadDestinations);
 selectDestination.addEventListener("change", verifySeats);
 reservationButton.addEventListener("click", adviseButton);
+selectOrigin.addEventListener("change", checkFieldsAndToggleReservationButton);
+selectDestination.addEventListener(
+    "change",
+    checkFieldsAndToggleReservationButton
+);
+inputDate.addEventListener("change", checkFieldsAndToggleReservationButton);
+seatsInput.addEventListener("change", checkFieldsAndToggleReservationButton);
+payMethod.addEventListener("change", checkFieldsAndToggleReservationButton);
