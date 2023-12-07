@@ -29,7 +29,7 @@
 
     <body class="flex flex-col max-h-screen">
 
-        <div class="flex flex-col items-center justify-start h-screen pt-24">                
+        <div class="bg-green-200 flex flex-col items-center justify-start h-screen pt-24">                
 
              <!-- <img src="images/image8.jpg" class="background-image bg-cover bg-center h-screen w-screen">  -->
             @if (auth()->check())
@@ -44,8 +44,8 @@
                     <div class="relative w-2/4 mt-8">
                     <div class="flex justify-center gap-4">
                 <a href="{{ route('report.index') }}"
-                    class="bg-yellow-300 transition-all my-auto py-4 px-4 text-white rounded-lg">
-                    <svg class="w-5 h-5 hover:animate-spin text-gray-800 dark:text-white" aria-hidden="true"
+                    class="bg-yellow-300 transition-all my-auto py-3 px-3 text-white rounded-lg">
+                    <svg class="w-4 h-4 hover:animate-spin text-gray-800 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M16 1v5h-5M2 19v-5h5m10-4a8 8 0 0 1-14.947 3.97M1 10a8 8 0 0 1 14.947-3.97" />
@@ -81,7 +81,7 @@
                             </div>
         
                             <button type="submit"
-                                class="bg-green-500 hover:bg-green-700 transition-all py-2 px-4 text-white rounded-lg">
+                                class="bg-blue-custom-50 hover:bg-blue-custom-100 transition-all py-2 px-4 text-white rounded-lg">
                                 Buscar
                             </button>
                         </div>
@@ -90,15 +90,15 @@
             </div>
             <div class="max-w-sm mx-auto">
                     @error('initDate')
-                        <p class="bg-red-400 font-semibold text-lg text-red-800 p-2 my-2 rounded-lg">{{ $message }}</p>
+                        <p class="bg-red-custom-50 font-semibold text-lg text-white p-2 my-2 rounded-lg">{{ $message }}</p>
                     @enderror
         
                     @if (session('message'))
-                        <p class="bg-red-500 text-white my-2 rounded-xl text-sm text-center p-2">
+                        <p class="bg-red-custom-50 text-white my-2 rounded-lg font-semibold text-lg text-center p-2">
                             {{ session('message') }}</p>
                     @endif
                     @error('endDate')
-                        <p class="bg-red-400 font-semibold text-lg text-red-800 p-2 my-2 rounded-lg">{{ $message }}</p>
+                        <p class="bg-red-custom-50 font-semibold text-lg text-white p-2 my-2 rounded-lg">{{ $message }}</p>
                     @enderror
                 </div>
                 
@@ -106,7 +106,7 @@
                 
                 
                 
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
@@ -166,9 +166,9 @@
                     </div>
 
         @else
-        <div class="mt-10">
+        <div class="mt-12 ml-10">
 
-            <h3 class="font-bold text-black text-2xl text-center">no hay reservas en sistema</h3>
+            <p class="bg-red-custom-50 font-semibold text-xl text-white p-2 my-2 rounded-lg">No hay reservas en sistema</p>
         </div>
         @endif
             
