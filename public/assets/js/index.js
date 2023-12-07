@@ -185,6 +185,7 @@ const verifySeats = (e) => {
             seatsInput.setAttribute("max", seats);
             baseValue.value = data.baseValue;
             routeId.value = data.routeId;
+            window.resizeSelect2();
         })
         .catch((error) => {});
 };

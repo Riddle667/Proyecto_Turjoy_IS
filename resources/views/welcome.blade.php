@@ -82,6 +82,14 @@
                                     templateResult: formatState
                                 });
                             });
+
+                            window.resizeSelect2 = function() {
+                                $('.js-example-basic-single').select2('destroy');
+                                $(".js-example-basic-single").select2({
+                                    templateResult: formatState
+                                });
+                            };
+
                         });
                     </script>
                 @endpush
