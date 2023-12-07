@@ -2,7 +2,7 @@
 @if ($travelsAmount > 0 && !auth()->check())
     @section('content')
         <div
-            class=" lg:max-w-xl max-h-screen p-10 space-y-8 sm:p-8 xl:pr-12 xl:pl-12 bg-gray-custom-150   rounded-lg shadow-xl dark:bg-gray-800 z-20 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-64 border border-black">
+            class=" lg:max-w-xl max-h-screen p-10 space-y-8 sm:p-8 xl:pr-12 xl:pl-12 bg-gray-custom-150 mt-5  rounded-lg shadow-xl dark:bg-gray-800 z-20 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-64 border border-black">
             <h2 class="sm:text-lg xl:text-2xl font-bold text-gray-900 dark:text-white text-center ">
                 Reserva de pasajes TurJoy
             </h2>

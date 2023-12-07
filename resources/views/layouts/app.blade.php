@@ -53,19 +53,6 @@
                     </div>
                 </div>
 
-                <div class="absolute z-30 hidden space-x-3 -translate-x-1/2 bottom-5 left-1/2 md:flex">
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
-                        data-carousel-slide-to="0"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
-                        data-carousel-slide-to="1"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
-                        data-carousel-slide-to="2"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4"
-                        data-carousel-slide-to="3"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5"
-                        data-carousel-slide-to="4"></button>
-                </div>
-
                 <div
                     class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 group focus:outline-none">
                     <button type="button" class="" data-carousel-prev>
@@ -148,8 +135,7 @@
                     </ul>
                     </p>
                     <p id="contactanos" class="text-xl mt-5">
-                        <span class="font-bold">Para cualquier otra duda, envíanos un <a
-                                href=mailto:contacto@turjoy.com
+                        <span class="font-bold">Para cualquier otra duda, envíanos un <a href=mailto:contacto@turjoy.com
                                 class="border-b border-black hover:text-blue-custom-50 hover:border-blue-custom-50 ">correo</a>.</span>
                     </p>
                 </div>
