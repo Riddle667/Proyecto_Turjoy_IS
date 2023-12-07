@@ -58,7 +58,7 @@
                                 required>
                             @error('password')
                                 <div
-                                    class="shadow-md flex item-center max-w-xs  bg-gray-custom-150 text-xs text-red-custom-50 my-2 rounded-lg text-center p-2">
+                                    class="shadow-md flex item-center max-w-xs   bg-gray-custom-150 text-xs text-red-custom-50 my-2 rounded-lg text-center p-2">
                                     <svg class="flex-shrink-0 w-4 h-4 mr-2  text-red-custom-50 dark:text-white"
                                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                         viewBox="0 0 20 20">
