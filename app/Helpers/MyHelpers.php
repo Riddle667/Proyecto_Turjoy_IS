@@ -50,3 +50,12 @@ function generateReservationNumber()
 
     return $code;
 }
+
+function validPayMethod($method)
+{
+    if ($method === "Tarjeta de Débito" || $method === "Tarjeta de Crédito" || $method === "Efectivo" || $method === "Transferencia") {
+        return true;
+    } else {
+        return false;
+    }
+}

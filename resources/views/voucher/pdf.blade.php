@@ -83,6 +83,9 @@
         <p>Fecha de la compra:
             <span>{{ date('d/m/Y', strtotime($date)) }}</span>
         </p>
+        <p>Método de pago seleccionado:
+            <span>{{$ticket->pay_method}}</span>
+        </p>
     </div>
     <hr>
     <div class="total">

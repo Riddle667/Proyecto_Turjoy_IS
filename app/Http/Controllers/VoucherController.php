@@ -60,7 +60,7 @@ class VoucherController extends Controller
         $domPDF->render();
 
 
-        $filename = 'user_' . Str::random(10) . '.pdf';
+        $filename = $code . '.pdf';
 
         $path = 'pdfs\\' . $filename;
         Storage::disk('public')->put($path, $domPDF->output());
