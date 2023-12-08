@@ -90,88 +90,88 @@
                 </form>
             </div>
 
-            <div class="max-w-sm mx-auto flex items-center justify-center">
-                @if ($errors->has('initDate'))
+
+            @if ($errors->has('initDate'))
+                <div class="max-w-sm mx-auto flex items-center justify-center">
                     <p
                         class="bg-red-custom-50 font-semibold text-lg text-white p-2 my-2 rounded-lg inline-flex text-center">
                         {{ $errors->first('initDate') }}
                     </p>
-                @elseif ($errors->has('endDate'))
+                </div>
+            @elseif ($errors->has('endDate'))
+                <div class="max-w-sm mx-auto flex items-center justify-center">
                     <p
                         class="bg-red-custom-50 font-semibold text-lg text-white p-2 my-2 rounded-lg inline-flex text-center">
                         {{ $errors->first('endDate') }}
                     </p>
-                @elseif (session('message'))
+                </div>
+            @elseif (session('message'))
+                <div class="max-w-sm mx-auto flex items-center justify-center">
                     <p
                         class="bg-red-custom-50 text-white my-2 rounded-lg font-semibold text-lg text-justify p-2 inline-flex ">
                         {{ session('message') }}
                     </p>
-                @endif
-
-            </div>
-
-
-
-
-
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
-                                Codigo
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Fecha de la reserva
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Día de la reserva
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Ciudad de origen
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Ciudad de destino
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Cantidad de asientos
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Valor total
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($tickets as $ticket)
-                            <tr
-                                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $ticket->code }}
+                </div>
+            @else
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Codigo
                                 </th>
-                                <td class="px-6 py-4 text-center">
-                                    {{ date('d/m/Y', strtotime($ticket->reservation_date)) }}
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    {{ date('d/m/Y', strtotime($ticket->created_at)) }}
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    {{ $ticket->travelDates->origin }}
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    {{ $ticket->travelDates->destination }}
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    {{ $ticket->seats }}
-                                </td>
-                                <td class="px-6 py-4 text-center">
-                                    ${{ number_format($ticket->total, 0, ',', '.') }}
-                                </td>
+                                <th scope="col" class="px-6 py-3">
+                                    Fecha de la reserva
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Día de la reserva
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Ciudad de origen
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Ciudad de destino
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Cantidad de asientos
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Valor total
+                                </th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            @foreach ($tickets as $ticket)
+                                <tr
+                                    class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $ticket->code }}
+                                    </th>
+                                    <td class="px-6 py-4 text-center">
+                                        {{ date('d/m/Y', strtotime($ticket->reservation_date)) }}
+                                    </td>
+                                    <td class="px-6 py-4 text-center">
+                                        {{ date('d/m/Y', strtotime($ticket->created_at)) }}
+                                    </td>
+                                    <td class="px-6 py-4 text-center">
+                                        {{ $ticket->travelDates->origin }}
+                                    </td>
+                                    <td class="px-6 py-4 text-center">
+                                        {{ $ticket->travelDates->destination }}
+                                    </td>
+                                    <td class="px-6 py-4 text-center">
+                                        {{ $ticket->seats }}
+                                    </td>
+                                    <td class="px-6 py-4 text-center">
+                                        ${{ number_format($ticket->total, 0, ',', '.') }}
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @endif
         @else
             <div class="max-w-sm mx-auto flex items-center justify-center">
 
