@@ -35,73 +35,79 @@
         @if (auth()->check())
             @include('layouts.navbarAdmin')
             @include('layouts.sidebar')
-        @else
-            @include('layouts.navbar')
+            <div class="relative w-2/4 mt-8 p-4 sm:ml-64">
+            @else
+                @include('layouts.navbar')
+                <div class="relative w-2/4 mt-8 p-4 ">
         @endif
         @if ($tickets->count() > 0)
 
-
-            <div class="relative w-2/4 mt-8">
-                <div class="flex justify-center gap-4">
-                    <a href="{{ route('report.index') }}"
-                        class="bg-yellow-300 transition-all my-auto py-3 px-3 text-white rounded-lg">
-                        <svg class="w-4 h-4 hover:animate-spin text-gray-800 dark:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M16 1v5h-5M2 19v-5h5m10-4a8 8 0 0 1-14.947 3.97M1 10a8 8 0 0 1 14.947-3.97" />
-                        </svg>
-                    </a>
-                    <form action="{{ route('searchByDate') }}" method="GET">
-                        @csrf
-                        <div class="flex justify-center gap-4 my-4">
-                            <div class="relative max-w-sm">
-                                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                    </svg>
-                                </div>
-                                <input onkeydown="return false" datepicker type="date" name="initDate"
-                                    value="{{ old('initDate') }}"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Select date">
+            <div class="flex justify-center gap-4">
+                <a href="{{ route('report.index') }}"
+                    class="bg-yellow-300 transition-all my-auto py-3 px-3 text-white rounded-lg">
+                    <svg class="w-4 h-4 hover:animate-spin text-gray-800 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 1v5h-5M2 19v-5h5m10-4a8 8 0 0 1-14.947 3.97M1 10a8 8 0 0 1 14.947-3.97" />
+                    </svg>
+                </a>
+                <form action="{{ route('searchByDate') }}" method="GET">
+                    @csrf
+                    <div class="flex justify-center gap-4 my-4">
+                        <div class="relative max-w-sm">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                </svg>
                             </div>
-
-                            <div class="relative max-w-sm">
-                                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                    </svg>
-                                </div>
-                                <input onkeydown="return false" datepicker type="date" name="endDate"
-                                    value="{{ old('finishDate') }}"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Select date">
-                            </div>
-
-                            <button type="submit"
-                                class="bg-blue-custom-50 hover:bg-blue-custom-100 transition-all py-2 px-4 text-white rounded-lg">
-                                Buscar
-                            </button>
+                            <input onkeydown="return false" datepicker type="date" name="initDate"
+                                value="{{ old('initDate') }}"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Select date">
                         </div>
-                    </form>
-                </div>
-            </div>
-            <div class="max-w-sm mx-auto">
-                @error('initDate')
-                    <p class="bg-red-custom-50 font-semibold text-lg text-white p-2 my-2 rounded-lg">{{ $message }}</p>
-                @enderror
 
-                @if (session('message'))
-                    <p class="bg-red-custom-50 text-white my-2 rounded-lg font-semibold text-lg text-center p-2">
-                        {{ session('message') }}</p>
+                        <div class="relative max-w-sm">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                </svg>
+                            </div>
+                            <input onkeydown="return false" datepicker type="date" name="endDate"
+                                value="{{ old('finishDate') }}"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Select date">
+                        </div>
+
+                        <button type="submit"
+                            class="bg-blue-custom-50 hover:bg-blue-custom-100 transition-all py-2 px-4 text-white rounded-lg">
+                            Buscar
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="max-w-sm mx-auto flex items-center justify-center">
+                @if ($errors->has('initDate'))
+                    <p
+                        class="bg-red-custom-50 font-semibold text-lg text-white p-2 my-2 rounded-lg inline-flex text-center">
+                        {{ $errors->first('initDate') }}
+                    </p>
+                @elseif ($errors->has('endDate'))
+                    <p
+                        class="bg-red-custom-50 font-semibold text-lg text-white p-2 my-2 rounded-lg inline-flex text-center">
+                        {{ $errors->first('endDate') }}
+                    </p>
+                @elseif (session('message'))
+                    <p
+                        class="bg-red-custom-50 text-white my-2 rounded-lg font-semibold text-lg text-justify p-2 inline-flex ">
+                        {{ session('message') }}
+                    </p>
                 @endif
-                @error('endDate')
-                    <p class="bg-red-custom-50 font-semibold text-lg text-white p-2 my-2 rounded-lg">{{ $message }}</p>
-                @enderror
+
             </div>
 
 
@@ -166,18 +172,19 @@
                     </tbody>
                 </table>
             </div>
-        @else
-            <div class="mt-12 ml-10">
+    </div>
+@else
+    <div class="mt-12 ml-10">
 
-                <p class="bg-red-custom-50 font-semibold text-xl text-white p-2 my-2 rounded-lg">No hay reservas en
-                    sistema</p>
-            </div>
-        @endif
+        <p class="bg-red-custom-50 font-semibold text-xl text-white p-2 my-2 rounded-lg">No hay reservas en
+            sistema</p>
+    </div>
+    @endif
 
 
-        <footer class="z-50 w-full bg-gray-custom-100 p-4 text-center mt-auto">
-            <p class="text-sm text-gray-custom-50 dark:text-gray-400">©
-                2023 TurJoy™. Todos los derechos reservados.</p>
-        </footer>
+    <footer class="z-50 w-full bg-gray-custom-100 p-4 text-center mt-auto">
+        <p class="text-sm text-gray-custom-50 dark:text-gray-400">©
+            2023 TurJoy™. Todos los derechos reservados.</p>
+    </footer>
 
 </body>
