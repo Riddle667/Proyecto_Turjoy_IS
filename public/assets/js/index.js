@@ -54,10 +54,10 @@ const adviseButton = () => {
         const options = { timeZone: "America/Santiago" };
         const date = new Date(inputDate.value.replace(/-/g, "/"));
         const dateFormatted = date.toLocaleDateString("es-ES", options);
-        const formattedNumber = new Intl.NumberFormat("es-ES").format(
-            seatsInput.value * baseValue.value
-        );
-
+        const formattedNumber = new Intl.NumberFormat("es-ES", {
+            minimumFractionDigits: 0,
+            useGrouping: true,
+        }).format(baseValue.value * seatsInput.value);
         console.log(dateFormatted);
         console.log(payMethod.value);
         Swal.fire({
@@ -178,7 +178,6 @@ const verifySeats = (e) => {
     fetch(`/get/seats/${origin}/${destination}/${date}`)
         .then((response) => response.json())
         .then((data) => {
-            // Manipula los datos recibidos aquí
             const seats = data.availableSeats;
             availableSeats = seats;
             seatsLabel.textContent = seats + " asientos disponibles";
