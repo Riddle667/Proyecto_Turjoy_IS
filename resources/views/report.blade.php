@@ -172,14 +172,15 @@
                     </tbody>
                 </table>
             </div>
-    </div>
-@else
-    <div class="mt-12 ml-10">
+        @else
+            <div class="max-w-sm mx-auto flex items-center justify-center">
 
-        <p class="bg-red-custom-50 font-semibold text-xl text-white p-2 my-2 rounded-lg">No hay reservas en
-            sistema</p>
+                <p class="bg-red-custom-50 font-semibold text-xl text-white p-2 my-2 rounded-lg">No hay reservas en
+                    sistema</p>
+            </div>
+        @endif
     </div>
-    @endif
+
 
 
     <footer class="z-50 w-full bg-gray-custom-100 p-4 text-center mt-auto">

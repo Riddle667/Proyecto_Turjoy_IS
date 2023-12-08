@@ -178,7 +178,6 @@ const verifySeats = (e) => {
     fetch(`/get/seats/${origin}/${destination}/${date}`)
         .then((response) => response.json())
         .then((data) => {
-            // Manipula los datos recibidos aquí
             const seats = data.availableSeats;
             availableSeats = seats;
             seatsLabel.textContent = seats + " asientos disponibles";
