@@ -60,15 +60,13 @@ class TicketController extends Controller
         // Validar
         $makeMessages = makeMessages();
         $this->validate($request, [
-            'seats' => ['required', 'numeric'],
+            'seats' => ['required'],
             'baseValue' => ['required'],
             'date' => ['date', 'required'],
             'payMethod' => ['required'],
         ], $makeMessages);
 
-        if ($request->seats) {
-            return back()->with('message', 'El número de asientos debe ser mayor a 0');
-        }
+
         //  Verificamos si la fecha ingresada es mayor a la fecha actual.
         $invalidDate = validDate($request->date);
         if ($invalidDate) {
