@@ -39,9 +39,8 @@ function validDate($date)
 function generateReservationNumber()
 {
     do {
-        $letters = Str::random(4); // Genera 2 letras aleatorias
-        $letters = strtoupper($letters); // Convierte las letras a mayúsculas
-        $numbers = mt_rand(10, 99); // Genera 2 números aleatorios
+        $letters = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(4/strlen($x)) )),1,4);
+        $numbers = substr(str_shuffle(str_repeat($x='0123456789', ceil(2/strlen($x)) )),1,2);
 
         $code = $letters . $numbers;
 
