@@ -119,7 +119,7 @@
                             class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
-                                    Codigo
+                                    Código
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Fecha de la reserva

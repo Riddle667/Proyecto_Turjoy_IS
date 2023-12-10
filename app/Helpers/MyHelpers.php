@@ -14,10 +14,10 @@ function makeMessages()
         'document.required' => 'Debe seleccionar un archivo para cargar',
         'document.max' => 'El tamaño máximo del archivo a cargar no puede superar los 5 megabytes',
         'document.mimes' => 'El archivo seleccionado no es Excel con extensión .xlsx',
-        'initDate.required' => 'el campo fecha de inicio es requerido',
-        'initDate.date' => 'el campo fecha de inicio debe ser una fecha válida',
-        'endDate.required' => 'el campo fecha de término es requerido',
-        'endDate.date' => 'el campo fecha de término debe ser una fecha válida',
+        'initDate.required' => 'El campo fecha de inicio es requerido',
+        'initDate.date' => 'El campo fecha de inicio debe ser una fecha válida',
+        'endDate.required' => 'El campo fecha de término es requerido',
+        'endDate.date' => 'El campo fecha de término debe ser una fecha válida',
         'endDate.after_or_equal' => 'La fecha de inicio a consultar no puede ser mayor que la fecha de término de la consulta',
     ];
 
