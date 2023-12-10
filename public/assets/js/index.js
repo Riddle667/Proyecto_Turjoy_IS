@@ -19,12 +19,12 @@ const adviseButton = () => {
     if (
         selectOrigin.value == "" ||
         selectDestination.value == "" ||
-        inputDate.value == "" ||
-        payMethod.value == ""
+        inputDate.value == ""
     ) {
         Swal.fire({
             title: "¡Error!",
-            text: "Todos los campos son obligatorios",
+            html: `<b>Todos los campos son obligatorios.</b>`,
+            color: "#ff8a80",
             icon: "warning",
             confirmButtonColor: "#FF6B6B",
             confirmButtonText: "Ok",
@@ -37,16 +37,27 @@ const adviseButton = () => {
     ) {
         Swal.fire({
             title: "¡Error!",
-            text: "Debe seleccionar la cantidad de asientos antes de realizar la reserva",
+            html: `<b>Debe seleccionar la cantidad de asientos antes de realizar la reserva.</b>`,
             icon: "warning",
+            color: "#ff8a80",
             confirmButtonColor: "#FF6B6B",
             confirmButtonText: "Ok",
         });
     } else if (seatsInput.value > availableSeats) {
         Swal.fire({
             title: "¡Error!",
-            text: "No hay servicios disponibles para la ruta seleccionada",
+            html: `<b>No hay servicios disponibles para la ruta seleccionada.</b>`,
             icon: "warning",
+            color: "#ff8a80",
+            confirmButtonColor: "#FF6B6B",
+            confirmButtonText: "Ok",
+        });
+    } else if (payMethod.value == "") {
+        Swal.fire({
+            title: "¡Error!",
+            html: `<b>Debe seleccionar un método de pago.</b>`,
+            icon: "warning",
+            color: "#ff8a80",
             confirmButtonColor: "#FF6B6B",
             confirmButtonText: "Ok",
         });
