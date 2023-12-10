@@ -60,13 +60,15 @@ class TicketController extends Controller
         // Validar
         $makeMessages = makeMessages();
         $this->validate($request, [
-            'seats' => ['required'],
+            'seats' => ['required', 'numeric'],
             'baseValue' => ['required'],
             'date' => ['date', 'required'],
             'payMethod' => ['required'],
         ], $makeMessages);
 
-        // dd($request);
+        if ($request->seats) {
+            return back()->with('message', 'El número de asientos debe ser mayor a 0');
+        }
         //  Verificamos si la fecha ingresada es mayor a la fecha actual.
         $invalidDate = validDate($request->date);
         if ($invalidDate) {
@@ -93,7 +95,8 @@ class TicketController extends Controller
         ]);
     }
 
-    public function showReport(){
+    public function showReport()
+    {
 
         $tickets = Ticket::select('*')->orderBy('reservation_date', 'asc')->get();
 
@@ -102,22 +105,23 @@ class TicketController extends Controller
         ]);
     }
 
-    public function searchByDate(Request $request){
+    public function searchByDate(Request $request)
+    {
         $messages = makeMessages();
         $this->validate($request, [
             'initDate' => ['required', 'date'],
             'endDate' => ['required', 'date', 'after_or_equal:initDate'],
         ], $messages);
-        
+
         $initDate = $request->initDate;
         $endDate = $request->endDate;
-        
+
         $tickets = Ticket::whereBetween('reservation_date', [$initDate, $endDate])->orderBy('reservation_date', 'asc')->get();
-        
-        if ($tickets->count() == 0){
+
+        if ($tickets->count() == 0) {
             return back()->with('message', 'No se encontraron reservas dentro del rango seleccionado');
         }
-        
+
         return view('report', [
             'tickets' => $tickets,
         ]);

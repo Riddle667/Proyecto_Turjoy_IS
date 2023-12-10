@@ -35,7 +35,8 @@
                     <label for="seatsInput" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Cantidad de
                         asientos: <label id="seats" class="text-red-custom-100"></label></label>
                     <input type="number" name="seats" id="seatsInput" min="0" inputmode="numeric"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                 </div>
                 <div>
                     <label for="payMethod" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Método de
