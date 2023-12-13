@@ -93,11 +93,16 @@
                         });
                     </script>
                 @endpush
+                <div id="reservation-tooltip" role="tooltip"
+                    class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                    Recuerda llenar todos los campos
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
                 <div class="grid gap-4 mb-4">
                     <div class="flex items-center justify-center rounded  h-4 mt-2 md:h-6 lg:h-8">
                         <button type="button" id="reservationButton" style="white-space: nowrap;"
                             class="px-1 py-3 text-base font-medium text-center text-white opacity-25 bg-blue-custom-50 rounded-lg  focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <a href="#">Reservar Pasajes</a>
+                            <a data-tooltip-target="reservation-tooltip" data-tooltip-placement="right" href="#">Reservar Pasajes</a>
                         </button>
 
                     </div>
