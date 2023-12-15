@@ -17,6 +17,7 @@ return new class extends Migration
             $table->date('reservation_date');
             $table->integer('seats');
             $table->integer('total');
+            $table->string('pay_method');
             $table->foreignId('user_id')->nullable()->constrained('users');
             $table->foreignId('route_id')->constrained('routes');
             $table->timestamps();

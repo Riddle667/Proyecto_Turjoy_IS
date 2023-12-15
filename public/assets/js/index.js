@@ -7,6 +7,7 @@ const reservationButton = document.getElementById("reservationButton");
 const formReservation = document.getElementById("formReservation");
 const baseValue = document.getElementById("baseValue");
 const routeId = document.getElementById("routeId");
+const payMethod = document.getElementById("payMethod");
 let availableSeats = 0;
 
 const toggleFields = (enable) => {
@@ -22,7 +23,8 @@ const adviseButton = () => {
     ) {
         Swal.fire({
             title: "¡Error!",
-            text: "Todos los campos son obligatorios",
+            html: `<b>Todos los campos son obligatorios.</b>`,
+            color: "#ff8a80",
             icon: "warning",
             confirmButtonColor: "#FF6B6B",
             confirmButtonText: "Ok",
@@ -35,16 +37,27 @@ const adviseButton = () => {
     ) {
         Swal.fire({
             title: "¡Error!",
-            text: "Debe seleccionar la cantidad de asientos antes de realizar la reserva",
+            html: `<b>Debe seleccionar la cantidad de asientos antes de realizar la reserva.</b>`,
             icon: "warning",
+            color: "#ff8a80",
             confirmButtonColor: "#FF6B6B",
             confirmButtonText: "Ok",
         });
     } else if (seatsInput.value > availableSeats) {
         Swal.fire({
             title: "¡Error!",
-            text: "No hay servicios disponibles para la ruta seleccionada",
+            html: `<b>No hay servicios disponibles para la ruta seleccionada.</b>`,
             icon: "warning",
+            color: "#ff8a80",
+            confirmButtonColor: "#FF6B6B",
+            confirmButtonText: "Ok",
+        });
+    } else if (payMethod.value == "") {
+        Swal.fire({
+            title: "¡Error!",
+            html: `<b>Debe seleccionar un método de pago.</b>`,
+            icon: "warning",
+            color: "#ff8a80",
             confirmButtonColor: "#FF6B6B",
             confirmButtonText: "Ok",
         });
@@ -52,11 +65,12 @@ const adviseButton = () => {
         const options = { timeZone: "America/Santiago" };
         const date = new Date(inputDate.value.replace(/-/g, "/"));
         const dateFormatted = date.toLocaleDateString("es-ES", options);
-        const formattedNumber = new Intl.NumberFormat("es-ES").format(
-            seatsInput.value * baseValue.value
-        );
-
+        const formattedNumber = new Intl.NumberFormat("es-ES", {
+            minimumFractionDigits: 0,
+            useGrouping: true,
+        }).format(baseValue.value * seatsInput.value);
         console.log(dateFormatted);
+        console.log(payMethod.value);
         Swal.fire({
             title: "¿Estás seguro?",
             text:
@@ -102,11 +116,24 @@ const toggleSeats = (enable) => {
     }
 };
 
+const togglePayMethod = (enable) => {
+    payMethod.disabled = !enable;
+    if (payMethod.enable) {
+        payMethod.removeAttribute("placeholder");
+    } else {
+        payMethod.setAttribute("placeholder", "Seleccione una opción");
+    }
+};
+
 const verifyFields = () => {
     const date = inputDate.value;
-    if (selectOrigin.value == "" || selectDestination.value == "")
+    if (selectOrigin.value == "" || selectDestination.value == "") {
         toggleSeats(false);
-    else toggleSeats(true);
+        togglePayMethod(false);
+    } else {
+        toggleSeats(true);
+        togglePayMethod(true);
+    }
 
     if (date) {
         toggleFields(true);
@@ -153,18 +180,22 @@ const verifySeats = (e) => {
     const date = inputDate.value;
     if (selectDestination.value == "") {
         toggleSeats(false);
-    } else toggleSeats(true);
+        togglePayMethod(false);
+    } else {
+        toggleSeats(true);
+        togglePayMethod(true);
+    }
     if (date == "" || origin == "" || destination == "") return;
     fetch(`/get/seats/${origin}/${destination}/${date}`)
         .then((response) => response.json())
         .then((data) => {
-            // Manipula los datos recibidos aquí
             const seats = data.availableSeats;
             availableSeats = seats;
             seatsLabel.textContent = seats + " asientos disponibles";
             seatsInput.setAttribute("max", seats);
             baseValue.value = data.baseValue;
             routeId.value = data.routeId;
+            window.resizeSelect2();
         })
         .catch((error) => {});
 };
@@ -205,10 +236,48 @@ formReservation.addEventListener("submit", (e) => {
     adviseButton();
 });
 
+const checkFieldsAndToggleReservationButton = () => {
+    if (
+        selectOrigin.value === "" ||
+        selectDestination.value === "" ||
+        inputDate.value === "" ||
+        payMethod.value === "" ||
+        seatsInput.value === ""
+    ) {
+        reservationButton.classList.add("opacity-25");
+        reservationButton.classList.remove("opacity-100");
+        reservationButton.classList.remove("hover:bg-blue-800");
+    } else {
+        reservationButton.classList.add("opacity-100");
+        reservationButton.classList.remove("opacity-25");
+        reservationButton.classList.add("hover:bg-blue-800");
+    }
+};
+
+const handlePayMethodChange = () => {
+    checkFieldsAndToggleReservationButton();
+};
+
+const observer = new MutationObserver(handlePayMethodChange);
+
+observer.observe(payMethod, { attributes: true, attributeFilter: ["value"] });
+
 document.addEventListener("DOMContentLoaded", loadOrigins);
 document.addEventListener("DOMContentLoaded", verifyFields);
+document.addEventListener(
+    "DOMContentLoaded",
+    checkFieldsAndToggleReservationButton
+);
 inputDate.addEventListener("change", verifySeats);
 inputDate.addEventListener("change", verifyFields);
 selectOrigin.addEventListener("change", loadDestinations);
 selectDestination.addEventListener("change", verifySeats);
 reservationButton.addEventListener("click", adviseButton);
+selectOrigin.addEventListener("change", checkFieldsAndToggleReservationButton);
+selectDestination.addEventListener(
+    "change",
+    checkFieldsAndToggleReservationButton
+);
+inputDate.addEventListener("change", checkFieldsAndToggleReservationButton);
+seatsInput.addEventListener("change", checkFieldsAndToggleReservationButton);
+payMethod.addEventListener("change", checkFieldsAndToggleReservationButton);

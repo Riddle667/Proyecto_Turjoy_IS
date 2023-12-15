@@ -14,6 +14,7 @@ class Ticket extends Model
         'reservation_date',
         'seats',
         'total',
+        'pay_method',
         'route_id',
     ];
 

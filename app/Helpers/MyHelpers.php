@@ -14,7 +14,11 @@ function makeMessages()
         'document.required' => 'Debe seleccionar un archivo para cargar',
         'document.max' => 'El tamaño máximo del archivo a cargar no puede superar los 5 megabytes',
         'document.mimes' => 'El archivo seleccionado no es Excel con extensión .xlsx',
-
+        'initDate.required' => 'El campo fecha de inicio es requerido',
+        'initDate.date' => 'El campo fecha de inicio debe ser una fecha válida',
+        'endDate.required' => 'El campo fecha de término es requerido',
+        'endDate.date' => 'El campo fecha de término debe ser una fecha válida',
+        'endDate.after_or_equal' => 'La fecha de inicio a consultar no puede ser mayor que la fecha de término de la consulta',
     ];
 
     return $messages;
@@ -35,9 +39,8 @@ function validDate($date)
 function generateReservationNumber()
 {
     do {
-        $letters = Str::random(4); // Genera 2 letras aleatorias
-        $letters = strtoupper($letters); // Convierte las letras a mayúsculas
-        $numbers = mt_rand(10, 99); // Genera 2 números aleatorios
+        $letters = substr(str_shuffle(str_repeat($x='ABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(4/strlen($x)) )),1,4);
+        $numbers = substr(str_shuffle(str_repeat($x='0123456789', ceil(2/strlen($x)) )),1,2);
 
         $code = $letters . $numbers;
 
@@ -45,4 +48,13 @@ function generateReservationNumber()
     } while ($response);
 
     return $code;
+}
+
+function validPayMethod($method)
+{
+    if ($method === "Tarjeta de Débito" || $method === "Tarjeta de Crédito" || $method === "Efectivo" || $method === "Transferencia") {
+        return true;
+    } else {
+        return false;
+    }
 }
