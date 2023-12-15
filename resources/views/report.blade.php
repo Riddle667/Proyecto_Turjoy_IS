@@ -42,8 +42,29 @@
         @endif
         @if ($tickets->count() > 0)
 
+            <div id="refresh-tooltip" role="tooltip"
+                class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Refresca la tabla de reservas
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+            <div id="initDate-tooltip" role="tooltip"
+                class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Fecha de inicio
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+            <div id="finishDate-tooltip" role="tooltip"
+                class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Fecha de término
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+            <div id="search-tooltip" role="tooltip"
+                class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Buscar reservas en el rango de fechas
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+
             <div class="flex justify-center gap-4">
-                <a href="{{ route('report.index') }}"
+                <a data-tooltip-target="refresh-tooltip" data-tooltip-placement="left" href="{{ route('report.index') }}"
                     class="bg-yellow-300 transition-all my-auto py-3 px-3 text-white rounded-lg">
                     <svg class="w-4 h-4 hover:animate-spin text-gray-800 dark:text-white" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
@@ -62,7 +83,7 @@
                                         d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                 </svg>
                             </div>
-                            <input onkeydown="return false" datepicker type="date" name="initDate"
+                            <input data-tooltip-target="initDate-tooltip" data-tooltip-placement="top" onkeydown="return false" datepicker type="date" name="initDate"
                                 value="{{ old('initDate') }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Select date">
@@ -76,13 +97,13 @@
                                         d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                 </svg>
                             </div>
-                            <input onkeydown="return false" datepicker type="date" name="endDate"
+                            <input data-tooltip-target="finishDate-tooltip" data-tooltip-placement="top" onkeydown="return false" datepicker type="date" name="endDate"
                                 value="{{ old('finishDate') }}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Select date">
                         </div>
 
-                        <button type="submit"
+                        <button data-tooltip-target="search-tooltip" data-tooltip-placement="right" type="submit"
                             class="bg-blue-custom-50 hover:bg-blue-custom-100 transition-all py-2 px-4 text-white rounded-lg">
                             Buscar
                         </button>
