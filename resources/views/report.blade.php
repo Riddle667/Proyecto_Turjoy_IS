@@ -155,11 +155,11 @@
                                 <th scope="col" class="px-6 py-3">
                                     Código
                                 </th>
-                                <th scope="col" class="px-6 py-3" data-tooltip-target="date_buy"
+                                <th scope="col" class="px-6 py-3" data-tooltip-target="date_reservation"
                                     data-tooltip-placement="right">
                                     Fecha de la reserva
                                 </th>
-                                <th scope="col" class="px-6 py-3" data-tooltip-target="date_reservation"
+                                <th scope="col" class="px-6 py-3" data-tooltip-target="date_buy"
                                     data-tooltip-placement="right">
                                     Día de la reserva
                                 </th>
