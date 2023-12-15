@@ -32,9 +32,15 @@
                             <label for="email"
                                 class="block mb-2 text-sm font-medium text-gray-custom-50 dark:text-white font-mulish">Correo
                                 electrónico </label>
-                            <input type="email" name="email" id="email"
+                            <input data-tooltip-target="tooltip-right" data-tooltip-placement="right" type="email" name="email" id="email"
                                 class="shadow-md py-4 font-mulish-light bg-gray-custom-100 border border-green-custom  text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Ingresa tu correo electrónico" required>
+
+                                <div id="tooltip-right" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                                    Ejemplo: example@ucn.cl
+                                    <div class="tooltip-arrow" data-popper-arrow></div>
+                                </div>
+
                             @error('email')
                                 <div
                                     class="shadow-md whitespace-nowrap flex item-center max-w-xs bg-gray-custom-150 text-xs text-red-custom-50 my-2 rounded-lg text-center p-2">
